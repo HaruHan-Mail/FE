@@ -1,0 +1,51 @@
+.HeaderContainer {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.7rem 0;
+}
+
+.HeaderLogoImage {
+    width: 6rem;
+    height: auto;
+    margin-left: 0.5rem;
+    margin-right: 7.2rem;
+}
+
+.HeaderTeamInfoLink {
+    width: auto;
+    height: auto;
+    margin-right: 0.8rem;
+    font-size: 0.9rem;
+    /* a 태그 스타일 지정 */
+    text-decoration-line: none;     /* href 밑줄 제거 */
+}
+
+/* 방문하지 않은 링크 글자색 정의 */
+.HeaderContainer a:link {
+    color: black;
+}
+
+/* 방문한 적 있는 링크 글자색 정의 */
+.HeaderContainer a:visited {
+    color: #4D4D4D;
+}
+
+/* 링크에 마우스 올렸을 때 글자색 정의 */
+.HeaderContainer a:hover {
+    color: #E86912;
+}
+
+.HeaderSubscribeButton {
+    width: auto;
+    height: auto;
+    margin-right: 0.4rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    background-color: #E86912;
+    color: white;
+    border-radius: 6px;
+    border: 0;
+}

@@ -1,0 +1,18 @@
+.Component3Container {
+    width: 100vw;
+    height: auto;
+    padding: 1rem 0;
+}
+
+.Component3H1 {
+    width: auto;
+    height: auto;
+    padding: 1.5rem 0;
+    text-align: center;
+    color: #4D4D4D;
+    font-size: 1rem;
+}
+
+.Component3Highlight {
+    color: #E86912;
+}

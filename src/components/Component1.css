@@ -1,0 +1,49 @@
+.Component1Container {
+    width: 100vw;
+    height: auto;
+    background-color: #F5F7FA;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Component1Left {
+    width: 13.6rem;
+    height: auto;
+    margin-left: 0.3rem;
+}
+
+.Component1H1 {
+    width: 100%;
+    height: auto;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1.9rem;
+    margin-right: 5rem;
+    margin-bottom: 1rem;
+    color: #4D4D4D;
+}
+
+.Component1SubscribeButton {
+    width: auto;
+    height: auto;
+    margin-right: 0.4rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.5rem;
+    background-color: #E86912;
+    color: white;
+    border-radius: 6px;
+    border: 0;
+}
+
+.Component1Highlight {
+    color: #E86912;
+}
+
+.Component1Image {
+    width: 8.5rem;
+    height: auto;
+}
