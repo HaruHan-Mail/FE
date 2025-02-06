@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from "react";
+import SubscriptionModal from "../components/modal/SubscriptionModal";
 
 const Home = () => {
-  return (
-    <>
-      <h1>h1 태그 s</h1>
-    </>
-  )
-}
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default Home
+  return (
+    <div>
+      <h1>홈페이지</h1>
+      <button onClick={() => setIsModalOpen(true)}>구독하기</button>
+
+      <SubscriptionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </div>
+  );
+};
+
+export default Home;

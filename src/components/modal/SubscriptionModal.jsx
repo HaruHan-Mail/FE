@@ -1,9 +1,50 @@
-import React from 'react'
+import React from "react";
+import "./SubscriptionModal.css";
 
-const SubscriptionModal = () => {
+const SubscriptionModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
   return (
-    <div>SubscriptionModal</div>
-  )
-}
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <span className="close-button" onClick={onClose}>&times;</span>
+        <h2><span style={{ color: "orange" }}>HaruHan</span>지식 구독</h2>
+        
+        {/* 수신 빈도 - 라디오 버튼으로 변경 */}
+        <p>수신 빈도</p>
+        <label>
+          <input type="radio" name="frequency" /> 
+          하루 하나 (월~금)
+        </label>
+        <label>
+          <input type="radio" name="frequency" /> 
+          하루 다섯 (월요일)
+        </label>
 
-export default SubscriptionModal
+        {/* 수신 시간 - 라디오 버튼으로 변경 */}
+        <p>수신 시간</p>
+        <label>
+          <input type="radio" name="time" /> 
+          아침 8시
+        </label>
+        <label>
+          <input type="radio" name="time" /> 
+          오후 12시
+        </label>
+        <label>
+          <input type="radio" name="time" /> 
+          저녁 6시
+        </label>
+
+        {/* 이메일 입력 */}
+        <p>이메일</p>
+        <input type="email" placeholder="example@gmail.com" />
+
+        {/* 구독 버튼 */}
+        <button className="subscribe-btn">구독하기</button>
+      </div>
+    </div>
+  );
+};
+
+export default SubscriptionModal;
