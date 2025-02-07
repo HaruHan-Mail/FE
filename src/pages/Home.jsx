@@ -5,6 +5,7 @@ import DescriptionSection from '../components/DescriptionSection'
 import PopuplarTopicSection from '../components/PopuplarTopicSection'
 import ClosingSection from '../components/ClosingSection'
 import Footer from '../components/Footer'
+import './Home.css'
 
 const Home = () => {
   return (
