@@ -30,6 +30,7 @@
 .HeaderTeamInfoLink {
     width: auto;
     height: auto;
+    margin-top: 0.8rem;
     margin-right: 0.8rem;
     font-size: 0.9rem;
     /* a 태그 스타일 지정 */
@@ -54,6 +55,7 @@
 .HeaderSubscribeButton {
     width: auto;
     height: auto;
+    margin-top: 0.8rem;
     margin-right: 0.8rem;
     font-size: 0.9rem;
     padding: 0.8rem 1.2rem;
