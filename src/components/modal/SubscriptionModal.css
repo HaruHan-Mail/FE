@@ -132,3 +132,15 @@ input[type="email"]::placeholder {
 input[type="email"]:hover {
   border-color: #ccc;
 }
+
+/* 유효하지 않은 이메일 입력 시 스타일 */
+.input-error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}

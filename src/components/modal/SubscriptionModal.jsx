@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SubscriptionModal.css";
 
 const SubscriptionModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
+
+  const [email, setEmail] = useState(""); // 이메일 상태
+  const [error, setError] = useState(""); // 오류 메시지 상태
+
+  // 이메일 형식 검사 함수
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // 입력값 변경 핸들러
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (!validateEmail(value)) {
+      setError("유효하지 않은 이메일 형식입니다.");
+    } else {
+      setError(""); // 오류 메시지 제거
+    }
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -47,7 +68,14 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
 
         {/* 이메일 입력 */}
         <p>이메일</p>
-        <input type="email" placeholder="example@naver.com" />
+        <input
+          type="email"
+          placeholder="example@naver.com"
+          value={email}
+          onChange={handleEmailChange} // 입력값 변경 시 검사
+          className={error ? "input-error" : ""}
+        />
+        {error && <span className="error-message">{error}</span>} {/* 오류 메시지 표시 */}
 
         {/* 구독 버튼 */}
         <button className="subscribe-btn">구독하기</button>
