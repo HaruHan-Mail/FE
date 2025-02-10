@@ -1,17 +1,23 @@
-import React, { useState } from "react";
-import SubscriptionModal from "../components/modal/SubscriptionModal";
+import React from 'react'
+import Header from '../components/Header'
+import HeroSection from '../components/HeroSection'
+import DescriptionSection from '../components/DescriptionSection'
+import PopuplarTopicSection from '../components/PopuplarTopicSection'
+import ClosingSection from '../components/ClosingSection'
+import Footer from '../components/Footer'
+import './Home.css'
 
 const Home = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
-    <div>
-      <h1>홈페이지</h1>
-      <button onClick={() => setIsModalOpen(true)}>구독하기</button>
-
-      <SubscriptionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    <div className='HomeContainer'>
+        <Header />
+        <HeroSection />
+        <DescriptionSection />
+        <PopuplarTopicSection />
+        <ClosingSection />
+        <Footer />
     </div>
-  );
+  )
 };
 
 export default Home;
