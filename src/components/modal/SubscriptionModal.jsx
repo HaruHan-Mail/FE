@@ -21,7 +21,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
     if (!validateEmail(value)) {
       setError("유효하지 않은 이메일 형식입니다.");
     } else {
-      setError(""); // 오류 메시지 제거
+      setError("");
     }
   };
 
@@ -32,7 +32,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
           &times;
         </span>
         <h2>
-          <span style={{ color: "orange" }}>HaruHan</span>지식 구독
+          <span style={{ color: "#E86912" }}>HaruHan</span>지식 구독
         </h2>
 
         {/* 수신 빈도 */}

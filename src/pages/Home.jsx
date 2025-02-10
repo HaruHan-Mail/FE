@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Header from '../components/Header'
 import HeroSection from '../components/HeroSection'
 import DescriptionSection from '../components/DescriptionSection'
@@ -10,12 +10,12 @@ import './Home.css'
 const Home = () => {
   return (
     <div className='HomeContainer'>
-        <Header />
-        <HeroSection />
-        <DescriptionSection />
-        <PopuplarTopicSection />
-        <ClosingSection />
-        <Footer />
+      <Header />
+      <HeroSection />
+      <DescriptionSection />
+      <PopuplarTopicSection />
+      <ClosingSection />
+      <Footer />
     </div>
   )
 };
