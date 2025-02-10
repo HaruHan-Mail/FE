@@ -31,7 +31,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
         <span className="close-button" onClick={onClose}>
           &times;
         </span>
-        <h2>
+        <h2 style={{ margin: "10px 0px 40px 0px" }}>
           <span style={{ color: "#E86912" }}>HaruHan</span>지식 구독
         </h2>
 

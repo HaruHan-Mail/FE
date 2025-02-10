@@ -18,6 +18,9 @@
     width: 300px;
     text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5;
   }
 
   .modal-content p {
@@ -45,8 +48,6 @@
     border-radius: 5px;
   }
 
-
-  
 
 /* 추가된 라디오 버튼 스타일 */
 label {
@@ -105,7 +106,7 @@ label:hover .custom-checkbox {
 }
 /* 이메일 입력창 스타일 */
 input[type="email"] {
-  width: 90%;
+  width: 92%;
   padding: 10px;
   margin-top: 8px;
   border: 2px solid #ddd;
