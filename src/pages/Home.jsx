@@ -1,14 +1,21 @@
 import React from 'react'
-import Component1 from '../components/Component1'
-import Component2 from '../components/Component2'
-import Component3 from '../components/Component3'
+import Header from '../components/Header'
+import HeroSection from '../components/HeroSection'
+import DescriptionSection from '../components/DescriptionSection'
+import PopuplarTopicSection from '../components/PopuplarTopicSection'
+import ClosingSection from '../components/ClosingSection'
+import Footer from '../components/Footer'
+import './Home.css'
 
 const Home = () => {
   return (
-    <div className='homeContainer'>
-        <Component1 />
-        <Component2 />
-        <Component3 />
+    <div className='HomeContainer'>
+        <Header />
+        <HeroSection />
+        <DescriptionSection />
+        <PopuplarTopicSection />
+        <ClosingSection />
+        <Footer />
     </div>
   )
 }

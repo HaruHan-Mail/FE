@@ -1,0 +1,36 @@
+.DescriptionSectionContainer {
+    width: 100vw;
+    height: auto;
+    margin: 10rem 0;
+}
+
+.DescriptionSectionImage {
+    width: 16rem;
+    height: auto;
+    margin: auto; /* 가로 중앙 정렬 */
+    display: block; /* 블록 요소로 변경 */
+}
+
+.DescriptionSectionH1 {
+    width: auto;
+    height: auto;
+    margin: 4rem 0 6rem 0;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    text-align: center;
+}
+
+.DescriptionSectionTemplate {
+    width: auto;
+    height: auto;
+    margin: 5rem 0.5rem 5rem 0;
+    line-height: 3.2rem;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #4d4d4d
+}
+
+.DescriptionSectionHighlight {
+    color: #E86912;
+}
+
