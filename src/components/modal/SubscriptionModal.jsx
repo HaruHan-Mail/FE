@@ -1,27 +1,79 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./SubscriptionModal.css";
 
 const SubscriptionModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
-  const [email, setEmail] = useState(""); // 이메일 상태
-  const [error, setError] = useState(""); // 오류 메시지 상태
+  const [email, setEmail] = useState("");
+  const [preferedTime, setPreferedTime] = useState(""); 
+  const [isDaily, setIsDaily] = useState(true);
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // 이메일 형식 검사 함수
+  const TIME_OPTIONS = {
+    "오전 8시": "08:00",
+    "오후 12시": "12:00",
+    "오후 6시": "18:00"
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    setError("");
+  };
+
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  // 입력값 변경 핸들러
-  const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
+  const handleSubscribe = async () => {
+    if (!email || !preferedTime) {
+      setError("모든 필드를 입력해주세요");
+      return;
+    }
 
-    if (!validateEmail(value)) {
-      setError("유효하지 않은 이메일 형식입니다.");
-    } else {
-      setError("");
+    if (!validateEmail(email)) {
+      setError("유효하지 않은 이메일 형식입니다");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const response = await axios.post(
+        "http://semtle.catholic.ac.kr:8082/user/subscribe",
+        {
+          email,
+          preferedTime,
+          isDaily
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.stateCode === 200) {
+        alert("구독이 완료되었습니다!");
+        onClose();
+        setEmail("");
+        setPreferedTime("");
+        setIsDaily(true);
+      }
+    } catch (error) {
+      console.error("구독 실패:", error);
+      
+      if (error.response?.data?.statusCode === 409) {
+        setError("이미 존재하는 이메일입니다.");
+      } else if (error.response?.status === 500) {
+        setError("백엔드 담당자에게 연락바람");
+      } else {
+        setError("구독 처리 중 오류가 발생했습니다");
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -38,33 +90,43 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
         {/* 수신 빈도 */}
         <p>수신 빈도</p>
         <label>
-          <input type="radio" name="frequency" />
+          <input
+            type="radio"
+            name="frequency"
+            value="daily"
+            onChange={() => setIsDaily(true)}
+            checked={isDaily}
+          />
           <span className="custom-checkbox" />
           하루 하나 (월~금)
         </label>
         <label>
-          <input type="radio" name="frequency" />
+          <input
+            type="radio"
+            name="frequency"
+            value="weekly"
+            onChange={() => setIsDaily(false)}
+            checked={!isDaily}
+          />
           <span className="custom-checkbox" />
           하루 다섯 (월요일)
         </label>
 
         {/* 수신 시간 */}
         <p>수신 시간</p>
-        <label>
-          <input type="radio" name="time" />
-          <span className="custom-checkbox" />
-          아침 8시
-        </label>
-        <label>
-          <input type="radio" name="time" />
-          <span className="custom-checkbox" />
-          오후 12시
-        </label>
-        <label>
-          <input type="radio" name="time" />
-          <span className="custom-checkbox" />
-          저녁 6시
-        </label>
+        {Object.entries(TIME_OPTIONS).map(([label, value]) => (
+          <label key={value}>
+            <input
+              type="radio"
+              name="time"
+              value={label}
+              onChange={(e) => setPreferedTime(e.target.value)}
+              checked={preferedTime === label}
+            />
+            <span className="custom-checkbox" />
+            {label}
+          </label>
+        ))}
 
         {/* 이메일 입력 */}
         <p>이메일</p>
@@ -72,13 +134,19 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
           type="email"
           placeholder="example@naver.com"
           value={email}
-          onChange={handleEmailChange} // 입력값 변경 시 검사
+          onChange={handleEmailChange}
           className={error ? "input-error" : ""}
         />
-        {error && <span className="error-message">{error}</span>} {/* 오류 메시지 표시 */}
 
-        {/* 구독 버튼 */}
-        <button className="subscribe-btn">구독하기</button>
+        {error && <div className="error-message">{error}</div>}
+
+        <button   
+          className="subscribe-btn" 
+          onClick={handleSubscribe}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "처리 중..." : "구독하기"}
+        </button>
       </div>
     </div>
   );
