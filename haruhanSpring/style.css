@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 적용할 요소에 폰트 지정 */
+body {
+    font-family: 'S-CoreDream-3Light', sans-serif;
+}
