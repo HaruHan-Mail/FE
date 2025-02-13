@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HaruHan - 일상의 교양을 전달하는 메일 서비스">
+  <title>HaruHan - 오늘의 교양</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- 웹폰트 추가 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <section class="mail-preview">
+    <span>오늘의 질문이 도착했습니다.</span>
+  </section>
+
+  <div class="email-container">
+    <div class="email-card">
+      <a href="#" class="logo">HaruHan</a>
+
+      <p class="question-title">오늘의 교양</p>
+      <div class="img-container">
+        <img src="./prototype.png" alt="오늘의 교양 이미지" />
+      </div>
+
+      <div class="question-box">
+        <p th:text="${question}"></p>
+      </div>
+
+      <p class="description">
+        더 자세한 내용이 궁금하다면, 아래 자세히보기 버튼을 클릭해주세요
+      </p>
+
+      <a th:href="@{}" class="btn-primary">
+        답변 확인
+      </a>
+
+      <div class="footer-links">
+        <a th:href="@{}">질문 모아보기</a>
+        <span>|</span>
+        <a th:href="@{}">설정</a>
+        <span>|</span>
+        <a th:href="@{}">구독 해지</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

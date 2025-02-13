@@ -1,11 +1,23 @@
-import React from 'react'
+
+import Header from '../components/Header'
+import HeroSection from '../components/HeroSection'
+import DescriptionSection from '../components/DescriptionSection'
+import PopuplarTopicSection from '../components/PopuplarTopicSection'
+import ClosingSection from '../components/ClosingSection'
+import Footer from '../components/Footer'
+import './Home.css'
 
 const Home = () => {
   return (
-    <>
-      <h1>h1 태그 삭제하고 컴포넌트 넣으면 됩니다</h1>
-    </>
+    <div className='HomeContainer'>
+      <Header />
+      <HeroSection />
+      <DescriptionSection />
+      <PopuplarTopicSection />
+      <ClosingSection />
+      <Footer />
+    </div>
   )
-}
+};
 
-export default Home
+export default Home;
