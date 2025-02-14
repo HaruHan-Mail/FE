@@ -63,3 +63,29 @@
     border-radius: 0.8rem;
     border: 0;
 }
+
+/* 반응형 구현 */ 
+@media (min-width: 1024px) {   
+    /* 데스크톱에서 적용할 스타일 */
+    .HeaderContainer {
+        height: 6.5rem;
+    }
+    
+    .HeaderLogoImage {
+        width: 9rem;
+        margin-left: 7rem;
+        margin-right: 50rem;
+    }
+
+    .HeaderTeamInfoLink {
+        margin-right: 2rem;
+        font-size: 1.2rem;
+    }
+    
+    .HeaderSubscribeButton {
+        margin-right: 7rem;
+        font-size: 1.2rem;
+        padding: 1.1rem 1.5rem;
+    }
+}
+  

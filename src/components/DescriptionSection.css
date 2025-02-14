@@ -34,3 +34,26 @@
     color: #E86912;
 }
 
+/* 반응형 구현 */ 
+@media (min-width: 1024px) {   
+    .DescriptionSectionContainer {
+        margin: 18rem 0;
+    }
+    
+    .DescriptionSectionImage {
+        width: 17rem;
+    }
+    
+    .DescriptionSectionH1 {
+        margin: 7rem 0 10rem 0;
+        font-size: 2rem;
+        line-height: 4rem;
+    }
+    
+    .DescriptionSectionTemplate {
+        margin: 5rem 0.5rem 5rem 0;
+        line-height: 2rem;
+        font-size: 1.6rem;
+    }
+}
+
