@@ -1,10 +1,9 @@
 .HeaderContainer {
     width: 100vw;
-    height: 4.5rem;
+    height: 5.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.8rem;
     /* 헤더 상단 고정 */
     position: sticky;
     top: 0;
@@ -21,17 +20,17 @@
 }
 
 .HeaderLogoImage {
-    width: 6.5rem;
+    width: 6.8rem;
     height: auto;
-    margin-left: 0.9rem;
-    margin-right: 6.5rem;
+    margin-left: 1rem;
+    margin-right: 5.7rem;
 }
 
 .HeaderTeamInfoLink {
     width: auto;
     height: auto;
-    margin-top: 0.8rem;
-    margin-right: 0.8rem;
+    margin-top: 0.1rem;
+    margin-right: 1rem;
     font-size: 0.9rem;
     /* a 태그 스타일 지정 */
     text-decoration-line: none;     /* href 밑줄 제거 */
@@ -55,7 +54,7 @@
 .HeaderSubscribeButton {
     width: auto;
     height: auto;
-    margin-top: 0.8rem;
+    margin-top: 0.1rem;
     margin-right: 0.8rem;
     font-size: 0.9rem;
     padding: 0.8rem 1.2rem;
@@ -64,3 +63,29 @@
     border-radius: 0.8rem;
     border: 0;
 }
+
+/* 반응형 구현 */ 
+@media (min-width: 1024px) {   
+    /* 데스크톱에서 적용할 스타일 */
+    .HeaderContainer {
+        height: 6.5rem;
+    }
+    
+    .HeaderLogoImage {
+        width: 9rem;
+        margin-left: 7rem;
+        margin-right: 50rem;
+    }
+
+    .HeaderTeamInfoLink {
+        margin-right: 2rem;
+        font-size: 1.2rem;
+    }
+    
+    .HeaderSubscribeButton {
+        margin-right: 7rem;
+        font-size: 1.2rem;
+        padding: 1.1rem 1.5rem;
+    }
+}
+  
