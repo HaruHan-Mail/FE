@@ -1,7 +1,7 @@
-import HeroSection from '../components/HeroSection'
-import DescriptionSection from '../components/DescriptionSection'
-import PopuplarTopicSection from '../components/PopuplarTopicSection'
-import ClosingSection from '../components/ClosingSection'
+import HeroSection from '../components/HeroSection';
+import DescriptionSection from '../components/DescriptionSection';
+import PopuplarTopicSection from '../components/PopuplarTopicSection';
+import ClosingSection from '../components/ClosingSection';
 import Layout from '../components/Layout/Layout';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       <PopuplarTopicSection />
       <ClosingSection />
     </Layout>
-  )
+  );
 };
 
 export default Home;

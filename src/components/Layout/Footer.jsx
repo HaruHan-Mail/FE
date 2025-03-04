@@ -1,5 +1,5 @@
-import React from 'react'
-import '../css/Footer.css'
+import React from 'react';
+import '../css/Footer.css';
 
 const Footer = () => {
   return (
@@ -8,8 +8,7 @@ const Footer = () => {
         <p>&copy; {new Date().getFullYear()} HaruHan. All rights reserved.</p>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-
-export default Footer
+export default Footer;

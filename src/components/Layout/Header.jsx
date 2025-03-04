@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import '../css/Header.css'
+import React, { useState, useEffect } from 'react';
+import '../css/Header.css';
 import SubscriptionButton from '../SubscriptionButton';
 
 const Header = () => {
@@ -7,10 +7,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50)
-        setIsScrolled(true);
-      else
-        setIsScrolled(false);
+      if (window.scrollY > 50) setIsScrolled(true);
+      else setIsScrolled(false);
     };
 
     // 스크롤할 때마다, handleScroll 함수 호출
@@ -19,20 +17,26 @@ const Header = () => {
     // 이벤트 리스너 제거
     return () => {
       window.removeEventListener('scroll', handleScroll);
-    }
+    };
   }, []);
 
   return (
-    <section className='HeaderContainer' id={`${isScrolled ? 'Scrolled' : ''}`}>
+    <section className="HeaderContainer" id={`${isScrolled ? 'Scrolled' : ''}`}>
       <div>
-        <img className='HeaderLogoImage' src='src\assets\HaruhanLogo.png' />
+        <img className="HeaderLogoImage" src="src\assets\HaruhanLogo.png" />
       </div>
-      <div className='HeaderLinkContainer'>
-        <a className='HeaderTeamInfoLink' target='_blank' href='https://www.notion.so/Inside-Insight-16b39551f55a80c38a65dd3c3057b969'>팀 소개</a>
-        <SubscriptionButton size={"Medium"}/>
+      <div className="HeaderLinkContainer">
+        <a
+          className="HeaderTeamInfoLink"
+          target="_blank"
+          href="https://www.notion.so/Inside-Insight-16b39551f55a80c38a65dd3c3057b969"
+        >
+          팀 소개
+        </a>
+        <SubscriptionButton size={'Medium'} />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
