@@ -68,6 +68,11 @@
 
 /* 반응형 구현 */ 
 @media (min-width: 1024px) {   
+    .HeaderContainer {
+        width: calc(100vw - 80px);
+        padding: 0px 40px;
+    }
+    
     .HeaderLogoImage {
         width: 9rem;
     }
