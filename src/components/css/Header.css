@@ -1,5 +1,5 @@
 .HeaderContainer {
-    width: calc(100vw - 80px);
+    width: calc(100vw - 40px);
     height: 5.5rem;
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@
     z-index: 1000;
     background-color: #FFFFFF;
 
-    padding: 0px 40px;
+    padding: 0px 20px;
 }
 
 /* 스크롤 시 헤더 스타일 지정 */

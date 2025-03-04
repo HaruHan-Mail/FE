@@ -1,0 +1,23 @@
+.SubscriptionButtonLarge {
+  width: auto;
+  height: auto;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  display: block; 
+}
+
+.SubscriptionButtonMedium {
+  width: auto;
+  height: auto;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  display: block; 
+}
