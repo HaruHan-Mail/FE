@@ -1,7 +1,7 @@
 .ClosingSectionContainer {
   width: auto;
   height: auto;
-  background-color: #f5f7fa;
+  background-color: var(--sliver);
   padding: 2rem 0 4rem 0;
 
   display: flex;

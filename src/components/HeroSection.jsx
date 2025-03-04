@@ -19,7 +19,7 @@ const HeroSection = () => {
   return (
     <section className="HeroSectionContainer">
       <video
-        key={currentVideoIndex} // 영상 변경 시 재마운트되어 새 영상 시작
+        key={currentVideoIndex}
         className="HeroSectionBackgroundVideo"
         ref={videoRef}
         src={videos[currentVideoIndex]}
