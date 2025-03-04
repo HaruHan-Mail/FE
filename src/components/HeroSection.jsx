@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './HeroSection.css'
+import './css/HeroSection.css'
 import SubscriptionModal from './modal/SubscriptionModal'
 
 const HeroSection = () => {

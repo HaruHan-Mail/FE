@@ -1,5 +1,5 @@
 import React from 'react'
-import './ClosingSection.css'
+import './css/ClosingSection.css'
 
 const ClosingSection = () => {
   return (

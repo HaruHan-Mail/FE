@@ -1,4 +1,4 @@
-import './DescriptionSection.css'
+import './css/DescriptionSection.css'
 
 const descriptionData = [
   { "icon": "🧠", "text": "오늘의 주제" },

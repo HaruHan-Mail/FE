@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './PopuplarTopicSection.css'
+import './css/PopuplarTopicSection.css'
 import { animate } from "@motionone/dom";
 
 const PopuplarTopicSection = () => {

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import './Header.css'
+import '../css/Header.css'
 
 const Header = () => {
-  // 화면 스크롤에 따른 헤더 배경색 조정
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
