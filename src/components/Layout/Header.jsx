@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Header.css';
 import SubscriptionButton from '../SubscriptionButton';
+import LogoImg from '../../assets/images/Haruhanlogo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,7 +24,7 @@ const Header = () => {
   return (
     <section className="HeaderContainer" id={`${isScrolled ? 'Scrolled' : ''}`}>
       <div>
-        <img className="HeaderLogoImage" src="src\assets\HaruhanLogo.png" />
+        <img className="HeaderLogoImage" src={LogoImg} />
       </div>
       <div className="HeaderLinkContainer">
         <a

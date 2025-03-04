@@ -24,8 +24,8 @@
 }
 
 .modal-content p {
-  font-weight: bold; /* ✅ 폰트 굵게 */
-  margin-bottom: 5px; /* ✅ 가독성을 위해 간격 조정 */
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .close-button {

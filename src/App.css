@@ -1,24 +1,33 @@
 /* 지수 */
 @font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    font-family: 'S-CoreDream-3Light';
-    font-weight: 700;
+  font-family: 'S-CoreDream-3Light';
+  font-weight: 700;
 
-    --primary : #E86912;
-    --secondary: #f2a774;
-    --info: #2194F3;
+  --primary: #e86912;
+  --secondary: #f2a774;
+  --info: #2194f3;
 
-    --shade-1: #D45500;
-    --shade-2: #C04100;
-    --shade-3: #A23700;
+  --shade-1: #d45500;
+  --shade-2: #c04100;
+  --shade-3: #a23700;
 
-    --tint-1: #ED8741;
-    --tint-2: #F1A571;
-    --tint-3: #F6C3A0;
+  --tint-1: #ed8741;
+  --tint-2: #f1a571;
+  --tint-3: #f6c3a0;
+
+  --black: #263238;
+  --d-grey: #4d4d4d;
+  --grey: #717171;
+  --l-grey: #89939e;
+  --grey-blue: #abbed1;
+  --sliver: #f5f7fa;
+  --white: #ffffff;
 }

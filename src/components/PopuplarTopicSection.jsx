@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './css/PopuplarTopicSection.css';
 import { animate } from '@motionone/dom';
+import HaruhanPopular from '../assets/images/HaruhanBook.png';
 
 const PopuplarTopicSection = () => {
   const topics = [
@@ -41,7 +42,7 @@ const PopuplarTopicSection = () => {
 
   return (
     <section className="PopuplarTopicSectionContainer">
-      <img className="PopuplarTopicSectionImage" src="src\assets\HaruhanBook.png" />
+      <img className="PopuplarTopicSectionImage" src={HaruhanPopular} />
       <h1 className="PopuplarTopicSectionH1">
         인기가 많은
         <span className="PopuplarTopicSectionHighlight"> 교양 지식</span>이에요!

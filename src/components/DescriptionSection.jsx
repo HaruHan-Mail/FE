@@ -1,4 +1,5 @@
 import './css/DescriptionSection.css';
+import HaruhanDescription from '../assets/images/HaruhanPhone.png';
 
 const descriptionData = [
   { icon: '🧠', text: '오늘의 주제' },
@@ -12,7 +13,7 @@ const descriptionData = [
 const DescriptionSection = () => {
   return (
     <section className="DescriptionSectionContainer">
-      <img className="DescriptionSectionImage" src="src\assets\HaruhanPhone.png" />
+      <img className="DescriptionSectionImage" src={HaruhanDescription} />
       <h1 className="DescriptionSectionH1">
         원하는 시간에
         <span className="DescriptionSectionHighlight"> 메일</span>을 통해 <br />
