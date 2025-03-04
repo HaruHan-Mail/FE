@@ -3,17 +3,17 @@ import './css/PopuplarTopicSection.css';
 import { animate } from '@motionone/dom';
 import HaruhanPopular from '../assets/images/HaruhanBook.png';
 
+const topics = [
+  '1️⃣ 하품은 왜 할까?',
+  '2️⃣ 우주 쓰레기',
+  '3️⃣ 하늘로 총을 쏘면 어떻게 될까?',
+  '4️⃣ 딸꾹질은 왜 할까?',
+  '5️⃣ 2차 세계 대전',
+];
+
 const PopuplarTopicSection = () => {
-  const topics = [
-    '1️⃣ 하품은 왜 할까?',
-    '2️⃣ 우주 쓰레기',
-    '3️⃣ 하늘로 총을 쏘면 어떻게 될까?',
-    '4️⃣ 딸꾹질은 왜 할까?',
-    '5️⃣ 2차 세계 대전',
-  ];
   const [index, setIndex] = useState(0);
 
-  // 일정 시간마다 주제 변경
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % topics.length);
