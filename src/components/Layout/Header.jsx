@@ -23,9 +23,13 @@ const Header = () => {
 
   return (
     <section className='HeaderContainer' id={`${isScrolled ? 'Scrolled' : ''}`}>
-      <img className='HeaderLogoImage' src='src\assets\HaruhanLogo.png' />
-      <a className='HeaderTeamInfoLink' target='_blank' href='https://www.notion.so/Inside-Insight-16b39551f55a80c38a65dd3c3057b969'>팀 소개</a>
-      <button className='HeaderSubscribeButton'>구독하기</button>
+      <div>
+        <img className='HeaderLogoImage' src='src\assets\HaruhanLogo.png' />
+      </div>
+      <div className='HeaderLinkContainer'>
+        <a className='HeaderTeamInfoLink' target='_blank' href='https://www.notion.so/Inside-Insight-16b39551f55a80c38a65dd3c3057b969'>팀 소개</a>
+        <button className='HeaderSubscribeButton'>구독하기</button>
+      </div>
     </section>
   )
 }

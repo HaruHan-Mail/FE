@@ -1,52 +1,55 @@
 .HeaderContainer {
-    width: 100vw;
+    width: calc(100vw - 80px);
     height: 5.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     /* 헤더 상단 고정 */
     position: sticky;
     top: 0;
     left: 0;
     z-index: 1000;
     background-color: #FFFFFF;
+
+    padding: 0px 40px;
 }
 
 /* 스크롤 시 헤더 스타일 지정 */
 #Scrolled {
-    /* 스크롤 시 배경 반투명, 그림자 생성 */
     background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 살짝 그림자 추가 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.HeaderLinkContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
 }
 
 .HeaderLogoImage {
-    width: 6.8rem;
+    width: 6.5rem;
     height: auto;
-    margin-left: 1rem;
-    margin-right: 5.7rem;
 }
 
 .HeaderTeamInfoLink {
     width: auto;
     height: auto;
     margin-top: 0.1rem;
-    margin-right: 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     /* a 태그 스타일 지정 */
-    text-decoration-line: none;     /* href 밑줄 제거 */
+    text-decoration-line: none;
 }
 
-/* 방문하지 않은 링크 글자색 정의 */
 .HeaderContainer a:link {
     color: black;
 }
 
-/* 방문한 적 있는 링크 글자색 정의 */
 .HeaderContainer a:visited {
     color: #4D4D4D;
 }
 
-/* 링크에 마우스 올렸을 때 글자색 정의 */
 .HeaderContainer a:hover {
     color: #E86912;
 }
@@ -54,8 +57,7 @@
 .HeaderSubscribeButton {
     width: auto;
     height: auto;
-    margin-top: 0.1rem;
-    margin-right: 0.8rem;
+
     font-size: 0.9rem;
     padding: 0.8rem 1.2rem;
     background-color: #E86912;
@@ -66,24 +68,15 @@
 
 /* 반응형 구현 */ 
 @media (min-width: 1024px) {   
-    /* 데스크톱에서 적용할 스타일 */
-    .HeaderContainer {
-        height: 6.5rem;
-    }
-    
     .HeaderLogoImage {
         width: 9rem;
-        margin-left: 7rem;
-        margin-right: 50rem;
     }
 
     .HeaderTeamInfoLink {
-        margin-right: 2rem;
         font-size: 1.2rem;
     }
     
     .HeaderSubscribeButton {
-        margin-right: 7rem;
         font-size: 1.2rem;
         padding: 1.1rem 1.5rem;
     }
