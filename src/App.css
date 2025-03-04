@@ -1,46 +1,33 @@
 /* 지수 */
 @font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Gyeonggi_Batang_Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-
-/* 동현 */
-@font-face {
-    font-family: 'BookkMyungjo-Bd';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-/* 재홍 */
-@font-face {
-    font-family: 'SpoqaHanSansNeo-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    font-family: 'S-CoreDream-3Light';
-    /* font-family: 'Gyeonggi_Batang_Regular'; */
-    /* font-family: 'BookkMyungjo-Bd'; */
-    /* font-family: 'Pretendard-Regular'; */
+  font-family: 'S-CoreDream-3Light';
+  font-weight: 700;
 
-    font-weight: 700;
+  --primary: #e86912;
+  --secondary: #f2a774;
+  --info: #2194f3;
+
+  --shade-1: #d45500;
+  --shade-2: #c04100;
+  --shade-3: #a23700;
+
+  --tint-1: #ed8741;
+  --tint-2: #f1a571;
+  --tint-3: #f6c3a0;
+
+  --black: #263238;
+  --d-grey: #4d4d4d;
+  --grey: #717171;
+  --l-grey: #89939e;
+  --grey-blue: #abbed1;
+  --sliver: #f5f7fa;
+  --white: #ffffff;
 }

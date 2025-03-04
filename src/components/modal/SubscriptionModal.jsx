@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./SubscriptionModal.css";
+import "../css/SubscriptionModal.css";
 
 const SubscriptionModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
-  const [email, setEmail] = useState(""); // 이메일 상태
-  const [error, setError] = useState(""); // 오류 메시지 상태
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState(""); 
 
   // 이메일 형식 검사 함수
   const validateEmail = (email) => {
