@@ -1,4 +1,5 @@
 import HeroSection from '../components/HeroSection';
+import CombinedSection from '../components/CombinedSection';
 import DescriptionSection from '../components/DescriptionSection';
 import PopuplarTopicSection from '../components/PopuplarTopicSection';
 import ClosingSection from '../components/ClosingSection';
@@ -8,9 +9,10 @@ const Home = () => {
   return (
     <Layout>
       <HeroSection />
-      <DescriptionSection />
-      {/* <PopuplarTopicSection /> */}
-      <ClosingSection />
+      {/* <DescriptionSection />
+      <ClosingSection />*/}
+      <CombinedSection />
+      <PopuplarTopicSection /> 
     </Layout>
   );
 };
