@@ -42,7 +42,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
     try {
       setIsSubmitting(true);
       const response = await axios.post(
-        "http://semtle.catholic.ac.kr:8082/user/subscribe",
+        "http://semtle.catholic.ac.kr:8082/user",
         {
           email,
           preferedTime,
