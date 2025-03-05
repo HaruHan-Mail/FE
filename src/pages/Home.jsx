@@ -1,23 +1,18 @@
-
-import Header from '../components/Header'
-import HeroSection from '../components/HeroSection'
-import DescriptionSection from '../components/DescriptionSection'
-import PopuplarTopicSection from '../components/PopuplarTopicSection'
-import ClosingSection from '../components/ClosingSection'
-import Footer from '../components/Footer'
-import './Home.css'
+import HeroSection from '../components/HeroSection';
+import DescriptionSection from '../components/DescriptionSection';
+import PopuplarTopicSection from '../components/PopuplarTopicSection';
+import ClosingSection from '../components/ClosingSection';
+import Layout from '../components/Layout/Layout';
 
 const Home = () => {
   return (
-    <div className='HomeContainer'>
-      <Header />
+    <Layout>
       <HeroSection />
       <DescriptionSection />
       <PopuplarTopicSection />
       <ClosingSection />
-      <Footer />
-    </div>
-  )
+    </Layout>
+  );
 };
 
 export default Home;

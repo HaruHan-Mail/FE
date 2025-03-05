@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+
 import axios from "axios";
-import "./SubscriptionModal.css";
+import "../css/SubscriptionModal.css";
+
 
 const SubscriptionModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const [email, setEmail] = useState("");
+
   const [preferedTime, setPreferedTime] = useState(""); 
   const [isDaily, setIsDaily] = useState(true);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const TIME_OPTIONS = {
     "오전 8시": "08:00",
