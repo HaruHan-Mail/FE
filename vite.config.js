@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -10,7 +10,7 @@ export default defineConfig({
       injectRegister: false,
       pwaAssets: {
         disabled: false,
-        config: true,
+        preset: 'default',  // config: true 대신 preset: 'default' 사용
       },
       manifest: {
         name: 'haruhan',
