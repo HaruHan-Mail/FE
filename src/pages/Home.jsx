@@ -9,7 +9,7 @@ const Home = () => {
     <Layout>
       <HeroSection />
       <DescriptionSection />
-      <PopuplarTopicSection />
+      {/* <PopuplarTopicSection /> */}
       <ClosingSection />
     </Layout>
   );

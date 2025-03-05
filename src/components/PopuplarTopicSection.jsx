@@ -17,13 +17,11 @@ const PopuplarTopicSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % topics.length);
-    }, 2000); // 2초마다 주제 전환
+    }, 2000);
 
-    // 컴포넌트 언마운트 시 메소드 정리
     return () => clearInterval(interval);
-  }, [topics.length]); // topics 배열 길이 변경될 때마다 재실행
+  }, [topics.length]);
 
-  // index 값 변경될 때마다 항목 위치, 투명도 등 변경
   useEffect(() => {
     const elements = document.querySelectorAll('.ShowcaseItem');
 
