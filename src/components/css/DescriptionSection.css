@@ -2,6 +2,13 @@
   width: 100vw;
   height: auto;
   margin: 12rem 0;
+  will-change: filter, opacity; /* 성능 최적화 */
+}
+
+.DescriptionSectionTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .DescriptionSectionImage {
@@ -21,17 +28,36 @@
 }
 
 .DescriptionSectionTemplate {
-  width: auto;
+  width: 80%;
   height: auto;
-  margin: 5rem 0.5rem 5rem 0;
+  margin: 5rem auto;
   line-height: 1.8rem;
   font-size: 1.3rem;
-  text-align: center;
+  text-align: left;
   color: #4d4d4d;
 }
 
 .DescriptionSectionHighlight {
   color: #e86912;
+}
+
+.contentBlock {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.contentTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.contentDetail {
+  margin: 0.8rem 0;
+  line-height: 1.6;
 }
 
 /* 반응형 구현 */
@@ -40,19 +66,38 @@
     margin: 18rem 0;
   }
 
+  .DescriptionSectionTop {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
   .DescriptionSectionImage {
     width: 17rem;
+    margin: 0;
   }
 
   .DescriptionSectionH1 {
-    margin: 7rem 0 10rem 0;
+    margin: 0;
     font-size: 2rem;
     line-height: 4rem;
+    text-align: left;
   }
 
   .DescriptionSectionTemplate {
-    margin: 5rem 0.5rem 5rem 0;
+    width: 70%;
+    margin: 5rem auto;
     line-height: 2rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+  }
+  
+  .contentBlock {
+    padding: 2rem;
+  }
+  
+  .contentTitle {
+    font-size: 1.8rem;
   }
 }

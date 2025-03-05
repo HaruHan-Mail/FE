@@ -6,7 +6,7 @@ const ClosingSection = () => {
   return (
     <section className="ClosingSectionContainer">
       <div className="ClosingSectionSubscribeText">
-        <span className="ClosingSectionHighlight">Haruhan 지식</span>을 무료로 구독해보세요!
+        <span className="ClosingSectionHighlight">Haruhan 지식</span><br></br>무료로 구독하고 지식 얻어가세요!
       </div>
       <SubscriptionButton size={'Large'} />
     </section>

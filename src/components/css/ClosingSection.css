@@ -1,8 +1,11 @@
 .ClosingSectionContainer {
   width: auto;
   height: auto;
-  background-color: var(--sliver);
+  /*background: linear-gradient(to bottom, transparent 0%, var(--sliver) 15%);*/
   padding: 2rem 0 4rem 0;
+  margin-top: -10rem; /* DescriptionSection과 겹치게 함 */
+  position: relative; /* z-index를 적용하기 위해 필요 */
+  z-index: 10; /* DescriptionSection 위에 오도록 설정 */
 
   display: flex;
   flex-direction: column;
