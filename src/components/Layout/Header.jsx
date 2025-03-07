@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Header.css';
-import SubscriptionButton from '../SubscriptionButton';
-import LogoImg from "/src/assets/images/HaruhanLogo.png";
-
+import SubscriptionButton from '../common/SubscriptionButton';
+import LogoImg from '/src/assets/images/HaruhanLogo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

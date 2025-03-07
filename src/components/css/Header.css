@@ -1,9 +1,10 @@
 .HeaderContainer {
-  width: calc(100vw - 40px);
+  width: 100vw;
   height: 5.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   /* 헤더 상단 고정 */
   position: sticky;
   top: 0;
@@ -46,11 +47,11 @@
 }
 
 .HeaderContainer a:visited {
-  color: #4d4d4d;
+  color: var(--d-grey);
 }
 
 .HeaderContainer a:hover {
-  color: #e86912;
+  color: var(--primary);
 }
 
 .HeaderSubscribeButton {
@@ -59,7 +60,7 @@
 
   font-size: 0.9rem;
   padding: 0.8rem 1.2rem;
-  background-color: #e86912;
+  background-color: var(--primary);
   color: white;
   border-radius: 0.8rem;
   border: 0;
@@ -68,7 +69,6 @@
 /* 반응형 구현 */
 @media (min-width: 1024px) {
   .HeaderContainer {
-    width: calc(100vw - 160px);
     padding: 0px 80px;
   }
 
