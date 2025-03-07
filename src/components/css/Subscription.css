@@ -1,0 +1,95 @@
+/* src/css/Subscription.css */
+.subscription-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.subscription-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.subscription-container p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.subscription-container input[type='email'] {
+  width: 80%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.subscription-container .error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.subscription-container button {
+  background-color: #e86912;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.subscription-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.subscription-container button:hover:not(:disabled) {
+  background-color: #d45f0f;
+}
+
+/* 라디오 버튼 및 커스텀 체크박스 */
+.subscription-container label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.subscription-container input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.subscription-container .custom-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.subscription-container .custom-checkbox::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.subscription-container input[type='radio']:checked + .custom-checkbox {
+  background: #e86912;
+  border-color: #e86912;
+}
+
+.subscription-container input[type='radio']:checked + .custom-checkbox::after {
+  opacity: 1;
+}
