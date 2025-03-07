@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './css/DescriptionSection.css';
-import './css/ClosingSection.css';
+// src/components/Home/CombinedSection.jsx
+import React, { useRef } from 'react';
 import './css/CombinedSection.css';
 import HaruhanDescription from '../assets/images/HaruhanPhone.png';
 import SubscriptionButton from './common/SubscriptionButton';
+import useCombinedScrollEffect from '../hooks/useCombinedScrollEffect';
 
 const descriptionData = [
   {
@@ -30,76 +30,9 @@ const descriptionData = [
 ];
 
 const CombinedSection = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
   const descriptionRef = useRef(null);
-  const closingRef = useRef(null);
-  const [blurAmount, setBlurAmount] = useState(0);
-  const [descOpacity, setDescOpacity] = useState(1);
-  const [closingOpacity, setClosingOpacity] = useState(0);
-  const [translateY, setTranslateY] = useState(30);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-
-      if (descriptionRef.current) {
-        const rect = descriptionRef.current.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionHeight = rect.height;
-
-        const visibleThreshold = isMobile ? -0.3 : -0.1;
-
-        if (sectionTop < window.innerHeight && sectionTop + sectionHeight > 0) {
-          const normalizedPosition = sectionTop / window.innerHeight;
-
-          if (normalizedPosition < visibleThreshold) {
-            const scrollProgress = Math.max(
-              0,
-              Math.min(
-                1,
-                (visibleThreshold - normalizedPosition) / (Math.abs(visibleThreshold) + 0.2),
-              ),
-            );
-
-            const maxBlur = isMobile ? 8 : 12;
-
-            setBlurAmount(scrollProgress * maxBlur);
-            setDescOpacity(1 - scrollProgress * 0.7);
-
-            const closingProgress = Math.max(0, Math.min(1, (scrollProgress - 0.05) / 0.5));
-            setClosingOpacity(closingProgress);
-            setTranslateY(30 * (1 - closingProgress));
-          } else {
-            setBlurAmount(0);
-            setDescOpacity(1);
-            setClosingOpacity(0);
-            setTranslateY(30);
-          }
-        }
-      }
-    };
-
-    const handleResize = () => {
-      checkMobile();
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isMobile]);
+  const { blurAmount, descOpacity, closingOpacity, translateY } =
+    useCombinedScrollEffect(descriptionRef);
 
   return (
     <div className="combinedSectionWrapper">
@@ -139,7 +72,6 @@ const CombinedSection = () => {
       </section>
 
       <section
-        ref={closingRef}
         className="ClosingSectionOverlayContainer"
         style={{
           opacity: closingOpacity,
@@ -152,13 +84,13 @@ const CombinedSection = () => {
           <div
             className="ClosingSectionSubscribeText"
             style={{
-              opacity: closingOpacity, // 개별 투명도 적용
-              transform: `translateY(${translateY * 0.7}px)`, // 약간 다른 움직임 속도
-              transition: 'opacity 0.6s ease-out, transform 0.5s ease-out', // 살짝 더 긴 페이드인
+              opacity: closingOpacity,
+              transform: `translateY(${translateY * 0.7}px)`,
+              transition: 'opacity 0.6s ease-out, transform 0.5s ease-out',
             }}
           >
             <span className="ClosingSectionHighlight">Haruhan 지식</span>
-            <br></br>
+            <br />
             <span className="fadeInText">무료로 구독하고 지식 얻어가세요!</span>
           </div>
           <div
@@ -168,7 +100,7 @@ const CombinedSection = () => {
               transition: 'opacity 0.7s ease-out, transform 0.7s ease-out',
             }}
           >
-            <SubscriptionButton size={'Large'} />
+            <SubscriptionButton size="Large" />
           </div>
         </div>
       </section>

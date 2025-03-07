@@ -1,16 +1,19 @@
-// src/components/modal/SubscriptionModal.jsx
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import '../css/SubscriptionModal.css';
 import { registerSubscription } from '../../apis/subscriptionApi';
 
 const SubscriptionModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
-  const [email, setEmail] = useState('');
-  const [preferedTime, setPreferedTime] = useState('');
-  const [isDaily, setIsDaily] = useState(true);
-  const [error, setError] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // 하나의 객체로 상태 관리
+  const [formState, setFormState] = useState({
+    email: '',
+    preferedTime: '',
+    isDaily: true,
+    error: '',
+    isSubmitting: false,
+  });
 
   const TIME_OPTIONS = {
     '오전 7시': '07:00',
@@ -19,8 +22,11 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
   };
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setError('');
+    setFormState((prev) => ({
+      ...prev,
+      email: e.target.value,
+      error: '',
+    }));
   };
 
   const validateEmail = (email) => {
@@ -29,44 +35,53 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
   };
 
   const handleSubscribe = async () => {
+    const { email, preferedTime } = formState;
     if (!email || !preferedTime) {
-      setError('모든 필드를 입력해주세요');
+      setFormState((prev) => ({ ...prev, error: '모든 필드를 입력해주세요' }));
       return;
     }
 
     if (!validateEmail(email)) {
-      setError('유효하지 않은 이메일 형식입니다');
+      setFormState((prev) => ({ ...prev, error: '유효하지 않은 이메일 형식입니다' }));
       return;
     }
 
     try {
-      setIsSubmitting(true);
-      const data = { email, preferedTime, isDaily };
+      setFormState((prev) => ({ ...prev, isSubmitting: true }));
+      const data = {
+        email,
+        preferedTime,
+        isDaily: formState.isDaily,
+      };
       const responseData = await registerSubscription(data);
 
       if (responseData.stateCode === 200) {
         alert('구독이 완료되었습니다!');
         onClose();
-        setEmail('');
-        setPreferedTime('');
-        setIsDaily(true);
+        // 상태 초기화
+        setFormState({
+          email: '',
+          preferedTime: '',
+          isDaily: true,
+          error: '',
+          isSubmitting: false,
+        });
       }
     } catch (error) {
       console.error('구독 실패:', error);
-
+      let errorMessage = '구독 처리 중 오류가 발생했습니다';
       if (error.response?.data?.statusCode === 409) {
-        setError('이미 존재하는 이메일입니다.');
+        errorMessage = '이미 존재하는 이메일입니다.';
       } else if (error.response?.status === 500) {
-        setError('백엔드 담당자에게 연락바람');
-      } else {
-        setError('구독 처리 중 오류가 발생했습니다');
+        errorMessage = '백엔드 담당자에게 연락바람';
       }
+      setFormState((prev) => ({ ...prev, error: errorMessage }));
     } finally {
-      setIsSubmitting(false);
+      setFormState((prev) => ({ ...prev, isSubmitting: false }));
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <span className="close-button" onClick={onClose}>
@@ -83,8 +98,8 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
             type="radio"
             name="frequency"
             value="daily"
-            onChange={() => setIsDaily(true)}
-            checked={isDaily}
+            onChange={() => setFormState((prev) => ({ ...prev, isDaily: true }))}
+            checked={formState.isDaily}
           />
           <span className="custom-checkbox" />
           하루 하나 (월~금)
@@ -94,8 +109,8 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
             type="radio"
             name="frequency"
             value="weekly"
-            onChange={() => setIsDaily(false)}
-            checked={!isDaily}
+            onChange={() => setFormState((prev) => ({ ...prev, isDaily: false }))}
+            checked={!formState.isDaily}
           />
           <span className="custom-checkbox" />
           하루 다섯 (월요일)
@@ -109,8 +124,13 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
               type="radio"
               name="time"
               value={label}
-              onChange={(e) => setPreferedTime(e.target.value)}
-              checked={preferedTime === label}
+              onChange={(e) =>
+                setFormState((prev) => ({
+                  ...prev,
+                  preferedTime: e.target.value,
+                }))
+              }
+              checked={formState.preferedTime === label}
             />
             <span className="custom-checkbox" />
             {label}
@@ -122,18 +142,23 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
         <input
           type="email"
           placeholder="example@naver.com"
-          value={email}
+          value={formState.email}
           onChange={handleEmailChange}
-          className={error ? 'input-error' : ''}
+          className={formState.error ? 'input-error' : ''}
         />
 
-        {error && <div className="error-message">{error}</div>}
+        {formState.error && <div className="error-message">{formState.error}</div>}
 
-        <button className="subscribe-btn" onClick={handleSubscribe} disabled={isSubmitting}>
-          {isSubmitting ? '처리 중...' : '구독하기'}
+        <button
+          className="subscribe-btn"
+          onClick={handleSubscribe}
+          disabled={formState.isSubmitting}
+        >
+          {formState.isSubmitting ? '처리 중...' : '구독하기'}
         </button>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
 
