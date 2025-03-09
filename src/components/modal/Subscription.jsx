@@ -7,6 +7,7 @@ const Subscription = ({ onSuccess }) => {
     email: '',
     preferedTime: '',
     isDaily: true,
+    agreed: false, // 개인정보취급방침 동의 상태
     error: '',
     isSubmitting: false,
   });
@@ -31,7 +32,7 @@ const Subscription = ({ onSuccess }) => {
   };
 
   const handleSubscribe = async () => {
-    const { email, preferedTime } = formState;
+    const { email, preferedTime, agreed } = formState;
     if (!email || !preferedTime) {
       setFormState((prev) => ({ ...prev, error: '모든 필드를 입력해주세요' }));
       return;
@@ -40,22 +41,24 @@ const Subscription = ({ onSuccess }) => {
       setFormState((prev) => ({ ...prev, error: '유효하지 않은 이메일 형식입니다' }));
       return;
     }
+    if (!agreed) {
+      setFormState((prev) => ({ ...prev, error: '개인정보취급방침에 동의하셔야 합니다.' }));
+      return;
+    }
     try {
       setFormState((prev) => ({ ...prev, isSubmitting: true }));
 
-      // 현재 날짜 및 시간도 포함시키려면 여기에 추가할 수 있음
       const registrationDate = new Date().toISOString();
 
       const data = {
         email,
         preferedTime,
         isDaily: formState.isDaily,
-        registrationDate, // 추가된 날짜 정보 (백엔드 처리에 맞춰 사용)
+        registrationDate,
       };
 
       const responseData = await registerSubscription(data);
       if (responseData.stateCode === 200) {
-        // 구독 성공 시 email, preferedTime, isDaily를 전달
         onSuccess(email, preferedTime, formState.isDaily);
       }
     } catch (error) {
@@ -70,6 +73,10 @@ const Subscription = ({ onSuccess }) => {
     } finally {
       setFormState((prev) => ({ ...prev, isSubmitting: false }));
     }
+  };
+
+  const handleAgreeChange = (e) => {
+    setFormState((prev) => ({ ...prev, agreed: e.target.checked, error: '' }));
   };
 
   return (
@@ -127,8 +134,23 @@ const Subscription = ({ onSuccess }) => {
         onChange={handleEmailChange}
         className={formState.error ? 'input-error' : ''}
       />
+      <div style={{ marginTop: '20px' }}>
+        <label>
+          <input type="checkbox" checked={formState.agreed} onChange={handleAgreeChange} />
+          <a
+            href="/policy"
+            style={{ marginLeft: '8px', textDecoration: 'underline', color: '#E86912' }}
+          >
+            개인정보취급방침에 동의합니다
+          </a>
+        </label>
+      </div>
       {formState.error && <div className="error-message">{formState.error}</div>}
-      <button className="subscribe-btn" onClick={handleSubscribe} disabled={formState.isSubmitting}>
+      <button
+        className="subscribe-btn"
+        onClick={handleSubscribe}
+        disabled={formState.isSubmitting || !formState.agreed}
+      >
         {formState.isSubmitting ? '처리 중...' : '구독하기'}
       </button>
     </div>
