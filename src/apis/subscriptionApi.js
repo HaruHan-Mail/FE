@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://semtle.catholic.ac.kr:8082';
+const BASE_URL = 'https://haruhan.site/api';
 
 export const registerSubscription = async (data) => {
   const response = await axios.post(`${BASE_URL}/user`, data, {
