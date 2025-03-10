@@ -22,12 +22,13 @@
   border-radius: 4px;
 }
 
-.subscription-container .error-message {
+.error-message {
   color: red;
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
 
+/* 버튼 스타일 */
 .subscription-container button {
   background-color: #e86912;
   color: white;
@@ -38,17 +39,27 @@
   transition: background 0.3s ease;
 }
 
+/* 버튼이 비활성화 상태일 때 - 명확하게 회색 계열로 구분 */
 .subscription-container button:disabled {
-  opacity: 0.6;
+  background-color: #ccc; /* 비활성화 배경색 */
+  color: #666; /* 비활성화 텍스트 색 */
   cursor: not-allowed;
 }
 
-.subscription-container button:hover:not(:disabled) {
+/* 버튼이 비활성화 상태일 때 */
+.subscribe-btn:disabled {
+  background-color: #ccc; /* 비활성화 배경색 */
+  color: #666; /* 비활성화 텍스트 색 */
+  cursor: not-allowed;
+}
+
+/* 버튼이 활성화 상태에서 hover 효과 */
+.subscribe-btn:hover:not(:disabled) {
   background-color: #d45f0f;
 }
 
 /* 라디오 버튼 및 커스텀 체크박스 */
-.subscription-container label {
+label {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -56,14 +67,14 @@
   cursor: pointer;
 }
 
-.subscription-container input[type='radio'] {
+input[type='radio'] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.subscription-container .custom-checkbox {
+.custom-checkbox {
   position: relative;
   display: inline-block;
   width: 20px;
@@ -74,7 +85,7 @@
   transition: all 0.3s;
 }
 
-.subscription-container .custom-checkbox::after {
+.custom-checkbox::after {
   content: '✓';
   position: absolute;
   top: 50%;
@@ -85,11 +96,11 @@
   transition: opacity 0.3s;
 }
 
-.subscription-container input[type='radio']:checked + .custom-checkbox {
+input[type='radio']:checked + .custom-checkbox {
   background: #e86912;
   border-color: #e86912;
 }
 
-.subscription-container input[type='radio']:checked + .custom-checkbox::after {
+input[type='radio']:checked + .custom-checkbox::after {
   opacity: 1;
 }
