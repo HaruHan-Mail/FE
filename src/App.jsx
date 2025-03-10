@@ -14,6 +14,18 @@ const router = createBrowserRouter([
     element: <Policy />,
   },
   {
+    path: '/unsubscribe',
+    element: <Unsubscribe />,
+  },
+  {
+    path: '/feedback',
+    element: <Feedback />,
+  },
+  {
+    path: '/setting',
+    element: <Setting />,
+  },
+  {
     path: '/*',
     element: <NotFound />,
   },

@@ -7,7 +7,7 @@ const Subscription = ({ onSuccess }) => {
     email: '',
     preferedTime: '',
     isDaily: true,
-    agreed: false, // 개인정보취급방침 동의 상태
+    agreed: false,
     error: '',
     isSubmitting: false,
   });
