@@ -1,0 +1,57 @@
+/* Haruhan 컬러 팔레트를 참고하여 작성 */
+.privacy-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff; /* white */
+  border: 1px solid #89939e; /* l-grey */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.privacy-main-wrapper {
+  margin-bottom: 30px;
+}
+
+.privacy-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #e86912; /* primary */
+  font-family: 'S-CoreDream-3Light', sans-serif;
+  font-weight: 700;
+}
+
+.privacy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.privacy-wrapper {
+  padding: 15px;
+  border-bottom: 1px solid #89939e;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.privacy-wrapper:hover {
+  background-color: #f5f7fa; /* sliver */
+}
+
+.privacy-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.privacy-title-wrapper h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #e86912;
+}
+
+.privacy-content {
+  margin-top: 10px;
+  color: #717171; /* grey */
+  font-size: 1rem;
+}

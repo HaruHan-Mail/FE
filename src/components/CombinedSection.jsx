@@ -1,4 +1,3 @@
-// src/components/Home/CombinedSection.jsx
 import React, { useRef } from 'react';
 import './css/CombinedSection.css';
 import HaruhanDescription from '../assets/images/HaruhanPhone.png';

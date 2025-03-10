@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import '../css/Header.css';
 import SubscriptionButton from '../common/SubscriptionButton';
 import LogoImg from '/src/assets/images/HaruhanLogo.png';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const nav = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +26,7 @@ const Header = () => {
   return (
     <section className="HeaderContainer" id={`${isScrolled ? 'Scrolled' : ''}`}>
       <div>
-        <img className="HeaderLogoImage" src={LogoImg} />
+        <img className="HeaderLogoImage" src={LogoImg} onClick={() => nav('/')} />
       </div>
       <div className="HeaderLinkContainer">
         <a
