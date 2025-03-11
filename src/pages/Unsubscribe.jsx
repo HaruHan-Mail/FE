@@ -21,7 +21,8 @@ const Unsubscribe = () => {
     if (result.isConfirmed) {
       try {
         const email = 'test@test.com';
-        const response = await unsubscribeSubmit(email);
+        const token = 'adfadsfsdfdf';
+        const response = await unsubscribeSubmit(email, token);
 
         if (response.stateCode === 200) {
           // token 값, email 값 제거
