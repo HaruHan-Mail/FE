@@ -7,7 +7,9 @@ const Home = () => {
   return (
     <Layout>
       <HeroSection />
+      <div>
       <CombinedSection />
+      </div>
       <PopuplarTopicSection />
     </Layout>
   );
