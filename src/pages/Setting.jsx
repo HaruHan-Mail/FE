@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import '../components/css/Setting.css';
+import { useSearchParams } from 'react-router-dom'; // 추가
 
 const Setting = () => {
+  const [searchParams] = useSearchParams(); // 추가
   const [email, setEmail] = useState('');
   const [isDaily, setIsDaily] = useState(true); // isSinglePost에서 isDaily로 변경
   const [preferedTime, setPreferedTime] = useState('오전 7시');
@@ -11,18 +13,30 @@ const Setting = () => {
   const [token, setToken] = useState('');
   
   useEffect(() => {
-    // 페이지 로딩 시 로컬스토리지에서 사용자 정보 가져오기
+    // URL 쿼리 파라미터에서 이메일과 토큰 가져오기
+    const urlEmail = searchParams.get('email');
+    const urlToken = searchParams.get('token');
+    
+    // 로컬스토리지에서 사용자 정보 가져오기
     const savedEmail = localStorage.getItem('userEmail');
     const savedToken = localStorage.getItem('userToken');
     
-    if (savedEmail) setEmail(savedEmail);
-    if (savedToken) setToken(savedToken);
+    // URL 파라미터를 우선적으로 사용하고, 없으면 로컬스토리지 사용
+    const emailToUse = urlEmail || savedEmail || '';
+    const tokenToUse = urlToken || savedToken || '';
     
-    // 기존 설정 정보 가져오기
-    if (savedEmail && savedToken) {
-      fetchUserSettings(savedEmail, savedToken);
+    // URL에서 가져온 값이 있으면 로컬스토리지에 저장
+    if (urlEmail) localStorage.setItem('userEmail', urlEmail);
+    if (urlToken) localStorage.setItem('userToken', urlToken);
+    
+    setEmail(emailToUse);
+    setToken(tokenToUse);
+    
+    // 이메일과 토큰이 있으면 설정 정보 가져오기
+    if (emailToUse && tokenToUse) {
+      fetchUserSettings(emailToUse, tokenToUse);
     }
-  }, []);
+  }, [searchParams]); // searchParams가 변경될 때마다 실행
   
   const fetchUserSettings = async (userEmail, userToken) => {
     try {

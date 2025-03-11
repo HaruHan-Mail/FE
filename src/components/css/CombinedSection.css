@@ -1,14 +1,18 @@
 .combinedSectionWrapper {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  margin: 12rem 0;
+  overflow: visible; /* hidden에서 visible로 변경 */
+  min-height: 500px; /* 최소 높이 지정 */
+  margin: 8rem 0; /* 여백 조정 */
+  display: block; /* 명시적 표시 설정 */
 }
 
 .DescriptionSectionContainer {
   margin: 0;
   padding: 0;
   will-change: filter, opacity;
+  min-height: 200px; /* 최소 높이 지정 */
+  visibility: visible; /* 강제 표시 */
 }
 
 .ClosingSectionOverlayContainer {
