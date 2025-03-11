@@ -3,8 +3,13 @@ import MailLayout from '../components/Layout/MailLayout';
 import Swal from 'sweetalert2';
 import { unsubscribeSubmit } from '../apis/unsubscribeApi';
 import '../components/css/Unsubscribe.css';
+import { useSearchParams } from 'react-router-dom';
 
 const Unsubscribe = () => {
+  const [searchParams] = useSearchParams();
+  const email = searchParams.get('email');
+  const token = searchParams.get('token');
+
   const handleUnsubscribeSubmit = async () => {
     const result = await Swal.fire({
       icon: 'warning',
@@ -20,8 +25,6 @@ const Unsubscribe = () => {
     // 구독 해지 버튼 클릭 시
     if (result.isConfirmed) {
       try {
-        const email = 'test@test.com';
-        const token = 'adfadsfsdfdf';
         const response = await unsubscribeSubmit(email, token);
 
         if (response.stateCode === 200) {
