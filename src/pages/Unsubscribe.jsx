@@ -25,9 +25,13 @@ const Unsubscribe = () => {
     // 구독 해지 버튼 클릭 시
     if (result.isConfirmed) {
       try {
-        const response = await unsubscribeSubmit(email, token);
+        const data = {
+          email: email,
+          token: token,
+        };
+        const response = await unsubscribeSubmit(data);
 
-        if (response.statusCode === 200) {
+        if (response.stateCode === 200) {
           Swal.fire({
             icon: 'success',
             title: 'HaruHan 구독 해지 완료',
