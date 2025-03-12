@@ -4,6 +4,7 @@ import '../components/css/Setting.css';
 import { useSearchParams } from 'react-router-dom';
 import { patchUserSettings } from '../apis/settingApi';
 import '../components/css/Setting.css';
+import { useSearchParams } from 'react-router-dom'; // 추가
 
 const Setting = () => {
   const [searchParams] = useSearchParams();
