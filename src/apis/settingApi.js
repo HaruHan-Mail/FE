@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://haruhan.site/api';
 
-export const fetchUserSettings = async (email, isDaily, preferedTime, token) => {
+export const patchUserSettings = async ({ email, isDaily, preferedTime, token }) => {
   const response = await axios.patch(
     `${BASE_URL}/user/settings`,
     { email, isDaily, preferedTime, token }, // 데이터 객체
@@ -12,5 +12,6 @@ export const fetchUserSettings = async (email, isDaily, preferedTime, token) => 
       },
     },
   );
-  return response.data;
+  console.log(response.status);
+  return response;
 };
