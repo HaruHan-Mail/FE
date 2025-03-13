@@ -1,0 +1,48 @@
+.knowledgeSectionItem {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ItemTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ItemSummary {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ItemContent {
+  margin: 20px 0;
+  color: var(--d-grey);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .knowledgeSectionItem {
+    padding: 2rem;
+  }
+
+  .ItemTitle {
+    font-size: 1.8rem;
+  }
+  .ItemSummary {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .ItemContent {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,16 @@
+.KnowledgeSectionWrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  min-height: 500px;
+  margin: 8rem 0;
+  display: block;
+}
+
+.KnowledgeSectionContainer {
+  margin: 0;
+  padding: 0;
+  will-change: filter, opacity;
+  min-height: 200px;
+  visibility: visible;
+}
