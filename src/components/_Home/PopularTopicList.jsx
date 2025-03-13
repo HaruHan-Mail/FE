@@ -20,7 +20,7 @@ const PopularTopicList = () => {
   return (
     <div className="PopularTopicList">
       {popularMockData.map((item, idx) => (
-        <PopularTopicItem key={idx} icon={item.icon} title={item.title} />
+        <PopularTopicItem key={idx} icon={item.icon} image={item.image} title={item.title} />
       ))}
     </div>
   );
