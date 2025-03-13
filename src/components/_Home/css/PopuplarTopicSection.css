@@ -1,0 +1,32 @@
+.PopuplarTopicSection {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 300px 0;
+}
+
+@media (min-width: 1024px) {
+  .PopuplarTopicSectionContainer {
+    padding: 2rem 0;
+  }
+
+  .PopuplarTopicSectionImage {
+    width: 14rem;
+  }
+
+  .PopuplarTopicSectionH1 {
+    margin: 5rem 0 7rem 0;
+    font-size: 2rem;
+  }
+
+  /* showcase 디자인 */
+  .ShowcaseItem {
+    width: 18rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.8rem;
+    line-height: 3rem;
+  }
+}

@@ -1,0 +1,25 @@
+.PopularTopicSectionAni {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.PopularTopicSectionLottie {
+  width: 300px;
+}
+
+.PopuplarTopicSection h1 {
+  width: auto;
+  height: auto;
+  padding: 1.5rem 0;
+  margin: 3rem 0 5rem 0;
+  text-align: center;
+  color: #4d4d4d;
+  font-size: 1.6rem;
+}
+
+.PopuplarTopicSectionHighlight {
+  color: var(--primary);
+}
