@@ -1,7 +1,7 @@
 import React from 'react';
 import MailLayout from '../components/Layout/MailLayout';
 import Swal from 'sweetalert2';
-import { unsubscribeSubmit } from '../apis/unsubscribeApi';
+import { cancelSubscription } from '../apis/userSubscriptionApi';
 import '../components/css/Unsubscribe.css';
 import { useSearchParams } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ const Unsubscribe = () => {
           email: email,
           token: token,
         };
-        const response = await unsubscribeSubmit(data);
+        const response = await cancelSubscription(data);
 
         if (response.stateCode === 200) {
           Swal.fire({

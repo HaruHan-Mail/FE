@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { registerSubscription } from '../../apis/subscriptionApi';
+import { registerSubscription } from '../../apis/userSubscriptionApi';
 import '../css/Subscription.css';
 
 const Subscription = ({ onSuccess }) => {
