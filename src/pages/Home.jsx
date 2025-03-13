@@ -1,5 +1,5 @@
 import HeroSection from '../components/HeroSection';
-import CombinedSection from '../components/CombinedSection.jsx';
+import KnowledgeSection from '../components/_Home/KnowledgeSection.jsx';
 import PopuplarTopicSection from '../components/PopuplarTopicSection';
 import Layout from '../components/Layout/Layout';
 
@@ -7,9 +7,7 @@ const Home = () => {
   return (
     <Layout>
       <HeroSection />
-      <div>
-      <CombinedSection />
-      </div>
+      <KnowledgeSection />
       <PopuplarTopicSection />
     </Layout>
   );
