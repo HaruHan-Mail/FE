@@ -1,8 +1,7 @@
-.KnowledgeSectionWrapper {
+.KnowledgeSection {
   position: relative;
   width: 100%;
   overflow: visible;
-  min-height: 500px;
   margin: 8rem 0;
   display: block;
 }
