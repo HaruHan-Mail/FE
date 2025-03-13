@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MailLayout from '../components/Layout/MailLayout';
 import '../components/css/Feedback.css';
 import Swal from 'sweetalert2';
-import { feedbackSubmit } from '../apis/feedbackApi';
+import { submitFeedback } from '../apis/userFeedbackApi';
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState('');
@@ -23,7 +23,7 @@ const Feedback = () => {
     // 제출 버튼 클릭 시
     if (result.isConfirmed) {
       try {
-        const response = await feedbackSubmit(feedback);
+        const response = await submitFeedback(feedback);
 
         if (response.stateCode === 200) {
           // textarea 비우기

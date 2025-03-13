@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { verifyCode } from '../../apis/subscriptionApi';
+import { confirmSubscriptionCode } from '../../apis/userSubscriptionApi';
 import '../css/Verification.css';
 
 const Verification = ({ initialEmail, preferedTime, isDaily, onVerified, onTimeout }) => {
@@ -41,7 +41,7 @@ const Verification = ({ initialEmail, preferedTime, isDaily, onVerified, onTimeo
         isDaily,
         verificationCode: code,
       };
-      const responseData = await verifyCode(data);
+      const responseData = await confirmSubscriptionCode(data);
       if (responseData.stateCode === 200) {
         alert('인증에 성공하였습니다!');
         onVerified();

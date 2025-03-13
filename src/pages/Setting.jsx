@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MailLayout from '../components/Layout/MailLayout';
 import '../components/css/Setting.css';
 import { useSearchParams } from 'react-router-dom';
-import { patchUserSettings } from '../apis/settingApi';
+import { updateSubscriptionSettings } from '../apis/userSubscriptionApi';
 import '../components/css/Setting.css';
 
 const Setting = () => {
@@ -34,7 +34,7 @@ const Setting = () => {
         preferedTime,
         token: token || '',
       };
-      const result = await patchUserSettings(requestBody);
+      const result = await updateSubscriptionSettings(requestBody);
 
       if (result.status === 200) {
         setMessage({ text: '설정이 성공적으로 업데이트되었습니다.', isError: false });
