@@ -28,6 +28,7 @@
   color: var(--d-grey);
   line-height: 1.6;
   font-size: 1rem;
+  min-width: 200px;
 }
 
 @media (min-width: 1024px) {

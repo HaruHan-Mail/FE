@@ -1,6 +1,6 @@
-import HeroSection from '../components/HeroSection';
+import HeroSection from '../components/_Home/HeroSection';
 import KnowledgeSection from '../components/_Home/KnowledgeSection.jsx';
-import PopuplarTopicSection from '../components/PopuplarTopicSection';
+import PopuplarTopicSection from '../components/_Home/PopuplarTopicSection';
 import Layout from '../components/Layout/Layout';
 
 const Home = () => {
