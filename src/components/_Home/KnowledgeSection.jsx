@@ -11,7 +11,7 @@ const KnowledgeSection = () => {
     useCombinedScrollEffect(knowledgeRef);
 
   return (
-    <div className="KnowledgeSectionWrapper">
+    <div className="KnowledgeSection">
       <section
         ref={knowledgeRef}
         className="KnowledgeSectionContainer"
