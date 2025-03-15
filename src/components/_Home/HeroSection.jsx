@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './css/HeroSection.css';
 import SubscriptionButton from '../common/SubscriptionButton';
 import { getBackgroundVideos } from '../../utils/getBackgroundVideos';

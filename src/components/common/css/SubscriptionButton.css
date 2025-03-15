@@ -1,4 +1,16 @@
-.SubscriptionButtonLarge {
+.subscription-button.medium {
+  width: auto;
+  height: auto;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--sliver);
+  border-radius: 10px;
+  border: none;
+  display: block;
+}
+
+.subscription-button.large {
   width: auto;
   height: auto;
   font-size: 1.5rem;
@@ -10,17 +22,6 @@
   display: block;
 }
 
-.SubscriptionButtonMedium {
-  width: auto;
-  height: auto;
-  font-size: 1rem;
-  padding: 0.8rem 1.5rem;
-  background-color: var(--primary);
-  color: var(--sliver);
-  border-radius: 10px;
-  border: none;
-  display: block;
-}
 
 button {
   transition: transform 0.2s;

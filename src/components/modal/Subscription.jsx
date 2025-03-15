@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { registerSubscription } from '../../apis/userSubscriptionApi';
 import './css/Subscription.css';
 

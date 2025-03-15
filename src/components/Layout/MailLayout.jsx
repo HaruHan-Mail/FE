@@ -1,4 +1,3 @@
-import React from 'react';
 import MailHeader from './MailHeader';
 import Footer from './Footer';
 

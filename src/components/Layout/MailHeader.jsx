@@ -1,4 +1,3 @@
-import React from 'react';
 import './css/MailHeader.css';
 import LogoImg from '/src/assets/images/HaruhanLogo.png';
 

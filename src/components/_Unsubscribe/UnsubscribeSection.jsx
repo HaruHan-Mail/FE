@@ -1,4 +1,3 @@
-import React from 'react';
 import Swal from 'sweetalert2';
 import { cancelSubscription } from '../../apis/userSubscriptionApi';
 import SubmitButton from '../common/SubmitButton';
