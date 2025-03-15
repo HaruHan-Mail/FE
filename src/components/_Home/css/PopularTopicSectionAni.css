@@ -10,16 +10,32 @@
   width: 300px;
 }
 
-.PopuplarTopicSection h1 {
-  width: auto;
-  height: auto;
-  padding: 1.5rem 0;
-  margin: 3rem 0 5rem 0;
+.PopularTopicSectionAniContent {
   text-align: center;
-  color: #4d4d4d;
-  font-size: 1.6rem;
+  color: var(--black);
+  font-size: 15px;
 }
 
 .PopuplarTopicSectionHighlight {
   color: var(--primary);
+}
+
+@media (min-width: 768px) {
+  .PopularTopicSectionAni {
+    width: 100%;
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .PopularTopicSectionLottie {
+    width: 400px;
+  }
+
+  .PopularTopicSectionAniContent {
+    font-size: 25px;
+  }
+
+  .PopuplarTopicSectionHighlight {
+    color: var(--primary);
+  }
 }

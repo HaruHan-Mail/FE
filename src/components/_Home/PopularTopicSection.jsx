@@ -1,15 +1,15 @@
 import React from 'react';
-import './css/PopuplarTopicSection.css';
+import './css/PopularTopicSection.css';
 import PopularTopicList from './PopularTopicList';
 import PopularTopicSectionAni from './PopularTopicSectionAni';
 
-const PopuplarTopicSection = () => {
+const PopularTopicSection = () => {
   return (
-    <section className="PopuplarTopicSection">
+    <section className="PopularTopicSection">
       <PopularTopicSectionAni />
       <PopularTopicList />
     </section>
   );
 };
 
-export default PopuplarTopicSection;
+export default PopularTopicSection;

@@ -7,3 +7,9 @@
   overflow: hidden;
   position: relative;
 }
+
+@media (min-width: 768px) {
+  .PopularTopicList {
+    height: 400px;
+  }
+}
