@@ -1,0 +1,31 @@
+.subscription-button.medium {
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--sliver);
+  border-radius: 10px;
+  border: none;
+  display: block;
+}
+
+.subscription-button.large {
+  width: auto;
+  height: auto;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary);
+  color: var(--sliver);
+  border-radius: 10px;
+  border: none;
+  display: block;
+}
+
+button {
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}

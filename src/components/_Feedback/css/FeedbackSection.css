@@ -1,0 +1,66 @@
+.feedback-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.feedback-wrapper {
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width:  55%;
+  height: 55%;
+}
+
+.feedback-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--black);
+}
+
+.feedback-textarea {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--grey);
+  resize: none;
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  font-size: 1.2rem;
+}
+
+.feedback-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  transform: scale(1.01);
+}
+
+/* 스크롤바 스타일 */
+.feedback-textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.feedback-textarea::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.feedback-textarea::-webkit-scrollbar-thumb {
+  background: var(--grey);
+  border-radius: 10px;
+}
+
+.feedback-textarea::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
