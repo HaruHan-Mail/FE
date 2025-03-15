@@ -1,0 +1,74 @@
+.PrivacyContainer {
+  width: 350px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: var(--white);
+
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.PrivacyMainWrapper {
+  margin-bottom: 30px;
+}
+
+.PrivacyTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.PrivacyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.PrivacyWrapper {
+  padding: 15px;
+  border-bottom: 1px solid var(--l-grey);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.PrivacyWrapper:hover {
+  background-color: var(--silver);
+}
+
+.PrivacyTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PrivacyTitleWrapper h3 {
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.PrivacyContent {
+  margin-top: 10px;
+  color: var(--l-grey);
+  font-size: 0.8rem;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+
+@media screen and (min-width: 768px) {
+    .PrivacyContainer {
+      width: 600px;
+  }
+  .PrivacyTitle {
+    font-size: 2rem;
+  }
+
+  .PrivacyTitleWrapper h3 {
+    font-size: 1.5rem;
+  }
+  
+  .PrivacyContent {
+    font-size: 1rem;
+  }
+}
