@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../css/Header.css';
+import './css/Header.css';
 import SubscriptionButton from '../common/SubscriptionButton';
 import LogoImg from '/src/assets/images/HaruhanLogo.png';
 import { useNavigate } from 'react-router-dom';

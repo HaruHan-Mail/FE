@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import '../css/SubscriptionModal.css';
+import './css/SubscriptionModal.css';
 import Subscription from './Subscription';
 import Verification from './Verification';
 

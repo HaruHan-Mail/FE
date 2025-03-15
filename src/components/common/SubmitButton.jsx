@@ -1,14 +1,17 @@
-import '../css/SubmitButton.css';
+import './css/SubmitButton.css';
 
-const SubscriptionButton = ({ onClick, text, size = "medium" }) => {
+const SubmitButton = ({ onClick, text, size = "medium", width }) => {
+  const inlineStyle = width ? { width } : {};
+
   return (
     <button
       onClick={onClick}
-      className={`subscription-button ${size.toLowerCase()}`}
+      style={inlineStyle}
+      className={`submit-button ${size.toLowerCase()}`}
     >
       {text}
     </button>
   );
 };
 
-export default SubscriptionButton;
+export default SubmitButton;

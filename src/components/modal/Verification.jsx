@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { confirmSubscriptionCode } from '../../apis/userSubscriptionApi';
-import '../css/Verification.css';
+import './css/Verification.css';
 
 const Verification = ({ initialEmail, preferedTime, isDaily, onVerified, onTimeout }) => {
   const [code, setCode] = useState('');
