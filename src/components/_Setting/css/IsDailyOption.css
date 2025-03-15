@@ -1,0 +1,43 @@
+.is-daily-option {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.is-daily-option:hover {
+  border-color: #ffbb8a;
+  background-color: #fff9f5;
+}
+
+.is-daily-option--selected {
+  border-color: var(--primary);
+  background-color: #fff9f5;
+  box-shadow: 0 2px 8px rgba(232, 105, 18, 0.1);
+}
+
+.is-daily-option input[type="radio"] {
+  margin-top: 0.2rem;
+  margin-right: 0.8rem;
+  accent-color: var(--primary);
+  width: 18px;
+  height: 18px;
+}
+
+.is-daily-option__content {
+  flex: 1;
+}
+
+.is-daily-option__title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.is-daily-option__description {
+  font-size: 0.85rem;
+  color: #666;
+}
