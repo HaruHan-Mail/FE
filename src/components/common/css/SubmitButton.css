@@ -1,4 +1,4 @@
-.subscription-button.medium {
+.submit-button.medium {
   width: 100%;
   height: auto;
   font-size: 1rem;
@@ -10,7 +10,7 @@
   display: block;
 }
 
-.subscription-button.large {
+.submit-button.large {
   width: auto;
   height: auto;
   font-size: 1.5rem;

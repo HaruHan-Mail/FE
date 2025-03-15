@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registerSubscription } from '../../apis/userSubscriptionApi';
-import '../css/Subscription.css';
+import './css/Subscription.css';
 
 const Subscription = ({ onSuccess }) => {
   const [formState, setFormState] = useState({
