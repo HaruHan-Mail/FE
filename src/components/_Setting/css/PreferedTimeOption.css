@@ -1,0 +1,27 @@
+.prefered-time-option {
+  display: flex;
+  padding: 1rem;
+  border: 2px solid var(--white-grey);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.prefered-time-option:hover {
+  border-color: var(--tint-3);
+}
+
+.prefered-time-option--selected {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prefered-time-option__title {
+  font-weight: 800;
+}
+
+@media (min-width: 768px) {
+  .prefered-time-option {
+    width: 100%;
+  }
+}

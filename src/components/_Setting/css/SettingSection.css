@@ -1,0 +1,41 @@
+.SettingSection {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.SettingTitle {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.SettingMessage {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.SettingMessage.success {
+  background-color: #e7f5eb;
+  color: #2d8c4b;
+  border: 1px solid #b8e6c7;
+}
+
+.SettingMessage.error {
+  background-color: #fbe9e7;
+  color: #d32f2f;
+  border: 1px solid #f6ccc9;
+}
+
+/* 반응형 디자인 */
+@media (min-width: 768px) {
+  .SettingTitle {
+    font-size: 2rem;
+  }
+}
