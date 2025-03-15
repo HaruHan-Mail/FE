@@ -1,6 +1,6 @@
 import HeroSection from '../components/_Home/HeroSection';
 import KnowledgeSection from '../components/_Home/KnowledgeSection.jsx';
-import PopuplarTopicSection from '../components/_Home/PopuplarTopicSection';
+import PopularTopicSection from '../components/_Home/PopularTopicSection';
 import Layout from '../components/Layout/Layout';
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     <Layout>
       <HeroSection />
       <KnowledgeSection />
-      <PopuplarTopicSection />
+      <PopularTopicSection />
     </Layout>
   );
 };

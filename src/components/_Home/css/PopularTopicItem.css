@@ -18,3 +18,11 @@
   color: white;
   filter: none;
 }
+
+@media (min-width: 768px) {
+  .PopularTopicItem {
+    width: 400px;
+    height: 400px;
+    font-size: 2rem;
+  }
+}

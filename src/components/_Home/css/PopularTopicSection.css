@@ -1,23 +1,25 @@
-.PopuplarTopicSection {
+.PopularTopicSection {
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  gap: 100px;
+  
   margin: 300px 0;
 }
 
-@media (min-width: 1024px) {
-  .PopuplarTopicSectionContainer {
+@media (min-width: 768px) {
+  .PopularTopicSectionContainer {
     padding: 2rem 0;
   }
 
-  .PopuplarTopicSectionImage {
+  .PopularTopicSectionImage {
     width: 14rem;
   }
 
-  .PopuplarTopicSectionH1 {
+  .PopularTopicSectionH1 {
     margin: 5rem 0 7rem 0;
     font-size: 2rem;
   }

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { animate } from '@motionone/dom';
 
 const useShowcaseAnimation = (activeIndex, itemClassName, itemCount, options = {}) => {
-  const { duration = 1.5, offset = 200 } = options;
+  const { duration = 1.5, offset = 300 } = options;
 
   useEffect(() => {
     const elements = document.querySelectorAll(`.${itemClassName}`);
