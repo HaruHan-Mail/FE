@@ -6,6 +6,7 @@ import Policy from './pages/Policy.jsx';
 import Unsubscribe from './pages/Unsubscribe.jsx';
 import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
+import Archive from './pages/Archive.jsx'; // 추가된 아카이브 페이지
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/setting',
     element: <Setting />,
+  },
+  {
+    path: '/archive', // 아카이브 페이지 라우트 추가
+    element: <Archive />,
   },
   {
     path: '/*',
