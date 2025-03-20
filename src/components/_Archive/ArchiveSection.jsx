@@ -10,6 +10,7 @@ const ArchiveSection = ({ email, token }) => {
   const [searchParams] = useSearchParams();
   const useTestData = searchParams.get('test') === 'true';
   
+  const [activeTab, setActiveTab] = useState('all'); // 'all' or 'favorites'
   const [emails, setEmails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,6 +25,11 @@ const ArchiveSection = ({ email, token }) => {
   useEffect(() => {
     const getFavorites = async () => {
       if (useTestData || !email || !token) {
+        // 테스트 모드일 때는 기본 favorites 설정
+        if (useTestData) {
+          // ID 1, 3, 5번 이메일을 찜한 상태로 설정 (테스트용)
+          setFavorites([1, 3, 5]);
+        }
         return;
       }
 
@@ -113,12 +119,38 @@ const ArchiveSection = ({ email, token }) => {
     return favorites.includes(emailId);
   };
 
+  // 현재 탭에 따라 표시할 이메일 필터링
+  const displayEmails = activeTab === 'favorites' 
+    ? emails.filter(emailItem => isEmailFavorited(emailItem.id))
+    : emails;
+
+  // 탭 변경 핸들러
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <div className="archive-section-container">
       <h1 className="archive-section-title">나의 하루한 아카이브</h1>
       <p className="archive-section-subtitle">
-        지금까지 받아보신 모든 하루한 메일을 확인하세요
+        지금까지 받아보신 모든 하루한 지식을 확인하세요
       </p>
+
+      {/* 탭 UI */}
+      <div className="archive-tabs">
+        <button 
+          className={`archive-tab ${activeTab === 'all' ? 'active' : ''}`}
+          onClick={() => handleTabChange('all')}
+        >
+          전체 지식
+        </button>
+        <button 
+          className={`archive-tab ${activeTab === 'favorites' ? 'active' : ''}`}
+          onClick={() => handleTabChange('favorites')}
+        >
+          찜한 지식 {favorites.length > 0 && <span className="favorite-count">{favorites.length}</span>}
+        </button>
+      </div>
 
       {loading ? (
         <div className="archive-loading">
@@ -127,14 +159,17 @@ const ArchiveSection = ({ email, token }) => {
         </div>
       ) : error ? (
         <div className="archive-error">{error}</div>
-      ) : emails.length === 0 ? (
+      ) : displayEmails.length === 0 ? (
         <div className="archive-empty">
-          <p>아직 받은 이메일이 없습니다.</p>
+          {activeTab === 'favorites' 
+            ? <p>찜한 지식이 없습니다. 마음에 드는 지식을 찜해보세요!</p>
+            : <p>아직 받은 지식이 없습니다.</p>
+          }
         </div>
       ) : (
         <>
           <div className="email-grid">
-            {emails.map((emailItem) => (
+            {displayEmails.map((emailItem) => (
               <EmailCard 
                 key={emailItem.id} 
                 email={emailItem} 
@@ -147,7 +182,7 @@ const ArchiveSection = ({ email, token }) => {
             ))}
           </div>
 
-          {!useTestData && totalPages > 1 && (
+          {!useTestData && totalPages > 1 && activeTab === 'all' && (
             <div className="archive-pagination">
               <button 
                 className="pagination-button" 
