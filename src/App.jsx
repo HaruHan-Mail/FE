@@ -6,6 +6,7 @@ import Policy from './pages/Policy.jsx';
 import Unsubscribe from './pages/Unsubscribe.jsx';
 import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
+import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 
 const router = createBrowserRouter([
@@ -30,15 +31,17 @@ const router = createBrowserRouter([
     element: <Setting />,
   },
   {
+    path: '/content',
+    element: <ContentDetail />,
+  },
+  {
     path: '/*',
     element: <NotFound />,
   },
 ]);
 
 function App() {
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
