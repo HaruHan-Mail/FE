@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { popularMockData } from '../../mocks/popularityData';
 import PopularTopicItem from './PopularTopicItem';
 import './css/PopularTopicList.css';
 import useShowcaseAnimation from '../../hooks/useShowcaseAnimation';
