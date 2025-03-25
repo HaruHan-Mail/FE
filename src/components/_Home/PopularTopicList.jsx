@@ -1,26 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { popularMockData } from '../../mocks/popularityData';
+// import { popularMockData } from '../../mocks/popularityData';
 import PopularTopicItem from './PopularTopicItem';
 import './css/PopularTopicList.css';
 import useShowcaseAnimation from '../../hooks/useShowcaseAnimation';
+import { getPopularContent } from '../../apis/userContentApi';
+import { getPopularImages } from '../../utils/getPopularImages';
 
 const PopularTopicList = () => {
   const [index, setIndex] = useState(0);
+  const [popularData, setPopularData] = useState([]);
+
+  const images = getPopularImages();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await getPopularContent();
+        setPopularData(res.data);
+      } catch (error) {
+        console.error('인기 콘텐츠 불러오기 실패:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % popularMockData.length);
+      setIndex((prev) => (prev + 1) % popularData.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [popularData]);
 
-  useShowcaseAnimation(index, 'PopularTopicItem', popularMockData.length);
+  useShowcaseAnimation(index, 'PopularTopicItem', popularData.length);
 
   return (
     <div className="PopularTopicList">
-      {popularMockData.map((item, idx) => (
-        <PopularTopicItem key={idx} icon={item.icon} image={item.image} title={item.title} />
+      {popularData.map((item, idx) => (
+        <PopularTopicItem key={idx} title={item.title} image={images[idx]} />
       ))}
     </div>
   );
