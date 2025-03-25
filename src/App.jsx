@@ -8,6 +8,7 @@ import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
 import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
+import TeamInfo from './pages/TeamInfo.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: '/content',
     element: <ContentDetail />,
+  },
+  {
+    path: '/teamInfo',
+    element: <TeamInfo />,
   },
   {
     path: '/*',
