@@ -8,6 +8,7 @@ import Policy from './pages/Policy.jsx';
 import Unsubscribe from './pages/Unsubscribe.jsx';
 import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
+import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 
 const queryClient = new QueryClient();
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/setting',
     element: <Setting />,
+  },
+  {
+    path: '/content',
+    element: <ContentDetail />,
   },
   {
     path: '/*',
