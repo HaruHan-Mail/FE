@@ -8,11 +8,8 @@ import Policy from './pages/Policy.jsx';
 import Unsubscribe from './pages/Unsubscribe.jsx';
 import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
-<<<<<<< HEAD
+import Content from './pages/Content.jsx';
 import ContentDetail from './pages/ContentDetail.jsx';
-=======
-import Archive from './pages/Archive.jsx'; // 추가된 아카이브 페이지
->>>>>>> origin/feature-total-content
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 
 const queryClient = new QueryClient();
@@ -39,13 +36,12 @@ const router = createBrowserRouter([
     element: <Setting />,
   },
   {
-<<<<<<< HEAD
     path: '/content',
+    element: <Content />,
+  },
+  {
+    path: '/content/mine',
     element: <ContentDetail />,
-=======
-    path: '/archive', // 아카이브 페이지 라우트 추가
-    element: <Archive />,
->>>>>>> origin/feature-total-content
   },
   {
     path: '/*',
