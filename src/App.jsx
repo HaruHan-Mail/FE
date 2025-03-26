@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     element: <Setting />,
   },
   {
-    path: '/feedbacks', // 추가된 라우트
+    path: '/feedbacklist', 
     element: <FeedbackList />,
   },
   {

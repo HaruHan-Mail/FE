@@ -11,18 +11,16 @@ const FeedbackListSection = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const loadFeedbacks = async () => {
       try {
         setLoading(true);
-        const result = await fetchFeedbacks(isTest, currentPage);
+        const result = await fetchFeedbacks(isTest);
         
-        if (result.stateCode === 200 && result.data) {
-          setFeedbacks(result.data.feedbacks || []);
-          setTotalPages(result.data.totalPages || 1);
+        if (result.stateCode === 200) {
+          // API 응답 구조에 맞게 변경
+          setFeedbacks(result.data || []);
         } else {
           setError('피드백 데이터를 가져오지 못했습니다.');
         }
@@ -35,12 +33,7 @@ const FeedbackListSection = () => {
     };
 
     loadFeedbacks();
-  }, [isTest, currentPage]);
-
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, [isTest]);
 
   return (
     <section className="feedback-list-container">
@@ -61,27 +54,11 @@ const FeedbackListSection = () => {
           <p>아직 등록된 피드백이 없습니다.</p>
         </div>
       ) : (
-        <>
-          <div className="feedback-list">
-            {feedbacks.map((feedback) => (
-              <FeedbackCard key={feedback.feedback_id} feedback={feedback} />
-            ))}
-          </div>
-
-          {totalPages > 1 && (
-            <div className="feedback-pagination">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  className={`pagination-button ${page === currentPage ? 'active' : ''}`}
-                  onClick={() => handlePageChange(page)}
-                >
-                  {page}
-                </button>
-              ))}
-            </div>
-          )}
-        </>
+        <div className="feedback-list">
+          {feedbacks.map((feedback) => (
+            <FeedbackCard key={feedback.feedbackId} feedback={feedback} />
+          ))}
+        </div>
       )}
     </section>
   );

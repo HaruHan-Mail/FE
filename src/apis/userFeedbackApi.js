@@ -17,26 +17,21 @@ export const submitFeedback = async (data) => {
   return response.data;
 };
 
-// 피드백 목록 조회 - 테스트 모드와 실제 API 호출 모드를 구분
-export const fetchFeedbacks = async (isTest = false, page = 1, limit = 10) => {
+// 피드백 목록 조회
+export const fetchFeedbacks = async (isTest = false) => {
   // 테스트 모드일 경우 목업 데이터 반환
   if (isTest) {
     return {
       stateCode: 200,
       message: "요청이 성공적으로 처리되었습니다.",
-      data: {
-        feedbacks: mockFeedbacks,
-        totalCount: mockFeedbacks.length,
-        currentPage: 1,
-        totalPages: 1
-      }
+      data: mockFeedbacks
     };
   }
   
-  // 실제 API 호출 (백엔드 API 개발 후 활성화)
+  // 실제 API 호출
   try {
-    const response = await axios.get(`${BASE_URL}/feedbacks`, {
-      params: { page, limit },
+    
+    const response = await axios.get(`${BASE_URL}/feedback`, {
       headers: {
         'Content-Type': 'application/json',
       },

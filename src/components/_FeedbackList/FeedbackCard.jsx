@@ -18,11 +18,11 @@ const FeedbackCard = ({ feedback }) => {
     <div className="feedback-card">
       <div className="feedback-card-header">
         <span className="feedback-card-date">
-          {formatDate(feedback.create_at)}
+          {formatDate(feedback.createdAt)}
         </span>
       </div>
       <div className="feedback-card-content">
-        <p>{feedback.feedback_content}</p>
+        <p>{feedback.feedbackContent}</p>
       </div>
       <div className="feedback-card-quote-icon">❝</div>
     </div>
