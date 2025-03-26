@@ -8,6 +8,6 @@ export const getPopularContent = async () => {
 };
 
 export const getAllContents = async ({ email }) => {
-  const response = await axios.get(`${BASE_URL}/content/mine${email}`);
+  const response = await axios.get(`${BASE_URL}/content/mine/${email}`);
   return response.data;
 };
