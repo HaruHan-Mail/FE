@@ -6,6 +6,7 @@ import Policy from './pages/Policy.jsx';
 import Unsubscribe from './pages/Unsubscribe.jsx';
 import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
+import FeedbackList from './pages/FeedbackList.jsx'; // 추가된 부분
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/setting',
     element: <Setting />,
+  },
+  {
+    path: '/feedbacks', // 추가된 라우트
+    element: <FeedbackList />,
   },
   {
     path: '/*',
