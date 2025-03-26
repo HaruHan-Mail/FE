@@ -1,27 +1,24 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { getAllContents } from '../../apis/userContentApi';
-import ContentItem from './ContentItem';
+import { useQueryParams } from '../../hooks/useQueryParams';
+import { fetchAllContents } from '../../apis/userContentApi';
+import { fetchAllBookmarkContents } from '../../apis/userBookmarkApi';
+import ContentList from './ContentList';
+import ContentTabs from './ContentTabs';
 import './css/ContentSection.css';
 
 const ContentSection = () => {
-  const [searchParams] = useSearchParams();
-  const email = searchParams.get('email');
+  const { email } = useQueryParams();
 
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState(['all', 'bookmark']);
   const [contents, setContents] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [bookmarks, setBookmarks] = useState([]);
 
+  // API 호출: 전체 콘텐츠
   useEffect(() => {
     const fetchContents = async () => {
-      if (!email) {
-        console.log('이메일이 제공되지 않았습니다.');
-        return;
-      }
-      console.log('콘텐츠를 가져옵니다. 이메일:', email);
+      if (!email) return;
       try {
-        const result = await getAllContents({ email });
-        console.log('API 응답:', result);
+        const result = await fetchAllContents({ email });
         if (result.stateCode === 200) {
           setContents(result.data);
         } else {
@@ -35,50 +32,54 @@ const ContentSection = () => {
     fetchContents();
   }, [email]);
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
+  // API 호출: 북마크한 콘텐츠
+  useEffect(() => {
+    const fetchBookmarks = async () => {
+      if (!email) return;
+      try {
+        const result = await fetchAllBookmarkContents({ email });
+        if (result.stateCode === 200) {
+          setBookmarks(result.data);
+        } else {
+          console.error('북마크 API 요청 실패:', result.message);
+        }
+      } catch (err) {
+        console.error('북마크 콘텐츠 불러오기 실패:', err);
+      }
+    };
 
-  const displayContents =
-    activeTab === 'favorites'
-      ? contents.filter((content) => favorites.includes(content.id))
-      : contents;
+    fetchBookmarks();
+  }, [email]);
+
+  const handleTabChange = (tab) => {
+    setActiveTab([tab]);
+  };
 
   return (
     <div className="content-section-container">
       <h1 className="content-section-title">나의 하루한 콘텐츠</h1>
       <p className="content-section-subtitle">지금까지 받아보신 모든 하루한 지식을 확인하세요</p>
 
-      <div className="content-tabs">
-        <button
-          className={`content-tab ${activeTab === 'all' ? 'active' : ''}`}
-          onClick={() => handleTabChange('all')}
-        >
-          전체 지식
-        </button>
-        <button
-          className={`content-tab ${activeTab === 'favorites' ? 'active' : ''}`}
-          onClick={() => handleTabChange('favorites')}
-        >
-          찜한 지식{' '}
-          {favorites.length > 0 && <span className="favorite-count">{favorites.length}</span>}
-        </button>
-      </div>
+      <ContentTabs
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
+        bookmarkCount={bookmarks.length}
+      />
 
-      {displayContents.length === 0 ? (
-        <div className="content-empty">
-          {activeTab === 'favorites' ? (
-            <p>찜한 지식이 없습니다. 마음에 드는 지식을 찜해보세요!</p>
-          ) : (
+      {activeTab[0] === 'all' ? (
+        contents.length === 0 ? (
+          <div className="content-empty">
             <p>아직 받은 지식이 없습니다.</p>
-          )}
+          </div>
+        ) : (
+          <ContentList contents={contents} />
+        )
+      ) : bookmarks.length === 0 ? (
+        <div className="content-empty">
+          <p>북마크한 지식이 없습니다. 마음에 드는 지식을 북마크해보세요!</p>
         </div>
       ) : (
-        <div className="content-grid">
-          {displayContents.map((content) => (
-            <ContentItem key={content.id} content={content} />
-          ))}
-        </div>
+        <ContentList contents={bookmarks} />
       )}
     </div>
   );

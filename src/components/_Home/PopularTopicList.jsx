@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PopularTopicItem from './PopularTopicItem';
 import './css/PopularTopicList.css';
 import useShowcaseAnimation from '../../hooks/useShowcaseAnimation';
-import { getPopularContent } from '../../apis/userContentApi';
+import { fetchPopularContent } from '../../apis/userContentApi';
 import { getPopularImages } from '../../utils/getPopularImages';
 
 const PopularTopicList = () => {
@@ -14,7 +14,7 @@ const PopularTopicList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await getPopularContent();
+        const res = await fetchPopularContent();
         setPopularData(res.data);
       } catch (error) {
         console.error('인기 콘텐츠 불러오기 실패:', error);
