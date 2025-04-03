@@ -1,5 +1,5 @@
 import MailLayout from '../components/Layout/MailLayout';
-import ContentDetailSection from '../components/_ContentDetail/ContentDetailSection';
+import ContentDetailSection from '../components/_Content/ContentDetailSection';
 
 const ContentDetail = () => {
   return (
