@@ -13,6 +13,7 @@ import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 import RouteGuard from './components/common/RouteGuard.jsx';
 import Admin from './pages/Admin.jsx';
+import AdminRouteGuard from './components/common/AdminRouteGuard.jsx';
 
 const queryClient = new QueryClient();
 
@@ -67,7 +68,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <Admin />,
+    element: (
+      <AdminRouteGuard>
+        <Admin />
+      </AdminRouteGuard>
+    ),
   },
   {
     path: '/*',

@@ -2,6 +2,18 @@ import axios from 'axios';
 
 const BASE_URL = 'https://haruhan.site/api';
 
+// 관리자 코드 검증
+export const verifyAdminCode = async (code) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/user/admin/${code}`);
+    console.log(code, response);
+    return response.data.stateCode;
+  } catch (error) {
+    console.error('관리자 코드 검증 실패:', error);
+    throw error;
+  }
+};
+
 // 전체 피드백 조회
 export const fetchAllFeedback = async () => {
   try {
