@@ -39,15 +39,16 @@ const FeedbackSection = () => {
 
   return (
     <section className="feedback-container">
-      <div className='feedback-wrapper'>
+      <div className="feedback-wrapper">
         <h1 className="feedback-title">HaruHan 피드백</h1>
         <textarea
           className="feedback-textarea"
-          maxLength="500"
-          placeholder="HaruHan 서비스에 관한 피드백을 자유롭게 입력해주세요. (최대 500자)"
+          maxLength="100"
+          placeholder="HaruHan 서비스에 관한 피드백을 입력해주세요. (최대 100자)"
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         ></textarea>
+        <span className="feedback-count">{feedback.length} / 100</span>
         <SubmitButton text="제출" onClick={handleFeedbackSubmit} />
       </div>
     </section>
