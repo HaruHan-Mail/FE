@@ -3,9 +3,11 @@ import axios from 'axios';
 const BASE_URL = 'https://haruhan.site/api';
 
 // 사용자의 찜한 컨텐츠 목록 조회
-export const fetchAllBookmarkContents = async (email) => {
+export const fetchAllBookmarkContents = async ({ email, token }) => {
   try {
-    const response = await axios.get(`${BASE_URL}/bookmark/${email}`);
+    const response = await axios.get(`${BASE_URL}/bookmark`, {
+      params: { email, token } // ✅ params로 감싸야 함
+    });
     return response.data;
   } catch (error) {
     console.error('찜한 컨텐츠 목록 조회 실패:', error);

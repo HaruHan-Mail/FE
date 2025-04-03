@@ -11,6 +11,7 @@ import Setting from './pages/Setting.jsx';
 import Content from './pages/Content.jsx';
 import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
+import RouteGuard from './components/common/RouteGuard.jsx';
 
 const queryClient = new QueryClient();
 
@@ -25,23 +26,43 @@ const router = createBrowserRouter([
   },
   {
     path: '/unsubscribe',
-    element: <Unsubscribe />,
+    element: (
+      <RouteGuard >
+        <Unsubscribe />
+      </RouteGuard>
+    ),
   },
   {
     path: '/feedback',
-    element: <Feedback />,
+    element: (
+      <RouteGuard >
+        <Feedback />
+      </RouteGuard>
+    ),
   },
   {
     path: '/setting',
-    element: <Setting />,
+    element: (
+      <RouteGuard >
+        <Setting />
+      </RouteGuard>
+    ),
   },
   {
     path: '/content',
-    element: <Content />,
+    element: (
+      <RouteGuard>
+        <Content />
+      </ RouteGuard>
+    ),
   },
   {
     path: '/content/mine',
-    element: <ContentDetail />,
+    element: (
+      <RouteGuard >
+        <ContentDetail />
+      </RouteGuard >
+  ),
   },
   {
     path: '/*',

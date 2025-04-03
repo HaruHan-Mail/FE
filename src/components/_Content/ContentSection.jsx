@@ -7,7 +7,7 @@ import ContentTabs from './ContentTabs';
 import './css/ContentSection.css';
 
 const ContentSection = () => {
-  const { email } = useQueryParams();
+  const { email,token } = useQueryParams();
 
   const [activeTab, setActiveTab] = useState(['all', 'bookmark']);
   const [contents, setContents] = useState([]);
@@ -37,7 +37,7 @@ const ContentSection = () => {
     const fetchBookmarks = async () => {
       if (!email) return;
       try {
-        const result = await fetchAllBookmarkContents({ email });
+        const result = await fetchAllBookmarkContents({ email, token });
         if (result.stateCode === 200) {
           setBookmarks(result.data);
         } else {
