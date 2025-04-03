@@ -12,6 +12,7 @@ import Content from './pages/Content.jsx';
 import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 import RouteGuard from './components/common/RouteGuard.jsx';
+import Admin from './pages/Admin.jsx';
 
 const queryClient = new QueryClient();
 
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
   {
     path: '/unsubscribe',
     element: (
-      <RouteGuard >
+      <RouteGuard>
         <Unsubscribe />
       </RouteGuard>
     ),
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
   {
     path: '/feedback',
     element: (
-      <RouteGuard >
+      <RouteGuard>
         <Feedback />
       </RouteGuard>
     ),
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
   {
     path: '/setting',
     element: (
-      <RouteGuard >
+      <RouteGuard>
         <Setting />
       </RouteGuard>
     ),
@@ -53,16 +54,20 @@ const router = createBrowserRouter([
     element: (
       <RouteGuard>
         <Content />
-      </ RouteGuard>
+      </RouteGuard>
     ),
   },
   {
     path: '/content/mine',
     element: (
-      <RouteGuard >
+      <RouteGuard>
         <ContentDetail />
-      </RouteGuard >
-  ),
+      </RouteGuard>
+    ),
+  },
+  {
+    path: '/admin',
+    element: <Admin />,
   },
   {
     path: '/*',
