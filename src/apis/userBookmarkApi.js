@@ -6,7 +6,7 @@ const BASE_URL = 'https://haruhan.site/api';
 export const fetchAllBookmarkContents = async ({ email, token }) => {
   try {
     const response = await axios.get(`${BASE_URL}/bookmark`, {
-      params: { email, token } // ✅ params로 감싸야 함
+      params: { email, token }
     });
     return response.data;
   } catch (error) {
@@ -34,9 +34,7 @@ export const saveBookmarkContent = async (email, token, contentId) => {
 export const deleteBookmarkContent = async (email, token, contentId) => {
   try {
     const response = await axios.delete(`${BASE_URL}/bookmark`, {
-      email,
-      token,
-      contentId,
+      data: { email, token, contentId },
     });
     return response.data;
   } catch (error) {

@@ -1,17 +1,14 @@
 import React from 'react';
 import './css/ContentItem.css';
 
-const ContentItem = ({
-  content,
-  onClick,
-  isBookmark,
-  favoriteLoading = false,
-  favoriteError = null,
-}) => {
+const ContentItem = ({ content, onClick, isBookmark, onFavoriteToggle }) => {
+  const contentId = content.id || content.contentId;
+
   const handleFavoriteClick = (event) => {
     event.stopPropagation();
-    console.log('즐겨찾기 클릭');
-    // 즐겨찾기 API 호출 로직 추가 가능
+    if (onFavoriteToggle) {
+      onFavoriteToggle(contentId, isBookmark);
+    }
   };
 
   return (
@@ -22,13 +19,11 @@ const ContentItem = ({
         <button
           className={`content-card-favorite ${isBookmark ? 'favorited' : ''}`}
           onClick={handleFavoriteClick}
-          disabled={favoriteLoading}
           title={isBookmark ? '찜한 컨텐츠입니다' : '찜하기'}
         >
-          {favoriteLoading ? '...' : isBookmark ? '❤️' : '🤍'}
+          {isBookmark ? '❤️' : '🤍'}
         </button>
       </div>
-      {favoriteError && <div className="content-card-error">{favoriteError}</div>}
     </div>
   );
 };

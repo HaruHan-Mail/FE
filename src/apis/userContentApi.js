@@ -7,7 +7,9 @@ export const fetchPopularContent = async () => {
   return response.data;
 };
 
-export const fetchAllContents = async ({ email }) => {
-  const response = await axios.get(`${BASE_URL}/content/mine/${email}`);
+export const fetchAllContents = async ({ email, token }) => {
+  const response = await axios.get(`${BASE_URL}/content/mine`, {
+    params: {email, token}
+  });
   return response.data;
 };

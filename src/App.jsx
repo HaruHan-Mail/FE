@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/content',
+    path: '/content/mine',
     element: (
       <RouteGuard>
         <Content />
@@ -57,11 +57,9 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/content/mine',
+    path: '/content/:id',
     element: (
-      <RouteGuard >
         <ContentDetail />
-      </RouteGuard >
   ),
   },
   {
