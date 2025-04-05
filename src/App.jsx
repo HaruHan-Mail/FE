@@ -12,8 +12,10 @@ import Content from './pages/Content.jsx';
 import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 import RouteGuard from './components/common/RouteGuard.jsx';
+import TeamInfo from './pages/TeamInfo.jsx';
 
 const queryClient = new QueryClient();
+
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
     element: (
         <ContentDetail />
   ),
+  },
+  {
+    path: '/teamInfo',
+    element: <TeamInfo />,
   },
   {
     path: '/*',
