@@ -4,7 +4,6 @@ import AddContentSection from './AddContentSection';
 import FeedbackListSection from './FeedbackListSection';
 
 const AdminSection = () => {
-  // 탭 관리 상태변수
   const [activeTab, setActiveTab] = useState('feedback');
 
   return (

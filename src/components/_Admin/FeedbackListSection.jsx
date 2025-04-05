@@ -3,7 +3,6 @@ import './css/FeedbackListSection.css';
 import { fetchAllFeedback } from '../../apis/adminApi';
 
 const FeedbackListSection = () => {
-  // 피드백 목록 저장 상태변수
   const [feedbackList, setFeedbackList] = useState([]);
 
   useEffect(() => {

@@ -6,21 +6,20 @@ import { saveNewContent } from '../../apis/adminApi.js';
 const AddContentSection = () => {
   const [contentData, setContentData] = useState({});
 
-  const stringFields = ['title', 'summary'];
-
   const handleInputChange = (title, value) => {
-    const parsedValue = stringFields.includes(title)
-      ? value
-      : value.split(',').map((v) => v.trim());
-
     setContentData((prev) => ({
       ...prev,
-      [title]: parsedValue,
+      [title]: value,
     }));
   };
 
-  const handleSubmitButton = () => {
-    const response = saveNewContent(contentData);
+  const handleSubmitButton = async () => {
+    try {
+      const response = await saveNewContent(contentData);
+      console.log(response)
+    } catch (err) {
+      console.error('콘텐츠 저장 실패:', err);
+    }
   };
 
   return (
@@ -28,12 +27,21 @@ const AddContentSection = () => {
       {contentRequest.map((item, index) => (
         <div key={index} className="add-content-field">
           <label className="add-content-label">{item.label}</label>
-          <input
-            className="add-content-text"
-            type="text"
-            placeholder={item.placeholder}
-            onChange={(e) => handleInputChange(item.title, e.target.value)}
-          ></input>
+          {item.title === 'title' ? (
+            <input
+              className="add-content-text"
+              type="text"
+              placeholder={item.placeholder}
+              onChange={(e) => handleInputChange(item.title, e.target.value)}
+            />
+          ) : (
+            <textarea
+              className="add-content-text"
+              placeholder={item.placeholder}
+              onChange={(e) => handleInputChange(item.title, e.target.value)}
+              rows={4}
+            />
+          )}
         </div>
       ))}
       <div className="add-content-submit-wrapper">
