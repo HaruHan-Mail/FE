@@ -13,6 +13,9 @@ import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 import RouteGuard from './components/common/RouteGuard.jsx';
 import TeamInfo from './pages/TeamInfo.jsx';
+import Admin from './pages/Admin.jsx';
+import AdminRouteGuard from './components/common/AdminRouteGuard.jsx';
+
 
 const queryClient = new QueryClient();
 
@@ -29,7 +32,7 @@ const router = createBrowserRouter([
   {
     path: '/unsubscribe',
     element: (
-      <RouteGuard >
+      <RouteGuard>
         <Unsubscribe />
       </RouteGuard>
     ),
@@ -37,7 +40,7 @@ const router = createBrowserRouter([
   {
     path: '/feedback',
     element: (
-      <RouteGuard >
+      <RouteGuard>
         <Feedback />
       </RouteGuard>
     ),
@@ -45,7 +48,7 @@ const router = createBrowserRouter([
   {
     path: '/setting',
     element: (
-      <RouteGuard >
+      <RouteGuard>
         <Setting />
       </RouteGuard>
     ),
@@ -55,7 +58,7 @@ const router = createBrowserRouter([
     element: (
       <RouteGuard>
         <Content />
-      </ RouteGuard>
+      </RouteGuard>
     ),
   },
   {
@@ -67,6 +70,14 @@ const router = createBrowserRouter([
   {
     path: '/teamInfo',
     element: <TeamInfo />,
+  },
+  {
+    path: '/admin',
+    element: (
+      <AdminRouteGuard>
+        <Admin />
+      </AdminRouteGuard>
+    )
   },
   {
     path: '/*',
@@ -81,7 +92,6 @@ function App() {
       <RouterProvider router={router} />
     </QueryClientProvider>
   );
-  // return <RouterProvider router={router} />;
 }
 
 export default App;
