@@ -1,36 +1,35 @@
 .HeaderContainer {
   width: 100vw;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  /* 헤더 상단 고정 */
   position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
-
   padding: 10px 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 /* 스크롤 시 헤더 스타일 지정 */
-#Scrolled {
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+.HeaderContainer.scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);
 }
 
 .HeaderLinkContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-
   gap: 20px;
 }
 
 .HeaderLogoImage {
   width: 6.5rem;
   height: auto;
+  cursor: pointer;
 }
 
 .HeaderTeamInfoLink {
@@ -38,7 +37,6 @@
   height: auto;
   margin-top: 0.1rem;
   font-size: 1rem;
-  /* a 태그 스타일 지정 */
   text-decoration-line: none;
 }
 
@@ -57,7 +55,6 @@
 .HeaderSubscribeButton {
   width: auto;
   height: auto;
-
   font-size: 0.9rem;
   padding: 0.8rem 1.2rem;
   background-color: var(--primary);
@@ -66,7 +63,7 @@
   border: 0;
 }
 
-/* 반응형 구현 */
+/* 반응형 */
 @media (min-width: 1024px) {
   .HeaderContainer {
     padding: 10px 80px;

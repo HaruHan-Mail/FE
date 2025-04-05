@@ -1,4 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import './App.css';
 import Home from './pages/Home.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -6,7 +8,17 @@ import Policy from './pages/Policy.jsx';
 import Unsubscribe from './pages/Unsubscribe.jsx';
 import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
+import Content from './pages/Content.jsx';
+import ContentDetail from './pages/ContentDetail.jsx';
 import LoadingWrapper from './components/common/LoadingWrapper.jsx';
+import RouteGuard from './components/common/RouteGuard.jsx';
+import TeamInfo from './pages/TeamInfo.jsx';
+import Admin from './pages/Admin.jsx';
+import AdminRouteGuard from './components/common/AdminRouteGuard.jsx';
+
+
+const queryClient = new QueryClient();
+
 
 const router = createBrowserRouter([
   {
@@ -19,15 +31,53 @@ const router = createBrowserRouter([
   },
   {
     path: '/unsubscribe',
-    element: <Unsubscribe />,
+    element: (
+      <RouteGuard>
+        <Unsubscribe />
+      </RouteGuard>
+    ),
   },
   {
     path: '/feedback',
-    element: <Feedback />,
+    element: (
+      <RouteGuard>
+        <Feedback />
+      </RouteGuard>
+    ),
   },
   {
     path: '/setting',
-    element: <Setting />,
+    element: (
+      <RouteGuard>
+        <Setting />
+      </RouteGuard>
+    ),
+  },
+  {
+    path: '/content/mine',
+    element: (
+      <RouteGuard>
+        <Content />
+      </RouteGuard>
+    ),
+  },
+  {
+    path: '/content/:id',
+    element: (
+        <ContentDetail />
+  ),
+  },
+  {
+    path: '/teamInfo',
+    element: <TeamInfo />,
+  },
+  {
+    path: '/admin',
+    element: (
+      <AdminRouteGuard>
+        <Admin />
+      </AdminRouteGuard>
+    )
   },
   {
     path: '/*',
@@ -37,7 +87,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools />
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 }
 
