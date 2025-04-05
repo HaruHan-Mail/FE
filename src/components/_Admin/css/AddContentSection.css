@@ -1,31 +1,27 @@
 .add-content-container {
   width: 100%;
-  height: 100%;
+  padding: 15px;
 }
 
 .add-content-field {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   margin-bottom: 1rem;
-  align-items: center;
-  justify-content: center;
 }
 
 .add-content-label {
-  width: 10%;
   font-size: 1.1rem;
   margin-bottom: 0.6rem;
   color: var(--black);
 }
 
 .add-content-text {
-  width: 80%;
   font-size: 0.9rem;
-  margin-bottom: 0.6rem;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 2px solid #ccc;
   color: var(--black);
+  margin-bottom: 0.6rem;
 }
 
 .add-content-text:focus {
@@ -33,10 +29,27 @@
   border-color: var(--primary);
 }
 
+.array-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.add-input-button {
+  align-self: flex-start;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .add-content-submit-wrapper {
   display: flex;
   justify-content: flex-end;
-  margin-right: 3%;
+  margin-top: 1rem;
 }
 
 .add-content-submit-button {

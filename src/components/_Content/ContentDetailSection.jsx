@@ -6,6 +6,8 @@ const ContentDetailSection = () => {
   const { state } = useLocation();
   const content = state?.content;
 
+  console.log(content)
+
   if (!content) {
     return <div>컨텐츠를 불러올 수 없습니다.</div>;
   }
@@ -34,7 +36,8 @@ const ContentDetailSection = () => {
       </ul>
       <h3 className="content-detail-section-text">📖 더 알고 싶다면</h3>
       <ul className="content-detail-section-list">
-        {(content.resource || []).map((item, index) => (
+        {(content.additionalResources
+ || []).map((item, index) => (
           <li key={index}>
             <a href={item} target="_blank" rel="noreferrer">
               {item}
