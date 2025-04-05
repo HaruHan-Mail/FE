@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './css/Header.css';
 import SubscriptionButton from '../common/SubscriptionButton';
 import LogoImg from '/src/assets/images/HaruhanLogo.png';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,14 +31,7 @@ const Header = () => {
         />
       </div>
       <div className="HeaderLinkContainer">
-        <a
-          className="HeaderTeamInfoLink"
-          target="_blank"
-          href="https://www.notion.so/Inside-Insight-16b39551f55a80c38a65dd3c3057b969"
-          rel="noreferrer"
-        >
-          팀 소개
-        </a>
+        <a onClick={() => nav("/teamInfo")}>팀 소개</a>
         <SubscriptionButton size={'Medium'} />
       </div>
     </section>
