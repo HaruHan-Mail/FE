@@ -13,3 +13,8 @@ export const fetchAllContents = async ({ email, token }) => {
   });
   return response.data;
 };
+
+export const fetchContentDetail = async ({ contentId }) => {
+  const response = await axios.get(`${BASE_URL}/content/${contentId}`);
+  return response.data;
+};

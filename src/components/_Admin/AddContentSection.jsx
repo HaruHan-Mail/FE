@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './css/AddContentSection.css';
 import { contentRequest } from '../../mocks/addContentRequest.js';
 import { saveNewContent } from '../../apis/adminApi.js';
+import Swal from 'sweetalert2'; 
+
 
 const initialData = {
   title: "",
@@ -51,11 +53,34 @@ const AddContentSection = () => {
     try {
       console.log("전송할 데이터:", contentData);
       const response = await saveNewContent(contentData);
-      console.log("응답:", response);
+
+      console.log(response)
+  
+      if (response?.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: '제출 성공!',
+          text: '컨텐츠가 성공적으로 추가되었습니다.',
+        });
+  
+        setContentData(initialData); 
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: '제출 실패',
+          text: '다시 시도해주세요.',
+        });
+      }
     } catch (err) {
       console.error("콘텐츠 저장 실패:", err);
+      Swal.fire({
+        icon: 'error',
+        title: '제출 중 오류 발생',
+        text: '서버와의 통신 중 문제가 발생했습니다.',
+      });
     }
   };
+  
 
   return (
     <section className="add-content-container">

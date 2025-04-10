@@ -62,10 +62,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/content/:id',
+    path: '/content/:contentId',
     element: (
         <ContentDetail />
-  ),
+    ),
   },
   {
     path: '/teamInfo',
