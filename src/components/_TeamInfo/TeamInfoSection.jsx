@@ -19,7 +19,11 @@ const TeamInfoSection = () => {
         <h3 className="team-info-section-title">
           <span className="team-info-section-highlight">HaruHan 지식</span>이란?
         </h3>
-        <p className="team-info-section-text">{teamInfo.serviceInfo}</p>
+        <ul className="team-info-section-text-list">
+          {teamInfo.serviceInfo.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
       </div>
 
       {/* 비전 */}
@@ -27,7 +31,11 @@ const TeamInfoSection = () => {
         <h3 className="team-info-section-title">
           <span className="team-info-section-highlight">HaruHan 지식</span>의 비전
         </h3>
-        <p className="team-info-section-text">{teamInfo.vision}</p>
+        <ul className="team-info-section-text-list">
+          {teamInfo.vision.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
       </div>
 
       {/* 목표 */}

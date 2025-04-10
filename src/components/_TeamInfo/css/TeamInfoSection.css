@@ -43,8 +43,19 @@
   list-style: none;
 }
 
+.team-info-section-text-list {
+  font-size: 1rem;
+  line-height: 2em;
+  list-style: none;
+  color: var(--d-grey);
+}
+
+.team-info-section-text-list li {
+  margin-bottom: 0.5rem;
+}
+
 .team-info-section-list {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 2em;
   list-style: none;
   color: var(--d-grey);

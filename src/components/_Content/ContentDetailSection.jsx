@@ -1,16 +1,30 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchContentDetail } from '../../apis/userContentApi';
 import './css/ContentDetailSection.css';
 
 const ContentDetailSection = () => {
-  const { state } = useLocation();
-  const content = state?.content;
+  const { contentId } = useParams();
+  const [content, setContent] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  console.log(content)
+  useEffect(() => {
+    const fetchDetail = async () => {
+      try {
+        const result = await fetchContentDetail({ contentId });
+        setContent(result.data);
+      } catch (err) {
+        console.error('콘텐츠 상세 정보 불러오기 실패:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!content) {
-    return <div>컨텐츠를 불러올 수 없습니다.</div>;
-  }
+    fetchDetail();
+  }, [contentId]);
+
+  if (loading) return <div>로딩 중...</div>;
+  if (!content) return <div>컨텐츠를 불러올 수 없습니다.</div>;
 
   return (
     <section className="content-detail-section-container">
@@ -36,8 +50,7 @@ const ContentDetailSection = () => {
       </ul>
       <h3 className="content-detail-section-text">📖 더 알고 싶다면</h3>
       <ul className="content-detail-section-list">
-        {(content.additionalResources
- || []).map((item, index) => (
+        {(content.additionalResources || []).map((item, index) => (
           <li key={index}>
             <a href={item} target="_blank" rel="noreferrer">
               {item}
