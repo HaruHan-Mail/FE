@@ -1,0 +1,58 @@
+ -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HaruHan - 일상의 교양을 전달하는 메일 서비스">
+  <title>HaruHan - 환영합니다</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- 웹폰트 추가 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <section class="mail-preview">
+    <span>HaruHan 구독을 환영합니다!</span>
+  </section>
+
+  <div class="email-container">
+    <div class="email-card">
+      <a href="#" class="logo">HaruHan</a>
+
+      <p class="question-title">환영합니다</p>
+      <div class="img-container">
+        <img src="./prototype.png" alt="HaruHan 환영 이미지" />
+      </div>
+
+      <div class="question-box">
+        <p>안녕하세요! <span th:text="${subscriberName}">구독자</span>님</p>
+        <p>HaruHan의 <strong><span th:text="${subscriberNumber}">000</span>번째 구독자</strong>가 되신 것을 진심으로 환영합니다.</p>
+        <p>앞으로 매일 하나씩, 흥미로운 교양 지식을 보내드릴게요.</p>
+      </div>
+
+      <p class="description">
+        하루한 지식과 함께 매일 새로운 시선으로 세상을 바라보세요!
+      </p>
+
+      <a th:href="@{}" class="btn-primary">
+        지식 모아보기
+      </a>
+
+      <div class="footer-links">
+        <a th:href="@{}">질문 모아보기</a>
+        <span>|</span>
+        <a th:href="@{}">설정</a>
+        <span>|</span>
+        <a th:href="@{}">구독 해지</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
