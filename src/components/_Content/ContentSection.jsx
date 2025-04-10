@@ -13,6 +13,7 @@ const ContentSection = () => {
   const [contents, setContents] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
 
+
   // API 호출: 전체 콘텐츠
   useEffect(() => {
     const fetchContents = async () => {
