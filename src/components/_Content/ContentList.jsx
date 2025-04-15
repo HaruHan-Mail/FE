@@ -14,7 +14,7 @@ const ContentList = ({ contents, isBookmark, onFavoriteToggle }) => {
           content={content}
           isBookmark={isBookmark}
           onClick={() =>
-            navigate(`/content/${content.id || content.contentId}`, { state: { content } })
+            navigate(`/content/${content.id || content.contentId}`)
           }
           onFavoriteToggle={onFavoriteToggle}
         />

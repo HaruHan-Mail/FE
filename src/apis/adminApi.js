@@ -29,7 +29,7 @@ export const fetchAllFeedback = async () => {
 export const saveNewContent = async (data) => {
   try {
     const response = await axios.post(`${BASE_URL}/content`, data);
-    return response.stateCode;
+    return response;
   } catch (error) {
     console.error('컨텐츠 추가 실패:', error);
     throw error;
