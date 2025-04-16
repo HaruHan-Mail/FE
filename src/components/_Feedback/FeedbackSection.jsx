@@ -8,13 +8,25 @@ const FeedbackSection = () => {
   const [feedback, setFeedback] = useState('');
 
   const handleFeedbackSubmit = async () => {
+    // 공백만 입력했거나, 아무 것도 입력 안 했을 때 경고
+    if (!feedback.trim()) {
+      await Swal.fire({
+        icon: 'warning',
+        title: '피드백이 비어있습니다.',
+        text: '내용을 입력한 후 제출해주세요!',
+        confirmButtonColor: '#e86912',
+        confirmButtonText: '확인',
+      });
+      return;
+    }
+
     const result = await Swal.fire({
       icon: 'question',
       title: '피드백을 제출하시겠습니까?',
       text: '피드백을 제출하고 입력창을 초기화합니다!',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#e86912',
+      cancelButtonColor: '#717171',
       confirmButtonText: '제출',
       cancelButtonText: '취소',
     });
@@ -29,6 +41,8 @@ const FeedbackSection = () => {
             icon: 'success',
             title: '피드백 제출 완료',
             text: '피드백 제출을 성공적으로 완료하였습니다!',
+            confirmButtonColor: '#e86912',
+            confirmButtonText: '확인',
           });
         }
       } catch (error) {
