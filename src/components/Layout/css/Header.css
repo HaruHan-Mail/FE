@@ -9,7 +9,10 @@
   left: 0;
   z-index: 1000;
   padding: 10px 20px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    backdrop-filter 0.3s ease;
 }
 
 /* 스크롤 시 헤더 스타일 지정 */
@@ -50,6 +53,7 @@
 
 .HeaderContainer a:hover {
   color: var(--primary);
+  cursor: pointer;
 }
 
 .HeaderSubscribeButton {
