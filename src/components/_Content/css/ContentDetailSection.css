@@ -56,21 +56,22 @@
   }
 
   .content-detail-section-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .content-detail-section-summary {
     font-size: 1rem;
-    line-height: 2rem;
+    line-height: 1.5rem;
   }
 
   .content-detail-section-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .content-detail-section-list {
-    font-size: 0.95rem;
+    font-size: 1rem;
     padding-left: 1.5rem;
     padding-right: 1rem;
+    line-height: 1.5rem;
   }
 }
