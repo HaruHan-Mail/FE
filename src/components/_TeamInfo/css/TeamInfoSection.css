@@ -74,3 +74,21 @@
   background: var(--primary);
   color: var(--white);
 }
+
+@media (max-width: 1024px) {
+  .team-info-section {
+    font-size: 1.45rem;
+  }
+
+  .team-info-section-title {
+    font-size: 1.35rem;
+  }
+
+  .team-info-section-list {
+    font-size: 0.9rem;
+  }
+
+  .team-info-section-list {
+    font-size: 0.9rem;
+  }
+}
