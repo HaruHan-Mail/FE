@@ -6,7 +6,7 @@ const BASE_URL = 'https://haruhan.site/api';
 export const fetchAllBookmarkContents = async ({ email, token }) => {
   try {
     const response = await axios.get(`${BASE_URL}/bookmark`, {
-      params: { email, token }
+      params: { email, token },
     });
     return response.data;
   } catch (error) {

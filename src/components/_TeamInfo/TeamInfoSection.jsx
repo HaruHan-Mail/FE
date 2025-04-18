@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './css/TeamInfoSection.css';
 import { teamInfo } from '../../mocks/teamInfoData';
 
@@ -8,6 +8,10 @@ const fadeInUp = {
 };
 
 const TeamInfoSection = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="team-info-section-container">
       <h1 className="team-info-section" initial="hidden" animate="visible" variants={fadeInUp}>
