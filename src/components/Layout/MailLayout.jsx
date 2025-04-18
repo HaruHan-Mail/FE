@@ -7,12 +7,11 @@ const MailLayout = ({ children }) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        height: '100vh',
-        justifyContent: 'space-between',
+        minHeight: '100vh',
       }}
     >
       <MailHeader />
-      {children}
+      <main style={{ flex: 1 }}>{children}</main>
       <Footer />
     </div>
   );

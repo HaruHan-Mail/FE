@@ -39,10 +39,10 @@
 }
 
 .content-detail-section-list a {
-  text-decoration-line: none; /* 밑줄 제거 */
+  text-decoration-line: none;
   color: var(--grey);
-  word-break: break-all; /* 단어 중간이라도 줄바꿈 허용 */
-  overflow-wrap: break-word; /* 너무 긴 단어 줄바꿈 허용 (대체 가능) */
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .content-detail-section-list a:hover {
@@ -51,8 +51,8 @@
 
 @media (max-width: 1024px) {
   .content-detail-section-container {
-    padding: 2.5rem;
-    margin: 3rem 2rem;
+    padding: 1.5rem 1rem;
+    margin: 2rem 1rem;
   }
 
   .content-detail-section-title {
@@ -61,17 +61,18 @@
 
   .content-detail-section-summary {
     font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.6rem;
   }
 
   .content-detail-section-text {
     font-size: 1.1rem;
+    line-height: 1.6rem;
   }
 
   .content-detail-section-list {
     font-size: 1rem;
     padding-left: 1.5rem;
     padding-right: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.6rem;
   }
 }
