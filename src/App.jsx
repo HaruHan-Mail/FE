@@ -10,7 +10,6 @@ import Feedback from './pages/Feedback.jsx';
 import Setting from './pages/Setting.jsx';
 import Content from './pages/Content.jsx';
 import ContentDetail from './pages/ContentDetail.jsx';
-import LoadingWrapper from './components/common/LoadingWrapper.jsx';
 import RouteGuard from './components/common/RouteGuard.jsx';
 import TeamInfo from './pages/TeamInfo.jsx';
 import Admin from './pages/Admin.jsx';
