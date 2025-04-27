@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   height: 200px;
-  border-left: 4px solid #ff8a00;
+  border-left: 4px solid var(--primary);
 }
 
 .content-card::before {
@@ -31,12 +31,6 @@
   box-shadow: 0 10px 20px rgba(255, 138, 0, 0.15);
 }
 
-.content-card-date {
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 0.5rem;
-}
-
 .content-card-title {
   color: #333;
   font-size: 1.2rem;
@@ -45,14 +39,13 @@
   line-height: 1.4;
 }
 
-.content-card-preview {
-  color: #666;
+.content-card-summary {
+  color: var(--d-grey);
   font-size: 0.9rem;
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -61,21 +54,8 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--white);
   padding-top: 0.75rem;
-}
-
-.content-card-tag {
-  background-color: #ffe8cc;
-  color: #ff8a00;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.content-card-icon {
-  font-size: 1.1rem;
 }
 
 .content-card-favorite {
@@ -100,11 +80,4 @@
 
 .content-card-favorite.favorited {
   color: #ff8a00;
-}
-
-.content-card-error {
-  color: #e74c3c;
-  font-size: 0.75rem;
-  margin-top: 0.5rem;
-  text-align: center;
 }
