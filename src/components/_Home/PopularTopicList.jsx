@@ -14,7 +14,7 @@ const PopularTopicList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPopularContent();
+        const { data } = await fetchPopularContent();
         setPopularData(data);
       } catch (error) {
         console.error('인기 콘텐츠 불러오기 실패:', error);

@@ -57,18 +57,11 @@ const Subscription = ({ onSuccess }) => {
         registrationDate,
       };
 
-      const responseData = await registerSubscription(data);
-      if (responseData.stateCode === 200) {
-        onSuccess(email, preferedTime, formState.isDaily);
-      }
+      await registerSubscription(data);
+      onSuccess(email, preferedTime, formState.isDaily);
     } catch (error) {
       console.error('구독 실패:', error);
       let errorMessage = '구독 처리 중 오류가 발생했습니다';
-      if (error.response?.data?.statusCode === 409) {
-        errorMessage = '이미 존재하는 이메일입니다.';
-      } else if (error.response?.status === 500) {
-        errorMessage = '백엔드 담당자에게 연락바람';
-      }
       setFormState((prev) => ({ ...prev, error: errorMessage }));
     } finally {
       setFormState((prev) => ({ ...prev, isSubmitting: false }));

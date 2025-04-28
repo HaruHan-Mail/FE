@@ -12,7 +12,7 @@ const ContentDetailSection = () => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const data = await fetchContentDetail({ contentId });
+        const { data } = await fetchContentDetail({ contentId });
         setContent(data);
       } catch (err) {
         console.error(err);

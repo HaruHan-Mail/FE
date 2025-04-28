@@ -8,6 +8,17 @@ const UnsubscribeSection = () => {
   const { email, token } = useQueryParams();
 
   const handleUnsubscribeSubmit = async () => {
+    // 이메일 또는 토큰이 없는 경우 오류 메시지 표시
+    if(!email || !token) {
+      await Swal.fire({
+        icon: 'error',
+        title: '이메일 또는 토큰이 없습니다',
+        confirmButtonColor: '#e86912',
+        confirmButtonText: '확인',
+      });
+      return;
+    }
+
     const result = await Swal.fire({
       icon: 'warning',
       title: '정말 구독을 해지하시겠습니까?',
@@ -20,22 +31,14 @@ const UnsubscribeSection = () => {
     });
 
     if (result.isConfirmed) {
-      try {
-        const data = { email, token };
-        const response = await cancelSubscription(data);
-
-        if (response.stateCode === 200) {
-          Swal.fire({
-            icon: 'success',
-            title: 'HaruHan 구독 해지 완료',
-            text: '구독이 해지되었습니다. 언제든 다시 찾아 주세요!',
-            confirmButtonColor: '#e86912',
-            confirmButtonText: '확인',
-          });
-        }
-      } catch (error) {
-        console.log('구독 해지 실패: ', error.message);
-      }
+      await cancelSubscription(email, token);
+      Swal.fire({
+        icon: 'success',
+        title: 'HaruHan 구독 해지 완료',
+        text: '구독이 해지되었습니다. 언제든 다시 찾아 주세요!',
+        confirmButtonColor: '#e86912',
+        confirmButtonText: '확인',
+      });
     }
   };
 
@@ -50,7 +53,7 @@ const UnsubscribeSection = () => {
         onClick={handleUnsubscribeSubmit}
         text="구독 해지"
         size="medium"
-        width="200px"
+        width="250px"
       />
     </section>
   );
