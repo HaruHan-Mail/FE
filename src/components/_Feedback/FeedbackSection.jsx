@@ -33,9 +33,7 @@ const FeedbackSection = () => {
 
     if (result.isConfirmed) {
       try {
-        const response = await submitFeedback(feedback);
-
-        if (response.stateCode === 200) {
+        await submitFeedback(feedback);
           setFeedback('');
           Swal.fire({
             icon: 'success',
@@ -44,7 +42,6 @@ const FeedbackSection = () => {
             confirmButtonColor: '#e86912',
             confirmButtonText: '확인',
           });
-        }
       } catch (error) {
         console.log('피드백 전송 실패: ', error.message);
       }

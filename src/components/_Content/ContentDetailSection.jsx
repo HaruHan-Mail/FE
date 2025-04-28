@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchContentDetail } from '../../apis/userContentApi';
 import './css/ContentDetailSection.css';
+import LoadingSpinner from '../common/LoadingSpinner';
 
 const ContentDetailSection = () => {
   const { contentId } = useParams();
@@ -22,7 +23,7 @@ const ContentDetailSection = () => {
     fetchContent();
   }, [contentId]);
 
-  if (loading) return <div>로딩 중...</div>;
+  if (loading) return <LoadingSpinner />;
   if (!content) return <div>컨텐츠를 불러올 수 없습니다.</div>;
 
   return (

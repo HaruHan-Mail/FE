@@ -21,7 +21,7 @@
 .content-detail-section-summary {
   width: 100%;
   font-size: 1.4rem;
-  line-height: 1.8;
+  line-height: 2;
   color: var(--d-grey);
   padding: 1rem 0;
   border-bottom: 2px solid var(--white-grey);

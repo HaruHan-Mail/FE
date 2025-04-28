@@ -45,15 +45,12 @@
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
 }
 
 .content-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
   border-top: 1px solid var(--white);
   padding-top: 0.75rem;
 }
@@ -75,9 +72,9 @@
 
 .content-card-favorite:hover {
   transform: scale(1.1);
-  background-color: #fff3e6;
+  background-color: var(--white-grey);
 }
 
 .content-card-favorite.favorited {
-  color: #ff8a00;
+  color: var(--primary);
 }
