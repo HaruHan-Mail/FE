@@ -1,20 +1,15 @@
-import axios from 'axios';
-
-const BASE_URL = 'https://haruhan.site/api';
+import axiosInstance from './axiosInstance';
 
 export const fetchPopularContent = async () => {
-  const response = await axios.get(`${BASE_URL}/content/top5`);
-  return response.data;
+  return await axiosInstance.get(`/content/top5`);
 };
 
 export const fetchAllContents = async ({ email, token }) => {
-  const response = await axios.get(`${BASE_URL}/content/mine`, {
+  return await axiosInstance.get(`/content/mine`, {
     params: {email, token}
   });
-  return response.data;
 };
 
 export const fetchContentDetail = async ({ contentId }) => {
-  const response = await axios.get(`${BASE_URL}/content/${contentId}`);
-  return response.data;
+  return await axiosInstance.get(`/content/${contentId}`);
 };

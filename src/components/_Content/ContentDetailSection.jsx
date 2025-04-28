@@ -9,18 +9,17 @@ const ContentDetailSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchDetail = async () => {
+    const fetchContent = async () => {
       try {
-        const result = await fetchContentDetail({ contentId });
-        setContent(result.data);
+        const data = await fetchContentDetail({ contentId });
+        setContent(data);
       } catch (err) {
-        console.error('콘텐츠 상세 정보 불러오기 실패:', err);
+        console.error(err);
       } finally {
         setLoading(false);
       }
     };
-
-    fetchDetail();
+    fetchContent();
   }, [contentId]);
 
   if (loading) return <div>로딩 중...</div>;

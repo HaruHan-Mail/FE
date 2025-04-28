@@ -15,7 +15,7 @@ const PopularTopicList = () => {
     const fetchData = async () => {
       try {
         const res = await fetchPopularContent();
-        setPopularData(res.data);
+        setPopularData(res);
       } catch (error) {
         console.error('인기 콘텐츠 불러오기 실패:', error);
       }
