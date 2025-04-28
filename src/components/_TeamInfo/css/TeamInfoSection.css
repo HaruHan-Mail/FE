@@ -76,6 +76,9 @@
 }
 
 @media (max-width: 1024px) {
+  .team-info-section-container {
+    padding: 2rem;
+  }
   .team-info-section {
     font-size: 1.45rem;
   }
@@ -90,5 +93,9 @@
 
   .team-info-section-list {
     font-size: 0.9rem;
+  }
+
+  .team-info-card {
+    padding: 2rem 1.5rem 2rem 1.5rem;
   }
 }
