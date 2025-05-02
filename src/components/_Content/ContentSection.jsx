@@ -42,6 +42,9 @@ const ContentSection = () => {
     }
   };
 
+  const bookmarkIdList = bookmarks.map((b) => b.id || b.contentId)
+
+
   return (
     <div className="content-section-container">
       <h1 className="content-section-title">나의 하루한 콘텐츠</h1>
@@ -62,6 +65,7 @@ const ContentSection = () => {
           <ContentList
             contents={contents}
             isBookmark={false}
+            bookmarkIdList={bookmarkIdList}
             onFavoriteToggle={toggleBookmark}
           />
         )
