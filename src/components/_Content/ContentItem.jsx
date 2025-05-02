@@ -1,9 +1,12 @@
 import React from 'react';
 import './css/ContentItem.css';
 
-const ContentItem = ({ content, onClick, isBookmark, onFavoriteToggle }) => {
+const ContentItem = ({ content, onClick, isBookmark, bookmarkIdList, onFavoriteToggle }) => {
   const contentId = content.id || content.contentId;
 
+  if(!isBookmark) {
+    isBookmark = bookmarkIdList.includes(contentId);
+  }
   const handleFavoriteClick = (event) => {
     event.stopPropagation();
     if (onFavoriteToggle) {

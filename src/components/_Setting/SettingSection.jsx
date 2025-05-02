@@ -32,11 +32,12 @@ const SettingSection = () => {
     }
     try {
       setLoading(true);
-      const result = await updateSubscriptionSettings(settings);
-      if (result.status === 200) {
+      console.log('>> request payload:', settings);
+      const data = await updateSubscriptionSettings(settings);
+      if (data.status === 200) {
         setMessage({ text: '설정이 성공적으로 업데이트되었습니다.', isError: false });
       } else {
-        setMessage({ text: result.message || '설정 업데이트에 실패했습니다.', isError: true });
+        setMessage({ text: data.message || '설정 업데이트에 실패했습니다.', isError: true });
       }
     } catch (error) {
       console.error('설정 업데이트 오류:', error);

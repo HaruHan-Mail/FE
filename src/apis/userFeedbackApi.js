@@ -1,11 +1,9 @@
-import axios from 'axios';
-
-const BASE_URL = 'https://haruhan.site/api';
+import axiosInstance from './axiosInstance';
 
 // 피드백 제출
 export const submitFeedback = async (data) => {
-  const response = await axios.post(
-    `${BASE_URL}/feedback`,
+  return await axiosInstance.post(
+    `/feedback`,
     { feedback_content: data },
     {
       headers: {
@@ -13,5 +11,4 @@ export const submitFeedback = async (data) => {
       },
     },
   );
-  return response.data;
 };

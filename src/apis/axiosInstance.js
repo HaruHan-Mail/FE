@@ -7,13 +7,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
     (response) => {
-        const { data } = response.data;
-        console.log(data)
+        const data = response.data;
         if (data.stateCode && data.stateCode !== 200) {
             console.error(`[API 오류], res.message: ${data.message}`);
             return Promise.reject(new Error(data.message));
         }
-
         return data;
     },
     (error) => {

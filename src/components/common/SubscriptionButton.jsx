@@ -8,7 +8,7 @@ const SubscriptionButton = ({ size = "medium" }) => {
   return (
     <>
       <button
-        onClick={openModal} // 함수 참조 전달
+        onClick={openModal}
         className={`subscription-button ${size.toLowerCase()}`}
       >
         구독하기

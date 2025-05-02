@@ -6,7 +6,6 @@ const BASE_URL = 'https://haruhan.site/api';
 export const verifyAdminCode = async (code) => {
   try {
     const response = await axios.get(`${BASE_URL}/user/admin/${code}`);
-    console.log(code, response);
     return response.data.stateCode;
   } catch (error) {
     console.error('관리자 코드 검증 실패:', error);
