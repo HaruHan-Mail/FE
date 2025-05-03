@@ -7,7 +7,7 @@ const DashboardSection = ({ dashboardStats, isLoading }) => {
     }
 
     return (
-      <>
+      <div className="dashboard-container">
         <h1 className="dashboard-title">대시보드</h1>
         <div className="dashboard-stats">
           {dashboardStats.map((stat, index) => (
@@ -17,7 +17,7 @@ const DashboardSection = ({ dashboardStats, isLoading }) => {
             </div>
           ))}
         </div>
-      </>
+      </div>
     );
   };
 

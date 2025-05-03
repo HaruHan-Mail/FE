@@ -2,7 +2,6 @@ import React from 'react';
 import './css/UsersListSection.css';
 import useDashboard from '../../hooks/queries/useDashboard';
 import LoadingSpinner from '../common/LoadingSpinner';
-import EmptyState from './common/EmptyState';
 
 const UsersListSection = () => {
   const { data: dashboardData, isLoading } = useDashboard();
@@ -11,10 +10,6 @@ const UsersListSection = () => {
 
   if (isLoading) {
     return <LoadingSpinner />;
-  }
-
-  if (!users.length) {
-    return <EmptyState message="등록된 사용자가 없습니다." />;
   }
 
   return (

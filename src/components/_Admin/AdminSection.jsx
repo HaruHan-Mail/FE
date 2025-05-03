@@ -4,10 +4,9 @@ import AddContentSection from './AddContentSection';
 import FeedbackListSection from './FeedbackListSection';
 import UsersListSection from './UsersListSection';
 import DashboardSection from './DashboardSection';
-import Header from './Header';
-import Sidebar from './Sidebar';
+import AdminHeader from './AdminHeader';
+import AdminSidebar from './AdminSidebar';
 import useDashboard from '../../hooks/queries/useDashboard';
-import LoadingSpinner from '../common/LoadingSpinner';
 import { useFeedbacks } from '../../hooks/queries/useFeedbacks';
 
 const AdminSection = () => {
@@ -49,10 +48,10 @@ const AdminSection = () => {
 
   return (
     <div className="admin-container">
-      <Header username="관리자" />
+      <AdminHeader username="관리자" />
       
       <div className="admin-content">
-        <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+        <AdminSidebar activeTab={activeTab} onTabChange={setActiveTab} />
         
         <main className="admin-main">
           <div className="admin-component">

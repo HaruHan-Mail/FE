@@ -3,12 +3,9 @@ import './css/FeedbackListSection.css';
 import useSorting from '../../hooks/useSorting';
 import usePagination from '../../hooks/usePagination';
 import Pagination from './common/Pagination';
-import EmptyState from './common/EmptyState';
 import LoadingSpinner from '../common/LoadingSpinner';
 
-const FeedbackListSection = ({feedbacks, isFeedbacksLoading}) => {
-
-  
+const FeedbackListSection = ({ feedbacks, isFeedbacksLoading }) => {
   // 정렬 로직 적용
   const { sortedData, sortOrder, setSort } = useSorting(feedbacks, {
     initialSortField: 'createdAt',
@@ -27,10 +24,6 @@ const FeedbackListSection = ({feedbacks, isFeedbacksLoading}) => {
 
   if (isFeedbacksLoading) {
     return <LoadingSpinner />;
-  }
-
-  if (feedbacks.length === 0) {
-    return <EmptyState message="아직 피드백이 없습니다." />;
   }
 
   return (

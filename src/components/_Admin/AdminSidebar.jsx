@@ -1,7 +1,7 @@
 import React from 'react';
-import './css/AdminSection.css';
+import './css/AdminSidebar.css';
 
-const Sidebar = ({ activeTab, onTabChange }) => {
+const AdminSidebar = ({ activeTab, onTabChange }) => {
   const menuItems = [
     { id: 'dashboard', label: '대시보드', icon: '📊' },
     { id: 'feedback', label: '피드백 모아보기', icon: '💬' },
@@ -28,4 +28,4 @@ const Sidebar = ({ activeTab, onTabChange }) => {
   );
 };
 
-export default Sidebar; 
+export default AdminSidebar; 

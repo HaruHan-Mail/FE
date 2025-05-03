@@ -1,7 +1,8 @@
 import React from 'react';
 import './css/AdminSection.css';
+import './css/AdminHeader.css'
 
-const Header = ({ username }) => {
+const AdminHeader = ({ username }) => {
   return (
     <header className="admin-header">
       <div className="admin-logo">
@@ -9,10 +10,9 @@ const Header = ({ username }) => {
       </div>
       <div className="admin-user-info">
         <span className="admin-user-name">{username}</span>
-        <div className="admin-avatar">{username?.charAt(0) || 'A'}</div>
       </div>
     </header>
   );
 };
 
-export default Header; 
+export default AdminHeader; 
