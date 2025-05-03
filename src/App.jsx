@@ -73,9 +73,9 @@ const router = createBrowserRouter([
   {
     path: '/admin',
     element: (
-      <AdminRouteGuard>
+      // <AdminRouteGuard>
         <Admin />
-      </AdminRouteGuard>
+      // </AdminRouteGuard>
     )
   },
   {
