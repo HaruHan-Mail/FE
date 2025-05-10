@@ -67,12 +67,6 @@
   background: rgba(0, 0, 0, 0.02);
   border-radius: 8px;
   transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.team-info-section-list li:hover {
-  background: var(--primary);
-  color: var(--white);
 }
 
 @media (max-width: 1024px) {
@@ -84,10 +78,10 @@
   }
 
   .team-info-section-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
   }
 
-  .team-info-section-list {
+  .team-info-section-text-list {
     font-size: 0.9rem;
   }
 
