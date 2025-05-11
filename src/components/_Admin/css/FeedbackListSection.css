@@ -12,7 +12,6 @@
 }
 
 .feedback-list-content-container {
-  background-color: var(--white);
   border-radius: 4px;
   padding: 24px 28px;
   display: flex;
@@ -28,60 +27,33 @@
 
 .feedback-list-content-container:hover {
   transform: none;
-  border-left: 3px solid #2d5bff;
+  border-left: 3px solid var(--blue);
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.04),
     0 4px 12px rgba(24, 24, 38, 0.08);
 }
 
 .feedback-list-content {
-  font-size: 15px;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
+  font-size: 16px;
+  line-height: 2;
   flex: 1;
   margin-right: 32px;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
-  color: #2c3e50;
-  font-weight: 400;
+  font-weight: 600;
+  color: var(--d-grey)
 }
 
 .feedback-list-content-date {
-  font-size: 13px;
-  color: #94a3b8;
+  font-size: 15px;
+  color: var(--l-grey);
   white-space: nowrap;
   font-weight: 500;
   position: relative;
   top: 2px;
 }
 
-/* Loading state */
-.feedback-list-loading {
-  text-align: center;
-  padding: 40px;
-  color: #94a3b8;
-  font-size: 15px;
-  background-color: rgba(248, 250, 252, 0.7);
-  border-radius: 4px;
-  border: 1px solid #e2e8f0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-}
-
-.feedback-list-loading::after {
-  content: '';
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  border: 3px solid #e2e8f0;
-  border-radius: 50%;
-  border-top-color: #3b82f6;
-  animation: spinner 1s ease-in-out infinite;
-}
 
 @keyframes spinner {
   to {
@@ -100,7 +72,7 @@
 .pagination-button {
   border: none;
   background-color: transparent;
-  color: #64748b;
+  color: var(--blue-grey);
   height: 36px;
   width: 36px;
   display: flex;
@@ -117,7 +89,7 @@
 }
 
 .pagination-button.active {
-  background-color: #2d5bff;
+  background-color: var(--blue);
   color: white;
 }
 
@@ -126,27 +98,7 @@
   align-items: center;
   justify-content: center;
   height: 36px;
-  color: #64748b;
-}
-
-/* Empty state */
-.feedback-list-empty {
-  text-align: center;
-  padding: 60px 40px;
-  color: #94a3b8;
-  font-size: 15px;
-  background-color: rgba(248, 250, 252, 0.7);
-  border-radius: 4px;
-  border: 1px solid #e2e8f0;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.feedback-list-empty svg {
-  margin-bottom: 16px;
-  opacity: 0.6;
+  color: var(--l-grey);
 }
 
 /* Filter controls */
@@ -169,7 +121,7 @@
 }
 
 .feedback-sort-dropdown:hover {
-  border-color: #cbd5e1;
+  border-color: var(--white);
 }
 
 @media (max-width: 768px) {

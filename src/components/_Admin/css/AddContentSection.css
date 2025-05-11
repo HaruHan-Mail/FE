@@ -1,5 +1,8 @@
 .add-content-container {
   width: 100%;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0;
   padding: 0;
 }
 

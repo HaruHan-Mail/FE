@@ -16,7 +16,7 @@ const AdminVerification = async () => {
 
   try {
     const response = await verifyAdminCode(code);
-    if (response === 200) {
+    if (response.stateCode === 200) {
       await Swal.fire({
         icon: 'success',
         title: '관리자 로그인 성공 !',
