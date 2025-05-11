@@ -48,38 +48,28 @@ const AddContentSection = () => {
   };
 
   const handleSubmit = async () => {
-    try {
-      setIsSubmitting(true);
+    setIsSubmitting(true);
       
-      const result = await saveNewContent(formData);
-      console.log(result)
-
-      if (result?.stateCode === 201) {
-        Swal.fire({
-          icon: 'success',
-          title: '제출 성공!',
-          text: '컨텐츠가 성공적으로 추가되었습니다.',
-        });
-
-        resetForm();
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: '제출 실패',
-          text: '다시 시도해주세요.',
-        });
-      }
-    } catch (err) {
+    const result = await saveNewContent(formData);
+    
+    if (result?.stateCode !== 201) {
       Swal.fire({
         icon: 'error',
-        title: '제출 중 오류 발생',
-        text: '서버와의 통신 중 문제가 발생했습니다.',
+        title: '제출 실패',
+        text: '다시 시도해주세요.',
       });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+      return;
+    } 
 
+    Swal.fire({
+      icon: 'success',
+      title: '제출 성공!',
+      text: '컨텐츠가 성공적으로 추가되었습니다.',
+    });
+    resetForm();
+    setIsSubmitting(false);
+  };
+  
   // 폼 필드 렌더링 함수
   const renderFormField = (item) => {
     if (isArrayField(item.title)) {
