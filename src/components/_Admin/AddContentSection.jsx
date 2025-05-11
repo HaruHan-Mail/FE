@@ -3,10 +3,9 @@ import './css/AddContentSection.css';
 import { contentRequest } from '../../mocks/addContentRequest.js';
 import Swal from 'sweetalert2';
 import useContentForm from '../../hooks/useContentForm';
-import useContentMutation from '../../hooks/mutations/useContentMutation';
 import FormField from './common/FormField';
 import ArrayInput from './common/ArrayInput';
-import FormSection from './common/FormSection';
+import { saveNewContent } from '../../apis/adminApi';
 
 const initialData = {
   title: '',
@@ -30,7 +29,6 @@ const AddContentSection = () => {
     resetForm,
   } = useContentForm(initialData);
 
-  const contentMutation = useContentMutation();
 
   const handleCancel = () => {
     Swal.fire({
@@ -52,11 +50,11 @@ const AddContentSection = () => {
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
-      console.log('전송할 데이터:', formData);
       
-      const result = await contentMutation.mutateAsync(formData);
+      const result = await saveNewContent(formData);
+      console.log(result)
 
-      if (result?.stateCode === 200) {
+      if (result?.stateCode === 201) {
         Swal.fire({
           icon: 'success',
           title: '제출 성공!',
@@ -119,17 +117,13 @@ const AddContentSection = () => {
   return (
     <section className="add-content-container">
       <div className="add-content-header">
-        <h3 className="add-content-title">새 콘텐츠 추가</h3>
+        <h2 className="admin-section-title">새 콘텐츠 추가</h2>
         <p className="add-content-description">사용자에게 제공할 새로운 콘텐츠를 추가해주세요.</p>
       </div>
 
-      <FormSection title="기본 정보">
-        {contentRequest.slice(0, 2).map(renderFormField)}
-      </FormSection>
-
-      <FormSection title="상세 내용">
-        {contentRequest.slice(2).map(renderFormField)}
-      </FormSection>
+      {contentRequest.slice(0, 2).map(renderFormField)}
+      {contentRequest.slice(2).map(renderFormField)}
+  
       
       <div className="add-content-submit-wrapper">
         <button 
