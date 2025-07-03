@@ -1,20 +1,31 @@
 import React, { useRef } from 'react';
-import './css/KnowledgeSection.css';
-import useCombinedScrollEffect from '../../hooks/useCombinedScrollEffect';
+import styled from '@emotion/styled';
+import useBlurScrollEffect from '../../hooks/useBlurScrollEffect';
 import KnowledgeOverlay from './KnowledgeOverlay';
 import KnowledgeSectionAni from './KnowledgeSectionAni';
 import KnowledgeSectionList from './KnowledgeSectionList';
 
+// Styled Components
+const SectionWrapper = styled.div`
+  position: relative;
+  margin: 8rem 0;
+`;
+
+const Container = styled.section`
+  will-change: filter, opacity;
+  min-height: 200px;
+  visibility: visible;
+`;
+
 const KnowledgeSection = () => {
   const knowledgeRef = useRef(null);
   const { blurAmount, descOpacity, closingOpacity, translateY } =
-    useCombinedScrollEffect(knowledgeRef);
+  useBlurScrollEffect(knowledgeRef);
 
   return (
-    <div className="KnowledgeSection">
-      <section
+    <SectionWrapper>
+      <Container
         ref={knowledgeRef}
-        className="KnowledgeSectionContainer"
         style={{
           filter: `blur(${blurAmount}px)`,
           opacity: descOpacity,
@@ -23,11 +34,11 @@ const KnowledgeSection = () => {
       >
         <KnowledgeSectionAni />
         <KnowledgeSectionList />
-      </section>
+      </Container>
 
       {/* KnowledgeOverlay 컴포넌트 */}
       <KnowledgeOverlay opacity={closingOpacity} translateY={translateY} />
-    </div>
+    </SectionWrapper>
   );
 };
 

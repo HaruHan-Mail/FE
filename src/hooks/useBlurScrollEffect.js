@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect } from 'react';
 
-const useCombinedScrollEffect = (ref) => {
+const useBlurScrollEffect = (ref) => {
   // 초기값 설정 - 기본적으로 컴포넌트가 보이도록 설정
   const [effects, setEffects] = useState({
     blurAmount: 0,
@@ -82,4 +82,4 @@ const useCombinedScrollEffect = (ref) => {
   return effects;
 };
 
-export default useCombinedScrollEffect;
+export default useBlurScrollEffect;

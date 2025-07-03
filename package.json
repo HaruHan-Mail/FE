@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@motionone/dom": "^10.18.0",
     "@tanstack/react-query": "^5.71.5",
     "@tanstack/react-query-devtools": "^5.69.0",
