@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 import useBlurScrollEffect from '../../hooks/useBlurScrollEffect';
 import KnowledgeOverlay from './KnowledgeOverlay';
-import KnowledgeSectionAni from './KnowledgeSectionAni';
+import KnowledgeSectionLottie from './KnowledgeSectionLottie';
 import KnowledgeSectionList from './KnowledgeSectionList';
 
 const SectionWrapper = styled.div`
@@ -32,7 +32,7 @@ const KnowledgeSection = () => {
           opacity,
         }}
       >
-        <KnowledgeSectionAni />
+        <KnowledgeSectionLottie />
         <KnowledgeSectionList />
       </Container>
       
