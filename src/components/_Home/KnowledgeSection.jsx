@@ -5,39 +5,39 @@ import KnowledgeOverlay from './KnowledgeOverlay';
 import KnowledgeSectionAni from './KnowledgeSectionAni';
 import KnowledgeSectionList from './KnowledgeSectionList';
 
-// Styled Components
 const SectionWrapper = styled.div`
   position: relative;
   margin: 8rem 0;
 `;
 
 const Container = styled.section`
-  will-change: filter, opacity;
   min-height: 200px;
-  visibility: visible;
+  transition: filter 0.2s ease-out, opacity 0.2s ease-out;
 `;
 
 const KnowledgeSection = () => {
-  const knowledgeRef = useRef(null);
-  const { blurAmount, descOpacity, closingOpacity, translateY } =
-  useBlurScrollEffect(knowledgeRef);
+  const sectionRef = useRef(null);
+  const { blurAmount, opacity } = useBlurScrollEffect(sectionRef);
+  console.log(blurAmount, opacity)
+
+  // blur가 일정 수준 이상일 때 오버레이 표시
+  const showOverlay = blurAmount > 3;
 
   return (
     <SectionWrapper>
       <Container
-        ref={knowledgeRef}
+        ref={sectionRef}
         style={{
           filter: `blur(${blurAmount}px)`,
-          opacity: descOpacity,
-          transition: 'filter 0.3s ease-out, opacity 0.3s ease-out',
+          opacity,
         }}
       >
         <KnowledgeSectionAni />
         <KnowledgeSectionList />
       </Container>
-
-      {/* KnowledgeOverlay 컴포넌트 */}
-      <KnowledgeOverlay opacity={closingOpacity} translateY={translateY} />
+      
+      {/* blur 효과가 있을 때만 오버레이 표시 */}
+      {showOverlay && <KnowledgeOverlay opacity={Math.min(blurAmount / 10, 1)} />}
     </SectionWrapper>
   );
 };
