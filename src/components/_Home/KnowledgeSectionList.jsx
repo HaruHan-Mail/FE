@@ -1,11 +1,17 @@
 import React from 'react';
 import { knowledgeMockData } from '../../mocks/knowledgeData';
 import KnowledgeSectionItem from './KnowledgeSectionItem';
-import './css/KnowledgeSectionList.css';
+import styled from '@emotion/styled';
+
+const Container = styled.div`
+  padding: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+`;
 
 const KnowledgeSectionList = () => {
   return (
-    <div className="KnowledgeSectionList">
+    <Container>
       {knowledgeMockData.map((item, index) => (
         <KnowledgeSectionItem
           key={index}
@@ -15,7 +21,7 @@ const KnowledgeSectionList = () => {
           contents={item.contents}
         />
       ))}
-    </div>
+    </Container>
   );
 };
 
