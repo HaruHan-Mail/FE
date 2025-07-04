@@ -6,8 +6,7 @@ import UsersListSection from './UsersListSection';
 import DashboardSection from './DashboardSection';
 import AdminHeader from './AdminHeader';
 import AdminSidebar from './AdminSidebar';
-import useDashboard from '../../hooks/queries/useDashboard';
-import { useFeedbacks } from '../../hooks/queries/useFeedbacks';
+import { useDashboard, useFeedbacks } from '../../hooks/queries';
 
 const AdminSection = () => {
   const [activeTab, setActiveTab] = useState('dashboard');

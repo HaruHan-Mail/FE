@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import SubscriptionButton from '../common/SubscriptionButton';
+import SubscriptionButton from '../../../common/SubscriptionButton';
 
 // 애니메이션 정의
 const fadeIn = keyframes`

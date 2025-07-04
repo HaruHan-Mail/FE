@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/UsersListSection.css';
-import useDashboard from '../../hooks/queries/useDashboard';
+import { useDashboard } from '../../hooks/queries';
 import LoadingSpinner from '../common/LoadingSpinner';
 
 const UsersListSection = () => {

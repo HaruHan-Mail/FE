@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 // import useBlurScrollEffect from '../../hooks/useBlurScrollEffect';
 // import KnowledgeOverlay from './KnowledgeOverlay';
-import KnowledgeSectionLottie from './KnowledgeSectionLottie';
-import KnowledgeSectionList from './KnowledgeSectionList';
+import KnowledgeSectionLottie from './Knowledge/KnowledgeSectionLottie';
+import KnowledgeSectionList from './Knowledge/KnowledgeSectionList';
 
 const SectionWrapper = styled.div`
   position: relative;

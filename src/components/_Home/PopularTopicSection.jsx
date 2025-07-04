@@ -1,14 +1,23 @@
 import React from 'react';
-import './css/PopularTopicSection.css';
-import PopularTopicList from './PopularTopicList';
-import PopularTopicSectionAni from './PopularTopicSectionAni';
+import PopularTopicList from './PopularTopic/PopularTopicList';
+import PopularTopicSectionLottie from './PopularTopic/PopularTopicSectionLottie';
+import styled from '@emotion/styled';
+
+const Container = styled.section`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+`;
 
 const PopularTopicSection = () => {
   return (
-    <section className="PopularTopicSection">
-      <PopularTopicSectionAni />
+    <Container>
+      <PopularTopicSectionLottie />
       <PopularTopicList />
-    </section>
+    </Container>
   );
 };
 

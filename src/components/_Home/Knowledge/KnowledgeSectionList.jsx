@@ -1,5 +1,5 @@
 import React from 'react';
-import { knowledgeMockData } from '../../mocks/knowledgeData';
+import { knowledgeMockData } from '../../../mocks/knowledgeData';
 import KnowledgeSectionItem from './KnowledgeSectionItem';
 import styled from '@emotion/styled';
 

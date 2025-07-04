@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import knowledgeAni from '../../assets/lottiefiles/knowledgeAni.json';
+import knowledgeAni from '../../../assets/lottiefiles/knowledgeAni.json';
 import styled from '@emotion/styled';
 
 const Container = styled.div`

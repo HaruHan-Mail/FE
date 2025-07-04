@@ -1,5 +1,23 @@
 import React from 'react';
-import './css/PopularTopicItem.css';
+import styled from '@emotion/styled';
+
+const Container = styled.div`
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+
+  @media (min-width: 1024px) {
+    width: 400px;
+    height: 400px;
+    font-size: 2rem;
+  }
+`;
 
 const PopularTopicItem = ({ icon, title, image }) => {
   const style = image
@@ -17,12 +35,12 @@ const PopularTopicItem = ({ icon, title, image }) => {
 
   return (
     <>
-      <div className="PopularTopicItem">
+      <Container>
         <img src={image} alt={title} style={style} />
-        <div className="PopularTopicItemContent">
+        <div>
           {icon} {title}
         </div>
-      </div>
+      </Container>
     </>
   );
 };

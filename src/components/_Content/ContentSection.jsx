@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { useQueryParams } from '../../hooks/useQueryParams';
 import ContentList from './ContentList';
 import ContentTabs from './ContentTabs';
-import { useContents } from '../../hooks/queries/useContents';
-import { useBookmarks } from '../../hooks/queries/useBookmarks';
-import { useSaveBookmark, useDeleteBookmark } from '../../hooks/mutations/useBookmarksMutation';
+import { useContents, useBookmarks } from '../../hooks/queries';
+import { useSaveBookmark, useDeleteBookmark } from '../../hooks/mutations';
 import LoadingSpinner from '../common/LoadingSpinner'
 import './css/ContentSection.css';
 
