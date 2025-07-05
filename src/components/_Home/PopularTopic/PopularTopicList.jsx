@@ -7,31 +7,23 @@ import { getPopularImages } from '../../../utils/getPopularImages';
 import LoadingSpinner from '../../common/LoadingSpinner';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
+import { EffectCoverflow, Pagination, Autoplay, Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const Container = styled.div`
   width: 100%;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
   position: relative;
-
-  @media (min-width: 1024px) {
-    height: 500px;
-  }
 `;
 
 // Global Swiper 스타일
 const swiperStyles = css`
   .swiper {
     width: 100%;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 50px;
   }
 
@@ -45,8 +37,8 @@ const swiperStyles = css`
     align-items: center;
     
     @media (min-width: 1024px) {
-      width: 400px;
-      height: 400px;
+      width: 350px;
+      height: 350px;
     }
   }
 
@@ -55,7 +47,14 @@ const swiperStyles = css`
     width: 100%;
   }
   
-  
+  .swiper-pagination-bullet {
+    background-color: var(--primary);
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--primary);
+  }
 `;
 
 const PopularTopicList = () => {

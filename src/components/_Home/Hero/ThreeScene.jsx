@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, useGLTF } from '@react-three/drei';
+import { Environment, useGLTF, PerformanceMonitor } from '@react-three/drei';
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
 import { BallCollider, RigidBody, Physics, CylinderCollider } from '@react-three/rapier';
 
 THREE.ColorManagement.legacyMode = false;
 const baubleMaterial = new THREE.MeshLambertMaterial({ color: "#FF9933", emissive: "#FF6600" })
 const capMaterial = new THREE.MeshStandardMaterial({ metalness: 0.75, roughness: 0.15, color: "#E65C00", emissive: "#CC4C00", envMapIntensity: 20 })
-const sphereGeometry = new THREE.SphereGeometry(1, 28, 28)
+const sphereGeometry = new THREE.SphereGeometry(1, 20, 20)
 
 function Bauble({ vec = new THREE.Vector3(), scale, r = THREE.MathUtils.randFloatSpread }) {
     const { nodes } = useGLTF("/cap.glb")
@@ -36,6 +36,7 @@ function Bauble({ vec = new THREE.Vector3(), scale, r = THREE.MathUtils.randFloa
 function Pointer({ vec = new THREE.Vector3() }) {
   const ref = useRef()
   useFrame(({ mouse, viewport }) => {
+    if (!ref.current) return;
     vec.lerp({ x: (mouse.x * viewport.width) / 2, y: (mouse.y * viewport.height) / 2, z: 0 }, 0.2)
     ref.current?.setNextKinematicTranslation(vec)
   })
@@ -47,6 +48,7 @@ function Pointer({ vec = new THREE.Vector3() }) {
 }
 
 const ThreeScene = () => {
+  const [isDegraded, setIsDegraded] = useState(false);
   const [baubles, setBaubles] = useState([]);
 
   useEffect(() => {
@@ -77,8 +79,10 @@ const ThreeScene = () => {
     <Canvas
       shadows
       gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+      dpr={[1, 1.5]}
       camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
       onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}>
+      <PerformanceMonitor onDecline={() => setIsDegraded(true)} />
       <ambientLight intensity={1} />
       <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="orange" castShadow shadow-mapSize={[512, 512]} />
       <directionalLight position={[0, 5, -4]} intensity={4} />
@@ -88,9 +92,11 @@ const ThreeScene = () => {
         {baubles.map((props, i) => <Bauble key={i} {...props} />) /* prettier-ignore */}
       </Physics>
       <Environment files="/adamsbridge.hdr" />
-      <EffectComposer disableNormalPass>
-        <N8AO color="#FF6600" aoRadius={2} intensity={1.15} />
-      </EffectComposer>
+      {!isDegraded && (
+        <EffectComposer disableNormalPass>
+          <N8AO color="#FF6600" aoRadius={2} intensity={1.15} />
+        </EffectComposer>
+      )}
     </Canvas>
   )
 }

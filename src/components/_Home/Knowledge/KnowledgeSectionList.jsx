@@ -4,7 +4,6 @@ import KnowledgeSectionItem from './KnowledgeSectionItem';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  padding: 1.5rem;
   max-width: 1000px;
   margin: 0 auto;
 `;

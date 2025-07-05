@@ -5,46 +5,47 @@ import styled from '@emotion/styled';
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
-  gap: 100px;
-  margin: 0 auto;
+  gap: 2rem;
   max-width: 1000px;
+  margin: 0 auto 4rem;
   padding: 20px;
 
   @media (min-width: 1024px) {
     flex-direction: row;
+    gap: 4rem;
   }
 `;
 
 const LottieContainer = styled.div`
-  width: 300px;
+  width: 250px;
 
   @media (min-width: 1024px) {
-    width: 450px;
+    width: 350px;
   }
 `;
 
 const Description = styled.div`
   flex: 1;
-  display: flex;
+  text-align: center;
 
   h1 {
-    padding: 20px 0;
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 2;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #333;
   }
 
   .highlight {
     color: var(--primary);
-    font-weight: 700;
   }
 
   @media (min-width: 1024px) {
+    text-align: left;
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
   }
 `;
@@ -57,10 +58,11 @@ const KnowledgeSectionLottie = () => {
       </LottieContainer>
       <Description>
         <h1>
-          원하는 시간에
-          <span className="highlight"> 메일</span>을 통해 <br />
-          <span className="highlight">짧지만 알찬 지식</span>을
-          <br /> 아래와 같이 공유해드려요!
+          <span className="highlight">매일 아침</span>,
+          <br />
+          당신의 지적 호기심을
+          <br />
+          채워줄 이야기
         </h1>
       </Description>
     </Container>

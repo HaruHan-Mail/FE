@@ -5,21 +5,19 @@ const Container = styled.div`
   width: 300px;
   height: 300px;
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 1.5rem;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: transform 0.3s ease;
 
-  @media (min-width: 1024px) {
-    width: 400px;
-    height: 400px;
-    font-size: 2rem;
+  &:hover {
+    transform: scale(1.05);
   }
 
   &::before {
@@ -29,17 +27,27 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
     z-index: 1;
+  }
+
+  @media (min-width: 1024px) {
+    width: 350px;
+    height: 350px;
   }
 `;
 
 const Content = styled.div`
   color: white;
-  position: relative;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
   z-index: 2;
+  font-size: 1.5rem;
   font-weight: 600;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 `;
 
 const PopularTopicItem = ({ icon, title, image }) => {
