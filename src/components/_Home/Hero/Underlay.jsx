@@ -25,7 +25,6 @@ const UnderlayContainer = styled.div`
   justify-content: center;
   text-align: center;
   pointer-events: none;
-  color: #333;
 `;
 
 const AnimatedDiv = styled.div`
@@ -34,15 +33,13 @@ const AnimatedDiv = styled.div`
 `;
 
 const Title = styled(AnimatedDiv)`
-  font-size: 5rem;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -2px;
-  line-height: 1.1;
+  line-height: 1;
   margin-bottom: 1rem;
-  color: #1a1a1a;
   
-  @media (max-width: 768px) {
-    font-size: 3rem;
+  @media (min-width: 1024px) {
+    font-size: 4.5rem;
   }
 `;
 
@@ -50,12 +47,12 @@ const Subtitle = styled(AnimatedDiv)`
   font-size: 1.25rem;
   font-weight: 400;
   max-width: 500px;
-  line-height: 1.6;
+  line-height: 1.5;
   animation-delay: 0.2s;
   color: #555;
 
-  @media (max-width: 768px) {
-    font-size: 1rem;
+  @media (min-width: 1024px) {
+    font-size: 1.5rem;
     padding: 0 20px;
   }
 `;
@@ -63,13 +60,13 @@ const Subtitle = styled(AnimatedDiv)`
 const Hint = styled(AnimatedDiv)`
   position: absolute;
   bottom: 40px;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #888;
   animation-delay: 0.5s;
 
-  @media (max-width: 768px) {
-    font-size: 0.75rem;
+  @media (min-width: 1024px) {
+    font-size: 1rem;
   }
 `;
 
