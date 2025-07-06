@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 300px;
   height: 300px;
   position: relative;
-  border-radius: 12px;
+  border-radius: 5px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -15,10 +15,7 @@ const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  cursor: default;
 
   &::before {
     content: '';

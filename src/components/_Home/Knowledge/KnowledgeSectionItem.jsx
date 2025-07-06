@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 const Container = styled.div`
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 2.5rem;
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
