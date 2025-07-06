@@ -19,5 +19,19 @@ export default defineConfig({
         secure: true  // HTTPS 사용 시
       }
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'three': ['three'],
+          'react-three': ['@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
+          'physics': ['@react-three/rapier']
+        }
+      }
+    }
+  },
+  optimizeDeps: {
+    include: ['three', '@react-three/fiber', '@react-three/drei', '@react-three/postprocessing', '@react-three/rapier']
   }
 });

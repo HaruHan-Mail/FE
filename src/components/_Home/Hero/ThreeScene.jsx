@@ -5,7 +5,7 @@ import { Environment, useGLTF, PerformanceMonitor } from '@react-three/drei';
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
 import { BallCollider, RigidBody, Physics, CylinderCollider } from '@react-three/rapier';
 
-THREE.ColorManagement.legacyMode = false;
+THREE.ColorManagement.enabled = true;
 const baubleMaterial = new THREE.MeshLambertMaterial({ color: "#FF9933", emissive: "#FF6600" })
 const capMaterial = new THREE.MeshStandardMaterial({ metalness: 0.75, roughness: 0.15, color: "#E65C00", emissive: "#CC4C00", envMapIntensity: 20 })
 const sphereGeometry = new THREE.SphereGeometry(1, 20, 20)
