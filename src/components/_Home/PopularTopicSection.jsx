@@ -14,12 +14,12 @@ const SectionTitle = styled.h2`
   margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 `;
 
 const SectionSubtitle = styled.p`
-  font-size: 1.25rem;
+  font-size: 1rem;
   text-align: center;
   color: #555;
   margin-bottom: 5rem;
@@ -38,7 +38,7 @@ const PopularTopicSection = () => {
     <SectionContainer>
       <SectionTitle>오늘 사람들이 가장 많이 찾은 지식</SectionTitle>
       <SectionSubtitle>
-        지금 가장 주목받는 주제들을 한눈에 확인하고 새로운 트렌드를 발견해 보세요.
+        지금 가장 주목받는 주제들을 한눈에 확인하고 <br/>새로운 트렌드를 발견해 보세요.
       </SectionSubtitle>
       <PopularTopicList />
     </SectionContainer>

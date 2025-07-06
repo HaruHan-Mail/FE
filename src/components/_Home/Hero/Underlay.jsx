@@ -33,7 +33,7 @@ const AnimatedDiv = styled.div`
 `;
 
 const Title = styled(AnimatedDiv)`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
   margin-bottom: 1rem;
@@ -44,7 +44,7 @@ const Title = styled(AnimatedDiv)`
 `;
 
 const Subtitle = styled(AnimatedDiv)`
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 400;
   max-width: 500px;
   line-height: 1.5;

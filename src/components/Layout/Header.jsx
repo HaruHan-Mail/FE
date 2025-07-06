@@ -39,6 +39,14 @@ const LogoImage = styled.img`
   ${HeaderContainer}.scrolled & {
     height: 4rem;
   }
+
+  @media (max-width: 768px) {
+    height: 3rem;
+
+    ${HeaderContainer}.scrolled & {
+      height: 3rem;
+    }
+  }
 `;
 
 const NavContainer = styled.nav`
