@@ -8,7 +8,7 @@ const Container = styled.div`
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
   max-width: 1000px;
   margin: 0 auto 4rem;
   padding: 20px;
@@ -20,10 +20,10 @@ const Container = styled.div`
 `;
 
 const LottieContainer = styled.div`
-  width: 250px;
+  width: 300px;
 
   @media (min-width: 1024px) {
-    width: 350px;
+    width: 450px;
   }
 `;
 
@@ -32,10 +32,9 @@ const Description = styled.div`
   text-align: center;
 
   h1 {
-    font-size: 1.8rem;
-    line-height: 1.6;
+    font-size: 2rem;
+    line-height: 1.5;
     font-weight: 600;
-    color: #333;
   }
 
   .highlight {
@@ -45,7 +44,7 @@ const Description = styled.div`
   @media (min-width: 1024px) {
     text-align: left;
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
     }
   }
 `;
@@ -58,7 +57,7 @@ const KnowledgeSectionLottie = () => {
       </LottieContainer>
       <Description>
         <h1>
-          <span className="highlight">매일 아침</span>,
+          <span className="highlight">매일 아침 7시</span>,
           <br />
           당신의 지적 호기심을
           <br />

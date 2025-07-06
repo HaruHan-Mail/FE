@@ -7,7 +7,7 @@ import KnowledgeSectionList from './Knowledge/KnowledgeSectionList';
 
 const SectionContainer = styled.section`
   padding: 6rem 1.5rem;
-  background-color: #f9f9f9;
+  background: linear-gradient(180deg, #f6f6f6 0%, #e6eaf5 80%);
 `;
 
 const SectionTitle = styled.h2`
@@ -15,10 +15,9 @@ const SectionTitle = styled.h2`
   font-weight: 700;
   text-align: center;
   margin-bottom: 1rem;
-  color: #222;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -29,7 +28,7 @@ const SectionSubtitle = styled.p`
   margin-bottom: 4rem;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
