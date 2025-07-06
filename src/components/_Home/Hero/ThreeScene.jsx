@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, Suspense } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, useGLTF, PerformanceMonitor } from '@react-three/drei';
@@ -16,19 +16,25 @@ function Bauble({ vec = new THREE.Vector3(), scale, r = THREE.MathUtils.randFloa
     useFrame((state, delta) => {
       if (!api.current) return;
       delta = Math.min(0.1, delta)
-      api.current.applyImpulse(
-        vec
-          .copy(api.current.translation())
-          .normalize()
-          .multiply({ x: -50 * delta * scale, y: -150 * delta * scale, z: -50 * delta * scale }),
-      )
+      try {
+        api.current.applyImpulse(
+          vec
+            .copy(api.current.translation())
+            .normalize()
+            .multiply({ x: -50 * delta * scale, y: -150 * delta * scale, z: -50 * delta * scale }),
+        )
+      } catch (error) {
+        console.warn('Physics impulse error:', error);
+      }
     })
     return (
       <RigidBody linearDamping={0.75} angularDamping={0.15} friction={0.2} position={[r(20), r(20) - 25, r(20) - 10]} ref={api} colliders={false} dispose={null}>
         <BallCollider args={[scale]} />
         <CylinderCollider rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 1.2 * scale]} args={[0.15 * scale, 0.275 * scale]} />
         <mesh castShadow receiveShadow scale={scale} geometry={sphereGeometry} material={baubleMaterial} />
-        <mesh castShadow scale={2.5 * scale} position={[0, 0, -1.8 * scale]} geometry={nodes.Mesh_1.geometry} material={capMaterial} />
+        {nodes?.Mesh_1?.geometry && (
+          <mesh castShadow scale={2.5 * scale} position={[0, 0, -1.8 * scale]} geometry={nodes.Mesh_1.geometry} material={capMaterial} />
+        )}
       </RigidBody>
     )
   }
@@ -37,8 +43,12 @@ function Pointer({ vec = new THREE.Vector3() }) {
   const ref = useRef()
   useFrame(({ mouse, viewport }) => {
     if (!ref.current) return;
-    vec.lerp({ x: (mouse.x * viewport.width) / 2, y: (mouse.y * viewport.height) / 2, z: 0 }, 0.2)
-    ref.current?.setNextKinematicTranslation(vec)
+    try {
+      vec.lerp({ x: (mouse.x * viewport.width) / 2, y: (mouse.y * viewport.height) / 2, z: 0 }, 0.2)
+      ref.current?.setNextKinematicTranslation(vec)
+    } catch (error) {
+      console.warn('Pointer movement error:', error);
+    }
   })
   return (
     <RigidBody position={[100, 100, 100]} type="kinematicPosition" colliders={false} ref={ref}>
@@ -76,28 +86,30 @@ const ThreeScene = () => {
   }, []);
 
   return (
-    <Canvas
-      shadows
-      gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-      dpr={[1, 1.5]}
-      camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-      onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}>
-      <PerformanceMonitor onDecline={() => setIsDegraded(true)} />
-      <ambientLight intensity={1} />
-      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="orange" castShadow shadow-mapSize={[512, 512]} />
-      <directionalLight position={[0, 5, -4]} intensity={4} />
-      <directionalLight position={[0, -15, -0]} intensity={4} color="orange" />
-      <Physics gravity={[0, 0, 0]}>
-        <Pointer />
-        {baubles.map((props, i) => <Bauble key={i} {...props} />) /* prettier-ignore */}
-      </Physics>
-      <Environment files="/adamsbridge.hdr" />
-      {!isDegraded && (
-        <EffectComposer disableNormalPass>
-          <N8AO color="#FF6600" aoRadius={2} intensity={1.15} />
-        </EffectComposer>
-      )}
-    </Canvas>
+    <Suspense fallback={<div>Loading 3D scene...</div>}>
+      <Canvas
+        shadows
+        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+        dpr={[1, 1.5]}
+        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
+        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}>
+        <PerformanceMonitor onDecline={() => setIsDegraded(true)} />
+        <ambientLight intensity={1} />
+        <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="orange" castShadow shadow-mapSize={[512, 512]} />
+        <directionalLight position={[0, 5, -4]} intensity={4} />
+        <directionalLight position={[0, -15, -0]} intensity={4} color="orange" />
+        <Physics gravity={[0, 0, 0]}>
+          <Pointer />
+          {baubles.map((props, i) => <Bauble key={i} {...props} />) /* prettier-ignore */}
+        </Physics>
+        <Environment files="/adamsbridge.hdr" />
+        {!isDegraded && (
+          <EffectComposer disableNormalPass>
+            <N8AO color="#FF6600" aoRadius={2} intensity={1.15} />
+          </EffectComposer>
+        )}
+      </Canvas>
+    </Suspense>
   )
 }
 
