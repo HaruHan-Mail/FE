@@ -7,7 +7,7 @@ import KnowledgeSectionList from './Knowledge/KnowledgeSectionList';
 
 const SectionContainer = styled.section`
   padding: 6rem 1.5rem;
-  background: linear-gradient(180deg, #f6f6f6 0%, #e6eaf5 80%);
+  background: linear-gradient(180deg, #f6f6f6 0%, #e6eaf5 100%);
 `;
 
 const SectionTitle = styled.h2`

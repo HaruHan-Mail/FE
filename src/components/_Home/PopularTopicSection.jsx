@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 const SectionContainer = styled.section`
   padding: 6rem 1.5rem;
-  background: linear-gradient(180deg, #e6eaf5 0%, #f6f6f6 80%);
+  background: linear-gradient(180deg, #e6eaf5 0%, #f6f6f6 100%);
 `;
 
 const SectionTitle = styled.h2`
