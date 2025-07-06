@@ -1,59 +1,54 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Global, css } from '@emotion/react';
 import PopularTopicItem from './PopularTopicItem';
 import { usePopularContent } from '../../../hooks/queries';
 import { getPopularImages } from '../../../utils/getPopularImages';
 import LoadingSpinner from '../../common/LoadingSpinner';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { EffectCoverflow, Pagination, Autoplay, Navigation } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 const Container = styled.div`
   width: 100%;
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
-// Global Swiper 스타일
-const swiperStyles = css`
-  .swiper {
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 50px;
+const GridContainer = styled.div`
+  display: grid;
+  gap: 1rem;
+  padding: 0 1rem;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 250px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
   }
 
-  .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    @media (min-width: 1024px) {
-      width: 350px;
-      height: 350px;
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const GridItem = styled.div`
+  @media (min-width: 768px) {
+    &:nth-of-type(1) {
+      grid-column: span 2;
+    }
+    &:nth-of-type(4) {
+      grid-column: span 2;
     }
   }
 
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-  }
-  
-  .swiper-pagination-bullet {
-    background-color: var(--primary);
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: var(--primary);
+  @media (min-width: 1024px) {
+    &:nth-of-type(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    &:nth-of-type(4) {
+      grid-column: span 2;
+      grid-row: auto;
+    }
   }
 `;
 
@@ -86,39 +81,15 @@ const PopularTopicList = () => {
   }
 
   return (
-    <>
-      <Global styles={swiperStyles} />
-      <Container>
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-          }}
-          coverflowEffect={{
-            rotate: 45,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          modules={[EffectCoverflow, Pagination, Autoplay]}
-          className="mySwiper"
-        >
-          {popularContent.map((item, idx) => (
-            <SwiperSlide key={item.id || idx}>
-              <PopularTopicItem 
-                title={item.title} 
-                image={images[idx]} 
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Container>
-    </>
+    <Container>
+      <GridContainer>
+        {popularContent.slice(0, 5).map((item, idx) => (
+          <GridItem key={item.id || idx}>
+            <PopularTopicItem title={item.title} image={images[idx]} />
+          </GridItem>
+        ))}
+      </GridContainer>
+    </Container>
   );
 };
 

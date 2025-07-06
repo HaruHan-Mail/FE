@@ -2,10 +2,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   position: relative;
-  border-radius: 5px;
+  border-radius: 1rem;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -14,8 +14,8 @@ const Container = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: transform 0.3s ease;
-  cursor: default;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 
   &::before {
     content: '';
@@ -24,35 +24,52 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
     z-index: 1;
+    transition: background 0.3s ease-in-out;
   }
 
-  @media (min-width: 1024px) {
-    width: 350px;
-    height: 350px;
+  &:hover {
+    transform: scale(1.01);
+    &::before {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 60%);
+    }
   }
 `;
 
 const Content = styled.div`
   color: white;
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
   z-index: 2;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 600;
   text-align: left;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  transition: bottom 0.3s ease-in-out;
+
+  ${Container}:hover & {
+    bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.25rem;
+
+    ${Container}:hover & {
+      bottom: 2rem;
+    }
+  }
 `;
 
-const PopularTopicItem = ({ icon, title, image }) => {
+const PopularTopicItem = ({ title, image }) => {
   return (
     <Container style={{ backgroundImage: `url(${image})` }}>
-      <Content>
-        {icon} {title}
-      </Content>
+      <Content>{title}</Content>
     </Container>
   );
 };
