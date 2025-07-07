@@ -11,7 +11,7 @@ const HeroContainer = styled.div`
 
 const HeroSection = () => {
   return (
-    <HeroContainer>
+    <HeroContainer data-testid="hero-section">
       <Underlay />
       <ThreeScene />
     </HeroContainer>

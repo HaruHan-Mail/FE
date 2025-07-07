@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -11,14 +12,11 @@ export default defineConfig({
       },
     })
   ],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://haruhan.site',  // 공백 제거 및 /api 제거
-        changeOrigin: true,
-        secure: true  // HTTPS 사용 시
-      }
-    }
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.js'],
+    css: true,
   },
   build: {
     rollupOptions: {

@@ -30,7 +30,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className="modal-overlay" onClick={onClose}>
+    <div data-testid="subscription-modal" className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <span className="close-button" onClick={onClose}>
           &times;
