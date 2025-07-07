@@ -32,4 +32,7 @@
   --sliver: #f5f7fa;
   --white: #ffffff;
   --white-grey: #e0e0e0;
+
+  --error: #ff4757;
+  --error-background: #fff5f5;
 }

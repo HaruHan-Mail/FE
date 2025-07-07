@@ -44,7 +44,7 @@ const GridItem = styled.div`
     &:nth-of-type(1) {
       grid-column: span 2;
       grid-row: span 2;
-    }
+  }
     &:nth-of-type(4) {
       grid-column: span 2;
       grid-row: auto;
@@ -81,15 +81,15 @@ const PopularTopicList = () => {
   }
 
   return (
-    <Container>
+      <Container>
       <GridContainer>
         {popularContent.slice(0, 5).map((item, idx) => (
           <GridItem key={item.id || idx}>
             <PopularTopicItem title={item.title} image={images[idx]} />
           </GridItem>
-        ))}
+          ))}
       </GridContainer>
-    </Container>
+      </Container>
   );
 };
 
