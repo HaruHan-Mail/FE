@@ -36,11 +36,6 @@ const Title = styled.h2`
     font-size: 1.25rem;
     margin: 0 0 0.25rem 0;
   }
-  
-  span {
-    color: var(--primary);
-    font-weight: 800;
-  }
 `;
 
 const Description = styled.p`
@@ -222,7 +217,7 @@ const Verification = ({ initialEmail, preferedTime, isDaily, onVerified, onTimeo
   return (
     <Container>
       <Title>
-        인증 코드 <span>입력</span>
+        인증 코드 입력
       </Title>
       
       <Description>

@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import Subscription from './Subscription';
 import Verification from './Verification';
 
-// 2025 트렌드: 더 세련된 오버레이 with blur effect
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -37,11 +36,6 @@ const ModalOverlay = styled.div`
     padding-top: 5vh;
   }
   
-  /* 작은 화면 최적화 */
-  @media (max-height: 600px) {
-    align-items: flex-start;
-    padding-top: 2vh;
-  }
 `;
 
 // 2025 트렌드: 더 세련된 모달 컨테이너
@@ -69,7 +63,6 @@ const ModalContainer = styled.div`
   }
 `;
 
-// 2025 트렌드: 미니멀하고 접근성 좋은 닫기 버튼
 const CloseButton = styled.button`
   position: absolute;
   top: 1rem;
@@ -98,18 +91,10 @@ const CloseButton = styled.button`
     font-size: 1.125rem;
   }
   
-  @media (max-height: 600px) {
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
-  }
-  
   &:hover {
     background: rgba(232, 105, 18, 0.1);
     border-color: rgba(232, 105, 18, 0.2);
-    color: #E86912;
+    color: var(--primary);
     transform: scale(1.05);
   }
   
@@ -129,7 +114,6 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
   const [preferedTime, setPreferedTime] = useState('');
   const [isDaily, setIsDaily] = useState(false);
 
-  // ESC 키로 모달 닫기
   useEffect(() => {
     if (!isOpen) return;
     
@@ -143,7 +127,6 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
     return () => document.removeEventListener('keydown', handleEscKey);
   }, [isOpen, onClose]);
 
-  // 모달이 열릴 때 body 스크롤 방지
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';

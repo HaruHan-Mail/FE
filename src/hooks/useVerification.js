@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react';
 import { confirmSubscriptionCode } from '../apis/userSubscriptionApi';
 import Swal from 'sweetalert2';
 
+const COUNTDOWN_DURATION_SECONDS = 300;
+
 const useVerification = (initialEmail, preferedTime, isDaily, onVerified, onTimeout) => {
   const [formState, setFormState] = useState({
     code: '',
     error: '',
     isSubmitting: false,
   });
-  const [timeLeft, setTimeLeft] = useState(300); // 5분 = 300초
+  const [timeLeft, setTimeLeft] = useState(COUNTDOWN_DURATION_SECONDS);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
