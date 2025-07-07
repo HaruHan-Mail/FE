@@ -34,7 +34,6 @@ const ModalOverlay = styled.div`
   /* 모바일 최적화 */
   @media (max-width: 768px) {
     padding: 0.5rem;
-    align-items: flex-start;
     padding-top: 5vh;
   }
   

@@ -4,6 +4,7 @@ import useSubscription from '../../hooks/useSubscription';
 
 const Container = styled.div`
   max-width: 420px;
+  max-height: 90vh;
   width: 90vw;
   margin: 0 auto;
   padding: 1.5rem;
