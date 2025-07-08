@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Suspense } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, useGLTF, PerformanceMonitor } from '@react-three/drei';
@@ -86,7 +86,7 @@ const ThreeScene = () => {
   }, []);
 
   return (
-    <Suspense fallback={<div>Loading 3D scene...</div>}>
+    
       <Canvas
         shadows
         gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
@@ -109,7 +109,6 @@ const ThreeScene = () => {
           </EffectComposer>
         )}
       </Canvas>
-    </Suspense>
   )
 }
 

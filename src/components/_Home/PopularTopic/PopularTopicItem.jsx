@@ -11,9 +11,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 
@@ -35,6 +32,16 @@ const Container = styled.div`
       background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 60%);
     }
   }
+`;
+
+const Img = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 `;
 
 const Content = styled.div`
@@ -68,7 +75,8 @@ const Content = styled.div`
 
 const PopularTopicItem = ({ title, image }) => {
   return (
-    <Container style={{ backgroundImage: `url(${image})` }}>
+    <Container>
+      <Img src={image} alt={title} loading="lazy" />
       <Content>{title}</Content>
     </Container>
   );
