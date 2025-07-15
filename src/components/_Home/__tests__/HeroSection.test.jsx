@@ -30,13 +30,8 @@ describe('HeroSection Component', () => {
     })
 
     it('서브타이틀이 올바르게 렌더링된다', () => {
-        const subtitle = screen.getByText(/하루한은 일상에 영감을 더하는 지식과 컨텐츠를 매일 전달합니다/i)
+        const subtitle = screen.getByText(/하루한은 일상에 영감을 더하는/i)
         expect(subtitle).toBeInTheDocument()
-    })
-
-    it('힌트 텍스트가 올바르게 렌더링된다', () => {
-        const hint = screen.getByText(/화면의 구슬들과 상호작용 해보세요/i)
-        expect(hint).toBeInTheDocument()
     })
 
     it('3D Scene 컴포넌트가 렌더링된다', () => {

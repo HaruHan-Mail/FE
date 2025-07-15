@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import styled from '@emotion/styled';
 import Underlay from './Hero/Underlay';
-import LoadingSpinner from '../../components/common/LoadingSpinner';
 
 const ThreeScene = lazy(() => import('./Hero/ThreeScene'));
 
@@ -14,7 +13,7 @@ const HeroContainer = styled.div`
 const HeroSection = () => {
   return (
     <HeroContainer data-testid="hero-section">
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={null}>
         <ThreeScene />
       </Suspense>
       <Underlay />
