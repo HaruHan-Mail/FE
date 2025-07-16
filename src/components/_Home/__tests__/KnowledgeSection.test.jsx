@@ -21,7 +21,6 @@ vi.mock('../Knowledge/KnowledgeSectionLottie', () => ({
   default: () => <div data-testid="knowledge-lottie">Knowledge Lottie Animation</div>
 }))
 
-// KnowledgeSectionList를 실제 구조에 맞게 Mock
 vi.mock('../Knowledge/KnowledgeSectionList', () => ({
   default: () => (
     <div data-testid="knowledge-list">
@@ -93,49 +92,9 @@ describe('KnowledgeSection Component', () => {
     expect(knowledgeItem).toBeInTheDocument()
   })
 
-//   it('Knowledge 아이템을 클릭하면 모달이 열린다', () => {
-//     const knowledgeItem = screen.getByRole('button', { name: /Knowledge Item 1/i })
-    
-//     // 클릭 이벤트 발생
-//     fireEvent.click(knowledgeItem)
-    
-//     // openModal 함수가 호출되었는지 확인
-//     expect(mockOpenModal).toHaveBeenCalledTimes(1)
-//   })
-
-//   it('모달이 닫힌 상태에서는 모달이 렌더링되지 않는다', () => {
-//     const modal = screen.queryByTestId('subscription-modal')
-//     expect(modal).not.toBeInTheDocument()
-//   })
-
-//   describe('Modal 상호작용', () => {
-//     beforeEach(() => {
-//       // 모달이 열린 상태로 설정
-//       mockIsModalOpen = true
-//     })
-
-//     it('모달이 열린 상태에서는 모달이 렌더링된다', () => {
-//       render(
-//         <TestWrapper>
-//           <KnowledgeSection />
-//         </TestWrapper>
-//       )
-
-//       const modal = screen.getByTestId('subscription-modal')
-//       expect(modal).toBeInTheDocument()
-//     })
-
-//     it('모달 닫기 버튼을 클릭하면 모달이 닫힌다', () => {
-//       render(
-//         <TestWrapper>
-//           <KnowledgeSection />
-//         </TestWrapper>
-//       )
-
-//       const closeButton = screen.getByTestId('close-modal')
-//       fireEvent.click(closeButton)
-
-//       expect(mockCloseModal).toHaveBeenCalledTimes(1)
-//     })
-//   })
+  it('Knowledge 아이템을 클릭하면 모달이 열린다', () => {
+    const knowledgeItemButton = screen.getByRole('button', { name: /Knowledge Item 1/i })
+    fireEvent.click(knowledgeItemButton)
+    expect(mockOpenModal).toHaveBeenCalled()
+  })
 })

@@ -1,37 +1,8 @@
-import { render, screen, waitFor } from '@testing-library/react'
-import { describe, it, expect, vi, beforeAll, afterEach, afterAll, beforeEach } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { BrowserRouter } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { setupServer } from 'msw/node'
-import { http, HttpResponse } from 'msw'
 import PopularTopicSection from '../PopularTopicSection'
 
-// Mock 데이터
-const mockPopularData = [
-  {
-    id: 1,
-    title: 'JavaScript 기초',
-    description: '자바스크립트의 기본 개념들',
-    image: '/images/js-basics.jpg',
-    category: 'Programming'
-  },
-  {
-    id: 2,
-    title: 'React 훅스',
-    description: 'React Hooks 완전 정복',
-    image: '/images/react-hooks.jpg',
-    category: 'Framework'
-  }
-]
-
-const server = setupServer(
-  http.get('/api/popular-topics', () => {
-    return HttpResponse.json({
-      success: true,
-      data: mockPopularData
-    })
-  })
-)
 
 vi.mock('../PopularTopic/PopularTopicList', () => ({
   default: () => (
@@ -39,37 +10,19 @@ vi.mock('../PopularTopic/PopularTopicList', () => ({
       <div data-testid="popular-item">Popular Item 1</div>
       <div data-testid="popular-item">Popular Item 2</div>
     </div>
-  )
+  ),
 }))
 
 const TestWrapper = ({ children }) => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-      },
-    },
-  })
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        {children}
-      </BrowserRouter>
-    </QueryClientProvider>
-  )
+  return <BrowserRouter>{children}</BrowserRouter>
 }
 
 describe('PopularTopicSection Component', () => {
-  beforeAll(() => server.listen())
-  afterEach(() => server.resetHandlers())
-  afterAll(() => server.close())
-
   beforeEach(() => {
     render(
       <TestWrapper>
         <PopularTopicSection />
-      </TestWrapper>
+      </TestWrapper>,
     )
   })
 
@@ -79,18 +32,22 @@ describe('PopularTopicSection Component', () => {
   })
 
   it('섹션 서브타이틀이 올바르게 렌더링된다', () => {
-    const subtitle = screen.getByText(/지금 가장 주목받는 주제들을 한눈에 확인하고/i)
+    const subtitle = screen.getByText(
+      /지금 가장 주목받는 주제들을 한눈에 확인하고/,
+    )
     expect(subtitle).toBeInTheDocument()
   })
 
-  it('PopularTopicList 컴포넌트가 렌더링된다', () => {
+  it('PopularTopicList 컴포넌트를 렌더링해야 한다', () => {
+    // mock 처리된 PopularTopicList 컴포넌트가 렌더링되었는지 확인합니다.
     const popularList = screen.getByTestId('popular-topic-list')
     expect(popularList).toBeInTheDocument()
   })
 
-  it('인기 토픽 아이템들이 렌더링된다', () => {
+  it('PopularTopicList 내부에 인기 토픽 아이템들이 표시된다', () => {
+    // mock 컴포넌트가 렌더링하는 가짜 아이템들이 정상적으로 표시되는지 확인합니다.
     const popularItems = screen.getAllByTestId('popular-item')
     expect(popularItems).toHaveLength(2)
+    expect(popularItems[0]).toHaveTextContent('Popular Item 1')
   })
-
 }) 
