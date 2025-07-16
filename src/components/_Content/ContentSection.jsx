@@ -5,7 +5,40 @@ import ContentTabs from './ContentTabs';
 import { useContents, useBookmarks } from '../../hooks/queries';
 import { useSaveBookmark, useDeleteBookmark } from '../../hooks/mutations';
 import LoadingSpinner from '../common/LoadingSpinner'
-import './css/ContentSection.css';
+import styled from '@emotion/styled';
+
+const ContentSectionContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+`
+const ContentSectionTitle = styled.h1`
+  color: var(--primary);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+`
+
+const ContentSectionSubtitle = styled.p`
+  color: var(--d-grey);
+  text-align: center;
+  margin-bottom: 2rem;
+`
+const ContentEmpty = styled.div`
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--d-grey);
+  background-color: var(--l-grey);
+  border-radius: 8px;
+  margin: 2rem 0;
+  border: 1px dashed var(--m-grey);
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+  }
+`
 
 const ContentSection = () => {
   const { email, token } = useQueryParams();
@@ -50,13 +83,13 @@ const ContentSection = () => {
 
     if (isEmpty) {
       return (
-        <div className="content-empty">
+        <ContentEmpty>
           <p>
             {isAllTab
               ? '아직 받은 지식이 없습니다.'
               : '북마크한 지식이 없습니다. 마음에 드는 지식을 북마크해보세요!'}
           </p>
-        </div>
+        </ContentEmpty>
       )
     }
 
@@ -71,20 +104,21 @@ const ContentSection = () => {
   }
 
   return (
-    <div className="content-section-container">
-      <h1 className="content-section-title">나의 하루한 콘텐츠</h1>
-      <p className="content-section-subtitle">
+    <ContentSectionContainer>
+      <ContentSectionTitle>나의 하루한 콘텐츠</ContentSectionTitle>
+      <ContentSectionSubtitle>
         지금까지 받아보신 모든 하루한 지식을 확인하세요
-      </p>
+      </ContentSectionSubtitle>
 
       <ContentTabs
         activeTab={activeTab}
         onTabChange={handleTabChange}
+        contentCount={contents.length}
         bookmarkCount={bookmarks.length}
       />
 
       {renderContentList()}
-    </div>
+    </ContentSectionContainer>
   )
 }
 
