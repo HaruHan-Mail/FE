@@ -17,6 +17,10 @@ const ContentSectionTitle = styled.h1`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 const ContentSectionSubtitle = styled.p`
@@ -28,7 +32,7 @@ const ContentEmpty = styled.div`
   text-align: center;
   padding: 4rem 2rem;
   color: var(--d-grey);
-  background-color: var(--l-grey);
+  background-color: var(--sliver);
   border-radius: 8px;
   margin: 2rem 0;
   border: 1px dashed var(--m-grey);
