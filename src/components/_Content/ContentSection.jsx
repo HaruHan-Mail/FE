@@ -11,23 +11,31 @@ const ContentSectionContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-`
-const ContentSectionTitle = styled.h1`
-  color: var(--primary);
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
+
+  h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--d-grey);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
   }
 `
 
-const ContentSectionSubtitle = styled.p`
-  color: var(--d-grey);
-  text-align: center;
-  margin-bottom: 2rem;
-`
 const ContentEmpty = styled.div`
   text-align: center;
   padding: 4rem 2rem;
@@ -109,10 +117,8 @@ const ContentSection = () => {
 
   return (
     <ContentSectionContainer>
-      <ContentSectionTitle>나의 하루한 콘텐츠</ContentSectionTitle>
-      <ContentSectionSubtitle>
-        지금까지 받아보신 모든 하루한 지식을 확인하세요
-      </ContentSectionSubtitle>
+      <h1>나의 하루한 콘텐츠</h1>
+      <p>지금까지 받아보신 모든 하루한 지식을 확인하세요</p>
 
       <ContentTabs
         activeTab={activeTab}

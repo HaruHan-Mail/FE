@@ -1,13 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ContentItem from './ContentItem';
-import './css/ContentList.css';
+import styled from '@emotion/styled';
+
+const ContentListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`
 
 const ContentList = ({ contents, isBookmark, bookmarkIdList, onFavoriteToggle }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="content-list">
+    <ContentListContainer>
       {contents.map((content, index) => {
         return (
         <ContentItem
@@ -22,7 +28,7 @@ const ContentList = ({ contents, isBookmark, bookmarkIdList, onFavoriteToggle })
         />
         );
       })}
-    </div>
+    </ContentListContainer>
   );
 };
 
