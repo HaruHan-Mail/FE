@@ -10,7 +10,7 @@ const ContentTab = styled.button`
   all: unset;
   flex: 1;
   text-align: center;
-  padding: 15px 25px;
+  padding: 15px 20px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
