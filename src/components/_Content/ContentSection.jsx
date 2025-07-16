@@ -43,11 +43,39 @@ const ContentSection = () => {
 
   const bookmarkIdList = bookmarks.map((b) => b.id || b.contentId)
 
+  const renderContentList = () => {
+    const isAllTab = activeTab === 'all'
+    const listToRender = isAllTab ? contents : bookmarks
+    const isEmpty = listToRender.length === 0
+
+    if (isEmpty) {
+      return (
+        <div className="content-empty">
+          <p>
+            {isAllTab
+              ? '아직 받은 지식이 없습니다.'
+              : '북마크한 지식이 없습니다. 마음에 드는 지식을 북마크해보세요!'}
+          </p>
+        </div>
+      )
+    }
+
+    return (
+      <ContentList
+        contents={listToRender}
+        isBookmark={!isAllTab}
+        bookmarkIdList={isAllTab ? bookmarkIdList : undefined}
+        onFavoriteToggle={toggleBookmark}
+      />
+    )
+  }
 
   return (
     <div className="content-section-container">
       <h1 className="content-section-title">나의 하루한 콘텐츠</h1>
-      <p className="content-section-subtitle">지금까지 받아보신 모든 하루한 지식을 확인하세요</p>
+      <p className="content-section-subtitle">
+        지금까지 받아보신 모든 하루한 지식을 확인하세요
+      </p>
 
       <ContentTabs
         activeTab={activeTab}
@@ -55,32 +83,9 @@ const ContentSection = () => {
         bookmarkCount={bookmarks.length}
       />
 
-      {activeTab === 'all' ? (
-        contents.length === 0 ? (
-          <div className="content-empty">
-            <p>아직 받은 지식이 없습니다.</p>
-          </div>
-        ) : (
-          <ContentList
-            contents={contents}
-            isBookmark={false}
-            bookmarkIdList={bookmarkIdList}
-            onFavoriteToggle={toggleBookmark}
-          />
-        )
-      ) : bookmarks.length === 0 ? (
-        <div className="content-empty">
-          <p>북마크한 지식이 없습니다. 마음에 드는 지식을 북마크해보세요!</p>
-        </div>
-      ) : (
-        <ContentList
-          contents={bookmarks}
-          isBookmark={true}
-          onFavoriteToggle={toggleBookmark}
-        />
-      )}
+      {renderContentList()}
     </div>
-  );
-};
+  )
+}
 
-export default ContentSection;
+export default ContentSection
