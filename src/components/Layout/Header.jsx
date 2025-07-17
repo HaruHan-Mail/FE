@@ -100,7 +100,6 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 스크롤 위치가 10px만 내려와도 스타일 변경
       setIsScrolled(window.scrollY > 10);
     };
 
@@ -114,6 +113,8 @@ const Header = () => {
         src={LogoImg}
         onClick={() => nav('/')}
         alt="Haruhan Logo"
+        fetchPriority='high'
+        loading="eager"
       />
       <NavContainer className={isScrolled ? 'scrolled' : ''}>
         <NavLink onClick={() => nav("/teamInfo")}>팀 소개</NavLink>
