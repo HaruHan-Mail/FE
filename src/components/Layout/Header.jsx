@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import SubscriptionButton from '../common/SubscriptionButton';
-import LogoImg from '/src/assets/images/HaruhanLogo.png';
+import LogoImg from '/src/assets/images/HaruhanLogo.webp';
 import { useNavigate } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
@@ -31,14 +31,10 @@ const HeaderContainer = styled.header`
 `;
 
 const LogoImage = styled.img`
-  height: 4rem;
   width: auto;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  ${HeaderContainer}.scrolled & {
-    height: 4rem;
-  }
 
   @media (max-width: 768px) {
     height: 3rem;
@@ -115,6 +111,8 @@ const Header = () => {
         alt="Haruhan Logo"
         fetchPriority='high'
         loading="eager"
+        width={100}
+        height={50}
       />
       <NavContainer className={isScrolled ? 'scrolled' : ''}>
         <NavLink onClick={() => nav("/teamInfo")}>팀 소개</NavLink>

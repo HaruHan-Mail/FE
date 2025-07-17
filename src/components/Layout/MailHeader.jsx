@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './css/MailHeader.css';
-import LogoImg from '/src/assets/images/HaruhanLogo.png';
+import LogoImg from '/src/assets/images/HaruhanLogo.webp';
 
 const MailHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,7 +23,7 @@ const MailHeader = () => {
   return (
     <section className="MailHeaderContainer" id={`${isScrolled ? 'Scrolled' : ''}`}>
       <a target="_blank" href="https://haruhan.site">
-        <img className="MailHeaderLogoImage" src={LogoImg} fetchPriority='high' loading="eager" />
+        <img className="MailHeaderLogoImage" src={LogoImg} fetchPriority='high' loading="eager" alt="Haruhan Logo" width={100} height={50} />
       </a>
     </section>
   );
