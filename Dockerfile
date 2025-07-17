@@ -19,9 +19,6 @@ RUN npm run build
 FROM --platform=linux/amd64 nginx:latest
 WORKDIR /usr/share/nginx/html
 
-# 우리가 만든 nginx.conf를 컨테이너의 기본 설정 위치로 복사합니다.
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
 COPY --from=build /app/dist .
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
