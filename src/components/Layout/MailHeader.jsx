@@ -23,7 +23,7 @@ const MailHeader = () => {
   return (
     <section className="MailHeaderContainer" id={`${isScrolled ? 'Scrolled' : ''}`}>
       <a target="_blank" href="https://haruhan.site">
-        <img className="MailHeaderLogoImage" src={LogoImg} />
+        <img className="MailHeaderLogoImage" src={LogoImg} fetchPriority='high' loading="eager" />
       </a>
     </section>
   );
