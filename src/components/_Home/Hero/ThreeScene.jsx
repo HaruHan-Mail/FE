@@ -5,14 +5,15 @@ import { Environment, useGLTF, PerformanceMonitor } from '@react-three/drei';
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
 import { BallCollider, RigidBody, Physics, CylinderCollider } from '@react-three/rapier';
 
+useGLTF.preload('/cap.glb');
 THREE.ColorManagement.enabled = true;
 const baubleMaterial = new THREE.MeshLambertMaterial({ color: "#FF9933", emissive: "#FF6600" })
 const capMaterial = new THREE.MeshStandardMaterial({ metalness: 0.75, roughness: 0.15, color: "#E65C00", emissive: "#CC4C00", envMapIntensity: 20 })
 const sphereGeometry = new THREE.SphereGeometry(1, 20, 20)
 
 function Bauble({ vec = new THREE.Vector3(), scale, r = THREE.MathUtils.randFloatSpread }) {
-    const { nodes } = useGLTF("/cap.glb")
-    const api = useRef()
+  const { nodes } = useGLTF("/cap.glb")
+  const api = useRef()
     useFrame((state, delta) => {
       if (!api.current) return;
       delta = Math.min(0.1, delta)
@@ -38,6 +39,8 @@ function Bauble({ vec = new THREE.Vector3(), scale, r = THREE.MathUtils.randFloa
       </RigidBody>
     )
   }
+
+const MemoBauble = React.memo(Bauble)
 
 function Pointer({ vec = new THREE.Vector3() }) {
   const ref = useRef()
@@ -100,7 +103,7 @@ const ThreeScene = () => {
         <directionalLight position={[0, -15, -0]} intensity={4} color="orange" />
         <Physics gravity={[0, 0, 0]}>
           <Pointer />
-          {baubles.map((props, i) => <Bauble key={i} {...props} />) /* prettier-ignore */}
+          {baubles.map((props, i) => <MemoBauble key={i} {...props} />) /* prettier-ignore */}
         </Physics>
         <Environment files="/adamsbridge.hdr" />
         {!isDegraded && (
