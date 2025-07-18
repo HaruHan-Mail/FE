@@ -4,7 +4,7 @@ WORKDIR /app
 
 # package.json과 package-lock.json만 먼저 복사하여 의존성 설치
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # 이후 소스 코드 복사 (이전에 package.json만 복사하는 이유: Docker 캐싱 최적화)
 COPY . . 
