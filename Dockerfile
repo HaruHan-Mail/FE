@@ -1,5 +1,5 @@
 # 1. Build 단계
-FROM --platform=linux/amd64 node:18 AS build
+FROM --platform=linux/amd64 node:20 AS build
 WORKDIR /app
 
 # package.json과 package-lock.json만 먼저 복사하여 의존성 설치
