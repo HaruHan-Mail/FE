@@ -2,6 +2,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import viteTsconfigPaths from "vite-tsconfig-paths";
+import svgrPlugin from "vite-plugin-svgr";
+import legacy from "@vitejs/plugin-legacy";
+import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
   plugins: [
@@ -30,6 +34,20 @@ export default defineConfig({
         quality: 75,
       },
       avif: false,
+    }),
+    viteTsconfigPaths(),
+    svgrPlugin(),
+    legacy({
+      targets: ["edge >= 87", "chrome >= 90"],
+      modernPolyfills: true,
+    }),
+    viteCompression({
+      algorithm: "gzip",
+      ext: ".gz",
+    }),
+    viteCompression({
+      algorithm: "brotliCompress",
+      ext: ".br",
     }),
   ],
   test: {
