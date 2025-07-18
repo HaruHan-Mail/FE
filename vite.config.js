@@ -29,6 +29,7 @@ export default defineConfig({
         lossless: false,
         quality: 75,
       },
+      avif: false,
     }),
   ],
   test: {
@@ -41,9 +42,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'three': ['three'],
-          'react-three': ['@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
-          'physics': ['@react-three/rapier']
+          'three-main': ['three'],
+          'three-fiber': ['@react-three/fiber'],
+          'three-drei': ['@react-three/drei'],
+          'three-postprocessing': ['@react-three/postprocessing'],
+          'three-rapier': ['@react-three/rapier']
         }
       }
     }
