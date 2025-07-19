@@ -3,6 +3,28 @@ import Swal from 'sweetalert2';
 import { submitFeedback } from '../../apis/userFeedbackApi';
 import './css/FeedbackSection.css';
 import SubmitButton from '../common/SubmitButton';
+import styled from '@emotion/styled';
+
+const MAX_LENGTH = 100;
+
+const FeedbackContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+`;
+
+const FeedbackWrapper = styled.div`
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+`;
+
 
 const FeedbackSection = () => {
   const [feedback, setFeedback] = useState('');
@@ -49,20 +71,20 @@ const FeedbackSection = () => {
   };
 
   return (
-    <section className="feedback-container">
-      <div className="feedback-wrapper">
+    <FeedbackContainer>
+      <FeedbackWrapper>
         <h1 className="feedback-title">HaruHan 피드백</h1>
         <textarea
           className="feedback-textarea"
-          maxLength="100"
+          maxLength={MAX_LENGTH}
           placeholder="HaruHan 서비스에 관한 피드백을 입력해주세요. (최대 100자)"
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         ></textarea>
         <span className="feedback-count">{feedback.length} / 100</span>
         <SubmitButton text="제출" onClick={handleFeedbackSubmit} />
-      </div>
-    </section>
+      </FeedbackWrapper>
+    </FeedbackContainer>
   );
 };
 
