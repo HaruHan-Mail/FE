@@ -1,4 +1,3 @@
-import './css/MailHeader.css';
 import LogoImg from '/src/assets/images/HaruhanLogo.webp';
 import styled from '@emotion/styled';
 
