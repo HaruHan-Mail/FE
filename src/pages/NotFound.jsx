@@ -1,5 +1,5 @@
-import NotFoundSection from '../components/_Error/NotFoundSection';
-import Layout from '../components/Layout/Layout';
+import { NotFoundSection } from '@features/error';
+import Layout from '@layout/Layout';
 
 const NotFound = () => {
   return (

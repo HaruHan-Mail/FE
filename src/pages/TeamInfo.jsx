@@ -1,6 +1,6 @@
 import React from 'react';
-import TeamInfoSection from '../components/_TeamInfo/TeamInfoSection';
-import Layout from '../components/Layout/Layout';
+import { TeamInfoSection } from '@features/team';
+import Layout from '@layout/Layout';
 
 const TeamInfo = () => {
   return (

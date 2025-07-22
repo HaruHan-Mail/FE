@@ -1,0 +1,153 @@
+.feedback-list-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feedback-list-content-container {
+  border-radius: 4px;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.2s ease;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 2px 8px rgba(24, 24, 38, 0.06);
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.feedback-list-content-container:hover {
+  transform: none;
+  border-left: 3px solid var(--blue);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(24, 24, 38, 0.08);
+}
+
+.feedback-list-content {
+  font-size: 16px;
+  line-height: 2;
+  flex: 1;
+  margin-right: 32px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  font-weight: 600;
+  color: var(--d-grey)
+}
+
+.feedback-list-content-date {
+  font-size: 15px;
+  color: var(--l-grey);
+  white-space: nowrap;
+  font-weight: 500;
+  position: relative;
+  top: 2px;
+}
+
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pagination styling */
+.feedback-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  gap: 6px;
+}
+
+.pagination-button {
+  border: none;
+  background-color: transparent;
+  color: var(--blue-grey);
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.pagination-button:hover {
+  background-color: rgba(226, 232, 240, 0.5);
+}
+
+.pagination-button.active {
+  background-color: var(--blue);
+  color: white;
+}
+
+.pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  color: var(--l-grey);
+}
+
+/* Filter controls */
+.feedback-filter-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.feedback-sort-dropdown {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #64748b;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.feedback-sort-dropdown:hover {
+  border-color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .feedback-list-container {
+    margin: 24px auto;
+    gap: 12px;
+  }
+
+  .feedback-list-content-container {
+    padding: 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .feedback-list-content {
+    margin-right: 0;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .feedback-list-content-date {
+    align-self: flex-start;
+    font-size: 12px;
+  }
+
+  .feedback-filter-controls {
+    margin-bottom: 18px;
+  }
+}

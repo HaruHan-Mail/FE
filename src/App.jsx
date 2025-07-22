@@ -3,23 +3,22 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import './App.css';
-import RouteGuard from './components/common/RouteGuard.jsx';
-import AdminRouteGuard from './components/common/AdminRouteGuard.jsx';
-import LoadingSpinner from './components/common/LoadingSpinner.jsx';
-import Home from './pages/Home.jsx';
+import RouteGuard from '@common/RouteGuard.jsx';
+import AdminRouteGuard from '@common/AdminRouteGuard.jsx';
+import LoadingSpinner from '@common/LoadingSpinner.jsx';
+import Home from '@pages/Home.jsx';
 
 const queryClient = new QueryClient();
 
-const NotFound = lazy(() => import('./pages/NotFound.jsx'));
-const Policy = lazy(() => import('./pages/Policy.jsx'));
-const Unsubscribe = lazy(() => import('./pages/Unsubscribe.jsx'));
-const Feedback = lazy(() => import('./pages/Feedback.jsx'));
-const Setting = lazy(() => import('./pages/Setting.jsx'));
-const Content = lazy(() => import('./pages/Content.jsx'));
-const ContentDetail = lazy(() => import('./pages/ContentDetail.jsx'));
-const TeamInfo = lazy(() => import('./pages/TeamInfo.jsx'));
-const Admin = lazy(() => import('./pages/Admin.jsx'));
-
+const NotFound = lazy(() => import('@pages/NotFound.jsx'));
+const Policy = lazy(() => import('@pages/Policy.jsx'));
+const Unsubscribe = lazy(() => import('@pages/Unsubscribe.jsx'));
+const Feedback = lazy(() => import('@pages/Feedback.jsx'));
+const Setting = lazy(() => import('@pages/Setting.jsx'));
+const Content = lazy(() => import('@pages/Content.jsx'));
+const ContentDetail = lazy(() => import('@pages/ContentDetail.jsx'));
+const TeamInfo = lazy(() => import('@pages/TeamInfo.jsx'));
+const Admin = lazy(() => import('@pages/Admin.jsx'));
 
 const router = createBrowserRouter([
   {
@@ -64,9 +63,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/content/:contentId',
-    element: (
-        <ContentDetail />
-    ),
+    element: <ContentDetail />,
   },
   {
     path: '/teamInfo',
@@ -78,7 +75,7 @@ const router = createBrowserRouter([
       <AdminRouteGuard>
         <Admin />
       </AdminRouteGuard>
-    )
+    ),
   },
   {
     path: '/*',

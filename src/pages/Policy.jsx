@@ -1,5 +1,5 @@
-import Layout from '../components/Layout/Layout';
-import PolicyComponent from '../components/_Policy/PolicyComponent';
+import Layout from '@layout/Layout';
+import { PolicyComponent } from '@features/policy';
 
 const Policy = () => {
   return (

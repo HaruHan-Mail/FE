@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminSection from '../components/_Admin/AdminSection';
+import { AdminSection } from '@features/admin';
 
 const Admin = () => {
   return <AdminSection />;
