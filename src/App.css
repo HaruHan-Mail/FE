@@ -1,14 +1,6 @@
-/* 지수 */
-@font-face {
-  font-family: 'S-CoreDream-3Light';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
-    format('woff');
-  font-display: swap;
-}
-
 * {
-  font-family: 'S-CoreDream-3Light';
-  font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
 
   --primary: #e86912;
   --secondary: #f2a774;

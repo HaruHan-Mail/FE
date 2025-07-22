@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import PopularTopicItem from './PopularTopicItem';
 import { usePopularContent } from '../../../hooks/queries';
-import { getPopularImages } from '../../../utils/getPopularImages';
+import { PopularImages } from './utils/getPopularImages';
 import LoadingSpinner from '../../common/LoadingSpinner';
 
 const Container = styled.div`
@@ -54,7 +54,6 @@ const GridItem = styled.div`
 
 const PopularTopicList = () => {
   const { data: popularContent, isLoading, error } = usePopularContent();
-  const images = getPopularImages();
 
   if (isLoading) {
     return (
@@ -85,7 +84,7 @@ const PopularTopicList = () => {
       <GridContainer>
         {popularContent.slice(0, 5).map((item, idx) => (
           <GridItem key={item.id || idx}>
-            <PopularTopicItem title={item.title} image={images[idx]} />
+            <PopularTopicItem title={item.title} image={PopularImages[idx]} />
           </GridItem>
           ))}
       </GridContainer>

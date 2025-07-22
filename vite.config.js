@@ -50,6 +50,11 @@ export default defineConfig({
       ext: ".br",
     }),
   ],
+  resolve: {
+    alias: {
+      '@assets': path.resolve(__dirname, 'src/assets'),
+    }
+  },
   test: {
     globals: true,
     environment: 'jsdom',
