@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef, useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -17,10 +17,17 @@ const TeamHeroContainer = styled.div`
 
 const TextContainer = styled.div`
   position: absolute;
+  text-align: center;
   p {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 300;
     font-size: 9rem;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 4rem;
+    }
   }
 `
 
@@ -35,6 +42,20 @@ const ImageContainer = styled.div`
     width: 300px;
     height: 300px;
     object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 14rem 4rem;                          
+
+    img {
+      width: 150px;                       
+      height: 150px;
+    }
+
+    img:nth-of-type(n+5) {
+        display: none;
+    }
   }
 `
 
