@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useEffect, useState } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 import gsap from 'gsap'
 import { TeamHeroImages } from './utils/getTeamHeroImage'
