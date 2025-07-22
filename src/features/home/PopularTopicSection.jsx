@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 
 const SectionContainer = styled.section`
   padding: 6rem 1.5rem;
-  background: linear-gradient(180deg, #e6eaf5 0%, #f6f6f6 100%);
 `;
 
 const SectionTitle = styled.h2`
@@ -38,7 +37,8 @@ const PopularTopicSection = () => {
     <SectionContainer>
       <SectionTitle>오늘 사람들이 가장 많이 찾은 지식</SectionTitle>
       <SectionSubtitle>
-        지금 가장 주목받는 주제들을 한눈에 확인하고 <br/>새로운 트렌드를 발견해 보세요.
+        지금 가장 주목받는 주제들을 한눈에 확인하고 <br />
+        새로운 트렌드를 발견해 보세요.
       </SectionSubtitle>
       <PopularTopicList />
     </SectionContainer>

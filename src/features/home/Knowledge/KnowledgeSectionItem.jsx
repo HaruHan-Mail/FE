@@ -2,16 +2,15 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  background-color: white;
+  background: linear-gradient(180deg, #f6f6f6 0%, #e6eaf5 100%);
   border-radius: 5px;
   padding: 2.5rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 
   &:hover {
-    transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    transform: scale(1.05);
   }
 `;
 
@@ -37,20 +36,14 @@ const Content = styled.p`
   line-height: 2;
 `;
 
-
 const KnowledgeSectionItem = ({ icon, title, summary, contents, onClick }) => {
   return (
-    <Container onClick={onClick}>
+    <Container onClick={onClick} className="item">
       <Title>
         {icon} {title}
       </Title>
       <Summary>{summary}</Summary>
-      {contents &&
-        contents.map((content, index) => (
-          <Content key={index}>
-            {content}
-          </Content>
-        ))}
+      {contents && contents.map((content, index) => <Content key={index}>{content}</Content>)}
     </Container>
   );
 };
