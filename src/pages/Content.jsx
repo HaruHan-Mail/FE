@@ -1,6 +1,6 @@
 import React from 'react';
-import MailLayout from '../components/Layout/MailLayout';
-import ContentSection from '../components/_Content/ContentSection';
+import MailLayout from '@layout/MailLayout';
+import { ContentSection } from '@features/content';
 
 const Content = () => {
   return (

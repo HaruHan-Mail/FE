@@ -1,7 +1,5 @@
-import HeroSection from '../components/_Home/HeroSection';
-import KnowledgeSection from '../components/_Home/KnowledgeSection.jsx';
-import PopularTopicSection from '../components/_Home/PopularTopicSection';
-import Layout from '../components/Layout/Layout';
+import { HeroSection, KnowledgeSection, PopularTopicSection } from '@features/home';
+import Layout from '@layout/Layout';
 
 const Home = () => {
   return (

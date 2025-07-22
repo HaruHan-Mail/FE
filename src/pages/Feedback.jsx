@@ -1,5 +1,5 @@
-import MailLayout from '../components/Layout/MailLayout';
-import FeedbackSection from '../components/_Feedback/FeedbackSection';
+import MailLayout from '@layout/MailLayout';
+import { FeedbackSection } from '@features/feedback';
 
 const Feedback = () => {
   return (

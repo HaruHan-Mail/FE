@@ -1,5 +1,5 @@
-import MailLayout from '../components/Layout/MailLayout';
-import UnsubscribeSection from '../components/_Unsubscribe/UnsubscribeSection';
+import MailLayout from '@layout/MailLayout';
+import { UnsubscribeSection } from '@features/unsubscribe';
 
 const Unsubscribe = () => {
   return (

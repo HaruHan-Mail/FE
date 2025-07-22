@@ -1,5 +1,5 @@
-import MailLayout from '../components/Layout/MailLayout';
-import SettingSection from '../components/_Setting/SettingSection';
+import MailLayout from '@layout/MailLayout';
+import { SettingSection } from '@features/setting';
 
 const Setting = () => {
   return (
