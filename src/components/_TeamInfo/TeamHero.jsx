@@ -1,10 +1,7 @@
-import React, { useLayoutEffect, useRef, useEffect, useState } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TeamHeroImages } from './utils/getTeamHeroImage'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const TeamHeroContainer = styled.div`
   min-height: 100vh;

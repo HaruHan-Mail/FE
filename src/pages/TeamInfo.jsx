@@ -1,12 +1,12 @@
 import React from 'react';
 import TeamInfoSection from '../components/_TeamInfo/TeamInfoSection';
-import MailLayout from '../components/Layout/MailLayout';
+import Layout from '../components/Layout/Layout';
 
 const TeamInfo = () => {
   return (
-    <MailLayout>
+    <Layout>
       <TeamInfoSection />
-    </MailLayout>
+    </Layout>
   );
 };
 

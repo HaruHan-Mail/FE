@@ -109,7 +109,6 @@ const Header = () => {
         src={LogoImg}
         onClick={() => nav('/')}
         alt="Haruhan Logo"
-        fetchPriority='high'
         loading="eager"
         width={100}
         height={50}
