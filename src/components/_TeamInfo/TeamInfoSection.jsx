@@ -1,343 +1,183 @@
-import React, { useEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
+import cloud from '/src/assets/images/cloud.avif';
+import email from '/src/assets/images/email.avif';
+import team from '/src/assets/images/team.avif';
+import knowledge from '/src/assets/images/knowledge.avif';
 import styled from '@emotion/styled';
-import { teamInfo } from '../../mocks/teamInfoData';
-import { useKineticText } from '../../hooks/useScrollAnimation';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// 전체 컨테이너 - 모던한 흰 배경
-const FullScreenContainer = styled.div`
-  min-height: 100vh;
-  background: #ffffff;
-  overflow-x: hidden;
-  position: relative;
-  line-height: 1.5;
-`;
+gsap.registerPlugin(ScrollTrigger)
 
-// 메인 콘텐츠 영역 - 개선된 패딩과 레이아웃
-const MainContent = styled.main`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  
-  @media (max-width: 768px) {
-    padding: 0 1.5rem;
-  }
-`;
+const TeamInfoData = [
+  {
+    id: 1,
+    image: cloud,
+    title: 'Haruhan',
+    content: [
+      '똑똑한 하루의 시작',
+      '하루를 여는 작은 지식',
+      'Morning Spark',
+      '하루 1분, 새로운 시선',
+    ]
+  },
+  {
+    id: 2,
+    image: team,
+    title: 'What We Do',
+    content: [
+      'HaruHan 이란?',
+      '매일의 지식 레터',
+      'Daily Dose: 하루 한 편의 인사이트',
+      '가볍고 유익한 잡학 이야기',
+    ]
+  },
+  {
+    id: 3,
+    image: knowledge,
+    title: 'Our Vision',
+    content: [
+      '배움이 일상이 되는 세상',
+      'Beyond Info: 대화를 여는 지식',
+      '호기심으로 잇는 내일',
+      '지식으로 여는 새로운 시각',
+    ]
+  },
+  {
+    id: 4,
+    image: email,
+    title: 'Our Goals',
+    content: [
+      '지속 가능한 인사이트 습관',
+      '짧고 깊은 배움의 여정',
+      '무(無)자극, 온전한 집중',
+      '한 조각 지식이 만드는 변화',
+    ]
+  },
+]
 
-// 히어로 섹션 - 모던한 타이포그래피
-const HeroSection = styled.section`
-  min-height: 100vh;
+const TeamInfoContainer = styled.div`
+  padding: 60vh 10vw;
+`
+
+const TeamInfoItem = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 8rem 0 4rem;
-  
+  border-bottom: 1px solid;
+  border-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+
   @media (max-width: 768px) {
-    padding: 6rem 0 3rem;
+    flex-direction: column;
+    padding: 1rem;
   }
-`;
+`
 
-const HeroText = styled.h1`
-  font-size: clamp(2.5rem, 8vw, 6rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin: 0;
-  
-  .line {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-`;
+const TeamInfoItemTitle = styled.div`
+  align-self: center;
+  width: 40%;
+  font-size: 1.5rem;
 
-const SubText = styled.p`
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 400;
-  margin-top: 2rem;
-  max-width: 600px;
-  color: #666;
-  opacity: 0.9;
-`;
-
-// 콘텐츠 섹션들 - 개선된 간격과 레이아웃
-const ContentSection = styled.section`
-  padding: 6rem 0;
-  border-top: 1px solid #f0f0f0;
-  
   @media (max-width: 768px) {
-    padding: 4rem 0;
+    font-size: 1rem;
+    width: 100%;
   }
-`;
 
-const SectionTitle = styled.h2`
-  font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin-bottom: 3rem;
-  color: #1a1a1a;
-`;
-
-const ContentGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 4rem;
-  align-items: start;
-  
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  h1 {
+    padding: 20px 0;
   }
-`;
 
-const ContentText = styled.div`
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #4a4a4a;
-  
   ul {
     list-style: none;
-    padding: 0;
+    padding: 20px 0;
     margin: 0;
-    
+
     li {
-      margin-bottom: 1.25rem;
-      position: relative;
-      padding-left: 1.5rem;
-      
-      &::before {
-        content: '•';
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-        font-weight: bold;
-        font-size: 1.2em;
-      }
+      padding: 10px 0;
     }
   }
-`;
+`
 
-const MembersGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  
+const TeamInfoItemImage = styled.div`
+  width: 60%;
+  height: 28rem;
+
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    width: 100%;
+    height: 18rem;
   }
+`
+const ImageBox = styled.div`
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: ${props => `url(${props.image})`};
 `;
-
-const MemberCard = styled.div`
-  padding: 2.5rem 2rem;
-  background: #fafafa;
-  border: 1px solid #e8e8e8;
-  border-radius: 12px;
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #333;
-  
-  &:hover {
-    background: #f5f5f5;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-// 키네틱 텍스트 컴포넌트 - 개선된 애니메이션
-const KineticTextSpan = ({ text, animationType = 'fadeInUp', staggerDelay = 0.03, className }) => {
-  const { ref, chars, isVisible, getCharStyle } = useKineticText(text, {
-    animationType,
-    staggerDelay,
-    threshold: 0.2
-  });
-
-  return (
-    <span ref={ref} className={className}>
-      {chars.map((charData, index) => (
-        <span
-          key={index}
-          style={getCharStyle(charData, isVisible)}
-        >
-          {charData.char}
-        </span>
-      ))}
-    </span>
-  );
-};
 
 const TeamInfoSection = () => {
-  const [currentPhrase, setCurrentPhrase] = useState(0);
 
-  const koreanHeroTexts = [
-    "HaruHan 지식이",
-    "만들어가는",
-    "똑똑한 하루를",
-    "당신에게",
-    "전합니다"
-  ];
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
-    
-    // 자동 텍스트 변경 - 더 부드러운 전환
-    const interval = setInterval(() => {
-      setCurrentPhrase((prev) => (prev + 1) % koreanHeroTexts.length);
-    }, 1500);
+  }, [])
 
-    return () => clearInterval(interval);
-  }, []);
+  useGSAP(() => {
+    gsap.utils.toArray('.slider .image').forEach((image, index) => {
+      gsap.fromTo(image, {
+        clipPath: "inset(0% 100% 0% 0% round 15px)",
+      }, {
+        clipPath: "inset(0% 0% 0% 0% round 15px)",
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: image,
+          start: "clamp(top bottom)",
+          end: "clamp(top top)",
+          scrub: true,
+        }
+      })
+    })
+    gsap.utils.toArray('.slider .title, .slider .content').forEach((title, index) => {
+      gsap.fromTo(title, {
+        opacity: 0,
+      }, {
+        opacity: 1,
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: title,
+          start: "clamp(top bottom)",
+          end: "clamp(top top)",
+          scrub: true,
+        }
+      })
+    })
+  })
+  
 
   return (
-    <FullScreenContainer>
-      <MainContent>
-        {/* 히어로 섹션 */}
-        <HeroSection>
-          <HeroText>
-            {koreanHeroTexts.map((text, index) => (
-              <span 
-                key={index} 
-                className="line"
-                style={{
-                  opacity: currentPhrase >= index ? 1 : 0.4,
-                  transition: 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-                  animationDelay: `${index * 0.15}s`
-                }}
-              >
-                <KineticTextSpan 
-                  text={text}
-                  animationType="slideInRight"
-                  staggerDelay={0.04}
-                />
-              </span>
-            ))}
-          </HeroText>
-          
-          <SubText>
-            <KineticTextSpan 
-              text="우리는 매일의 지식 전달을 통해"
-              animationType="fadeInUp"
-              staggerDelay={0.02}
-            />
-            <br />
-            <KineticTextSpan 
-              text="더 나은 세상을 만들어가는 팀입니다."
-              animationType="fadeInUp"
-              staggerDelay={0.02}
-            />
-          </SubText>
-        </HeroSection>
-
-        {/* 서비스 소개 섹션 */}
-        <ContentSection>
-          <SectionTitle>
-            <KineticTextSpan 
-              text="What We Do"
-              animationType="fadeInScale"
-              staggerDelay={0.06}
-            />
-          </SectionTitle>
-          
-          <ContentGrid>
-            <div>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                fontWeight: '600', 
-                marginBottom: '1rem',
-                color: '#1a1a1a'
-              }}>
-                <KineticTextSpan 
-                  text="우리의 서비스"
-                  animationType="slideInRight"
-                  staggerDelay={0.04}
-                />
-              </h3>
-            </div>
-            <ContentText>
-              <ul>
-                {teamInfo.serviceInfo.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
+    <TeamInfoContainer>
+      {
+        TeamInfoData.map((item, index) => (
+          <TeamInfoItem key={index} className={`slider`}>
+            <TeamInfoItemTitle>
+              <h1 className={`title`}>{item.title}</h1>
+              <ul className={`content`}>
+                {
+                  item.content.map((content, index) => (
+                    <li key={index}>{content}</li>
+                  ))
+                }
               </ul>
-            </ContentText>
-          </ContentGrid>
-        </ContentSection>
-
-        {/* 비전 섹션 */}
-        <ContentSection>
-          <SectionTitle>
-            <KineticTextSpan 
-              text="Our Vision"
-              animationType="rotateIn"
-              staggerDelay={0.05}
-            />
-          </SectionTitle>
-          
-          <ContentGrid>
-            <div>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                fontWeight: '600', 
-                marginBottom: '1rem',
-                color: '#1a1a1a'
-              }}>
-                <KineticTextSpan 
-                  text="우리의 비전"
-                  animationType="fadeInUp"
-                  staggerDelay={0.04}
-                />
-              </h3>
-            </div>
-            <ContentText>
-              <ul>
-                {teamInfo.vision.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </ContentText>
-          </ContentGrid>
-        </ContentSection>
-
-        {/* 목표 섹션 */}
-        <ContentSection>
-          <SectionTitle>
-            <KineticTextSpan 
-              text="Our Goals"
-              animationType="fadeInScale"
-              staggerDelay={0.06}
-            />
-          </SectionTitle>
-          
-          <ContentText>
-            <ul>
-              {teamInfo.goal.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </ContentText>
-        </ContentSection>
-
-        {/* 팀 섹션 */}
-        <ContentSection>
-          <SectionTitle>
-            <KineticTextSpan 
-              text="Our Team"
-              animationType="slideInRight"
-              staggerDelay={0.04}
-            />
-          </SectionTitle>
-          
-          <MembersGrid>
-            {teamInfo.members.map((member, index) => (
-              <MemberCard key={index}>
-                {member}
-              </MemberCard>
-            ))}
-          </MembersGrid>
-        </ContentSection>
-      </MainContent>
-    </FullScreenContainer>
-  );
-};
+            </TeamInfoItemTitle>
+            <TeamInfoItemImage>
+              <ImageBox image={item.image} className={`image`}/>
+            </TeamInfoItemImage>
+          </TeamInfoItem>
+        ))
+      }
+    </TeamInfoContainer>
+  )
+}
 
 export default TeamInfoSection;

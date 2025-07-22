@@ -17,11 +17,6 @@ const MailHeaderContainer = styled.section`
 
 `;
 
-const MailHeaderLogoImage = styled.img`
-  width: 100px;
-  height: 50px;
-`;
-
 const MailHeader = () => {
  
   return (
