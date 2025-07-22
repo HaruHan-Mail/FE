@@ -6,6 +6,12 @@ import viteTsconfigPaths from "vite-tsconfig-paths";
 import svgrPlugin from "vite-plugin-svgr";
 import legacy from "@vitejs/plugin-legacy";
 import viteCompression from "vite-plugin-compression";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
+
 
 export default defineConfig({
   plugins: [
