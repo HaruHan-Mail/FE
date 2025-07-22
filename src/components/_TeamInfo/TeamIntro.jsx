@@ -3,9 +3,6 @@ import { TeamIntroImages } from './utils/getTeamIntroImage';
 import styled from '@emotion/styled';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const TeamIntroData = [
   {
@@ -121,9 +118,9 @@ const TeamIntro = () => {
   useGSAP(() => {
     gsap.utils.toArray('.slider .image').forEach((image, index) => {
       gsap.fromTo(image, {
-        clipPath: "inset(0% 100% 0% 0% round 15px)",
+        clipPath: "inset(0% 100% 0% 0%)",
       }, {
-        clipPath: "inset(0% 0% 0% 0% round 15px)",
+        clipPath: "inset(0% 0% 0% 0%)",
         duration: 1,
         ease: "none",
         scrollTrigger: {
