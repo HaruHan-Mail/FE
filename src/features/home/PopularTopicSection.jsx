@@ -4,6 +4,10 @@ import styled from '@emotion/styled';
 
 const SectionContainer = styled.section`
   padding: 6rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const SectionTitle = styled.h2`

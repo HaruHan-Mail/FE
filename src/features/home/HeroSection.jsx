@@ -12,15 +12,6 @@ const TeamHeroContainer = styled.div`
   overflow: hidden;
 `;
 
-const BgImage = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-`;
-
 const TextContainer = styled.div`
   position: absolute;
   text-align: center;
@@ -106,20 +97,6 @@ export default function TeamHero() {
         scrub: 1,
       },
     });
-    gsap.fromTo(
-      '.bg-image',
-      { opacity: 0.2 },
-      {
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      },
-    );
   }, []);
 
   const random = (min, max) => min + (max - min) * Math.random();

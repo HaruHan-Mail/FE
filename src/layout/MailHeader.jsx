@@ -19,7 +19,7 @@ const MailHeaderContainer = styled.section`
 const MailHeader = () => {
   return (
     <MailHeaderContainer>
-      <a target="_blank" href="https://haruhan.site">
+      <a target="_blank" href="https://haruhan.site" rel="noopener noreferrer">
         <img
           className="MailHeaderLogoImage"
           src={LogoImg}
