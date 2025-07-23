@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   gap: 1rem;
   position: relative;
   padding: 20vh 0;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;

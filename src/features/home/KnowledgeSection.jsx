@@ -6,6 +6,7 @@ import KnowledgeSectionList from './Knowledge/KnowledgeSectionList';
 
 const SectionContainer = styled.section`
   padding: 6rem 1.5rem;
+  overflow: hidden;
 `;
 
 const SectionTitle = styled.h2`
