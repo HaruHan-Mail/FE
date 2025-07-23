@@ -1,35 +1,67 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { submitFeedback } from '@apis/userFeedbackApi';
-import './css/FeedbackSection.css';
-import SubmitButton from '@common/SubmitButton';
 import styled from '@emotion/styled';
+import SubmitButton from '@common/SubmitButton';
 
 const MAX_LENGTH = 100;
 
-const FeedbackContainer = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
   padding: 1rem;
+  min-height: 100vh;
   box-sizing: border-box;
 `;
 
-const FeedbackWrapper = styled.div`
+const Card = styled.div`
   width: 100%;
-  max-width: 500px;
-  background-color: var(--white);
+  max-width: 480px;
+  background: var(--white);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const Title = styled.h1`
+  font-size: 1.5rem;
+  color: var(--black);
+  margin: 0;
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  height: 140px;
+  padding: 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 8px;
+  resize: none;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition:
+    border-color 0.3s ease,
+    transform 0.2s ease;
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+    transform: scale(1.02);
+  }
+`;
+
+const Counter = styled.span`
+  align-self: flex-end;
+  font-size: 1rem;
+  color: var(--l-grey);
 `;
 
 const FeedbackSection = () => {
   const [feedback, setFeedback] = useState('');
 
   const handleFeedbackSubmit = async () => {
-    // 공백만 입력했거나, 아무 것도 입력 안 했을 때 경고
     if (!feedback.trim()) {
       await Swal.fire({
         icon: 'warning',
@@ -44,7 +76,7 @@ const FeedbackSection = () => {
     const result = await Swal.fire({
       icon: 'question',
       title: '피드백을 제출하시겠습니까?',
-      text: '피드백을 제출하고 입력창을 초기화합니다!',
+      text: '제출 후 입력창이 초기화됩니다.',
       showCancelButton: true,
       confirmButtonColor: '#e86912',
       cancelButtonColor: '#717171',
@@ -56,34 +88,42 @@ const FeedbackSection = () => {
       try {
         await submitFeedback(feedback);
         setFeedback('');
-        Swal.fire({
+        await Swal.fire({
           icon: 'success',
           title: '피드백 제출 완료',
-          text: '피드백 제출을 성공적으로 완료하였습니다!',
+          text: '소중한 의견 감사합니다!',
           confirmButtonColor: '#e86912',
           confirmButtonText: '확인',
         });
       } catch (error) {
-        console.log('피드백 전송 실패: ', error.message);
+        console.error('피드백 전송 실패: ', error);
+        await Swal.fire({
+          icon: 'error',
+          title: '제출 실패',
+          text: '다시 시도해주세요.',
+          confirmButtonColor: '#e86912',
+          confirmButtonText: '확인',
+        });
       }
     }
   };
 
   return (
-    <FeedbackContainer>
-      <FeedbackWrapper>
-        <h1 className="feedback-title">HaruHan 피드백</h1>
-        <textarea
-          className="feedback-textarea"
+    <Container>
+      <Card>
+        <Title>HaruHan 피드백</Title>
+        <TextArea
           maxLength={MAX_LENGTH}
           placeholder="HaruHan 서비스에 관한 피드백을 입력해주세요. (최대 100자)"
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
-        ></textarea>
-        <span className="feedback-count">{feedback.length} / 100</span>
+        />
+        <Counter>
+          {feedback.length} / {MAX_LENGTH}
+        </Counter>
         <SubmitButton text="제출" onClick={handleFeedbackSubmit} />
-      </FeedbackWrapper>
-    </FeedbackContainer>
+      </Card>
+    </Container>
   );
 };
 

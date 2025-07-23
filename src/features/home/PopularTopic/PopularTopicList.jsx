@@ -5,6 +5,16 @@ import { usePopularContent } from '@hooks/queries';
 import { PopularImages } from './utils/getPopularImages';
 import LoadingSpinner from '@common/LoadingSpinner';
 
+const AdditionalContent = {
+  id: '999',
+  title: '하루의 소식 Haruhan',
+  summary: '',
+  background: '',
+  importance: '',
+  tip: '',
+  additionalResources: '',
+};
+
 const Container = styled.div`
   width: 100%;
   position: relative;
@@ -14,46 +24,46 @@ const Container = styled.div`
 
 const GridContainer = styled.div`
   display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+  grid-template-rows: 300px 300px 300px;
   gap: 1rem;
-  padding: 0 1rem;
-  grid-template-columns: 1fr;
-  grid-auto-rows: 250px;
+  grid-template-areas:
+    'item-1 item-1 item-2 item-3'
+    'item-4 item-4 item-6 item-6'
+    'item-4 item-4 item-5 item-5';
 
-  @media (min-width: 768px) {
+  @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 0 1.5rem;
+    grid-auto-rows: 250px;
+    grid-template-areas:
+      'item-1 item-2'
+      'item-3 item-4'
+      'item-5 item-4'
+      'item-6 item-6';
   }
 
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas:
+      'item-1'
+      'item-2'
+      'item-3'
+      'item-4'
+      'item-5'
+      'item-6';
   }
 `;
 
 const GridItem = styled.div`
-  @media (min-width: 768px) {
-    &:nth-of-type(1) {
-      grid-column: span 2;
-    }
-    &:nth-of-type(4) {
-      grid-column: span 2;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    &:nth-of-type(1) {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    &:nth-of-type(4) {
-      grid-column: span 2;
-      grid-row: auto;
-    }
-  }
+  grid-area: ${({ index }) => `item-${index + 1}`};
+  will-change: transform;
 `;
 
 const PopularTopicList = () => {
-  const { data: popularContent, isLoading, error } = usePopularContent();
+  const { data: popularContent = [], isLoading, error } = usePopularContent();
+
+  const withAdditionalContent = [...popularContent, AdditionalContent];
 
   if (isLoading) {
     return (
@@ -71,7 +81,7 @@ const PopularTopicList = () => {
     );
   }
 
-  if (!popularContent || popularContent.length === 0) {
+  if (!withAdditionalContent || withAdditionalContent.length === 0) {
     return (
       <Container>
         <div>인기 컨텐츠가 없습니다.</div>
@@ -82,9 +92,9 @@ const PopularTopicList = () => {
   return (
     <Container>
       <GridContainer>
-        {popularContent.slice(0, 5).map((item, idx) => (
-          <GridItem key={item.id || idx}>
-            <PopularTopicItem title={item.title} image={PopularImages[idx]} />
+        {withAdditionalContent.map((item, idx) => (
+          <GridItem key={item.id || idx} index={idx}>
+            <PopularTopicItem title={item.title} image={PopularImages[idx]} index={idx} />
           </GridItem>
         ))}
       </GridContainer>

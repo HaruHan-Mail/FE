@@ -73,9 +73,9 @@ const Content = styled.div`
   }
 `;
 
-const PopularTopicItem = ({ title, image }) => {
+const PopularTopicItem = ({ title, image, index, className }) => {
   return (
-    <Container>
+    <Container className={`${className} item-${index}`}>
       <Img src={image} alt={title} loading="lazy" />
       <Content>{title}</Content>
     </Container>

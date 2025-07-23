@@ -1,20 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { 
-  fetchAllBookmarkContents 
-} from '../../apis/userBookmarkApi';
-import { 
-  fetchAllContents,
-  fetchPopularContent,
-  fetchContentDetail
-} from '../../apis/userContentApi';
-import { 
-  fetchDashboard,
-  fetchAllFeedback
-} from '../../apis/adminApi';
+import { fetchAllBookmarkContents } from '@apis/userBookmarkApi';
+import { fetchAllContents, fetchPopularContent, fetchContentDetail } from '@apis/userContentApi';
+import { fetchDashboard, fetchAllFeedback } from '@apis/adminApi';
 
 const defaultQueryConfig = {
   staleTime: 5 * 60 * 1000,
-  cacheTime: 10 * 60 * 1000, 
+  cacheTime: 10 * 60 * 1000,
   retry: 2,
   refetchOnWindowFocus: false,
 };
@@ -46,7 +37,7 @@ export const usePopularContent = () => {
     queryFn: fetchPopularContent,
     select: (data) => data.data,
     ...defaultQueryConfig,
-    staleTime: 10 * 60 * 1000, 
+    staleTime: 10 * 60 * 1000,
   });
 };
 
@@ -79,4 +70,4 @@ export const useFeedbacks = () => {
     ...defaultQueryConfig,
     staleTime: 1 * 60 * 1000, // 피드백은 1분 캐시
   });
-}; 
+};

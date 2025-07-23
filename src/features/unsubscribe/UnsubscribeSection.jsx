@@ -1,8 +1,39 @@
+import styled from '@emotion/styled';
 import Swal from 'sweetalert2';
 import { cancelSubscription } from '@apis/userSubscriptionApi';
 import SubmitButton from '@common/SubmitButton';
 import { useQueryParams } from '@hooks/useQueryParams';
-import './css/UnsubscribSection.css';
+
+const Container = styled.section`
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
+const Title = styled.h1`
+  font-size: 2rem;
+  color: var(--primary);
+
+  @media screen and (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+`;
+
+const Text = styled.h3`
+  font-size: 1rem;
+  color: var(--black);
+  line-height: 2rem;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+    line-height: 3rem;
+  }
+`;
 
 const UnsubscribeSection = () => {
   const { email, token } = useQueryParams();
@@ -43,19 +74,19 @@ const UnsubscribeSection = () => {
   };
 
   return (
-    <section className="unsubscribe-section-container">
-      <h1 className="unsubscribe-section-title">HaruHan 구독 해지</h1>
-      <h3 className="unsubscribe-section-text">
+    <Container>
+      <Title>HaruHan 구독 해지</Title>
+      <Text>
         HaruHan 구독 해지 시 기존의 모든 정보가 삭제되며,
         <br />그 후에는 메일로 흥미로운 지식을 받아볼 수 없게 됩니다.
-      </h3>
+      </Text>
       <SubmitButton
         onClick={handleUnsubscribeSubmit}
         text="구독 해지"
         size="medium"
         width="250px"
       />
-    </section>
+    </Container>
   );
 };
 
