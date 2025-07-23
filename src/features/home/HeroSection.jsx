@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import gsap from 'gsap';
 import { TeamHeroImages } from './utils/getTeamHeroImage';
-import bgImg from './assets/hero-bg.svg';
 
 const TeamHeroContainer = styled.div`
   min-height: 100vh;
@@ -127,7 +126,6 @@ export default function TeamHero() {
 
   return (
     <TeamHeroContainer ref={sectionRef}>
-      <BgImage src={bgImg} alt="bg" className="bg-image" />
       <TextContainer>
         <p ref={textRef}>
           'One a Day' <span>HARUHAN</span>
