@@ -25,7 +25,13 @@ const TextContainer = styled.div`
     color: var(--primary);
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1440px) {
+    p {
+      font-size: 4rem;
+    }
+  }
+
+  @media (max-width: 767px) {
     p {
       font-size: 4rem;
     }
@@ -34,10 +40,11 @@ const TextContainer = styled.div`
 
 const ImageContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   place-items: center;
-  gap: 14rem;
   width: 100%;
+
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14rem;
 
   img {
     width: 300px;
@@ -45,7 +52,15 @@ const ImageContainer = styled.div`
     object-fit: cover;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1440px) {
+    gap: 10rem 5rem;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 767px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 14rem 4rem;
 

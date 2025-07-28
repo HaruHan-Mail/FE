@@ -35,6 +35,11 @@ const ImageHolder = styled.div`
     object-fit: cover;
   }
 
+  @media (min-width: 768px) and (max-width: 1440px) {
+    height: 550px;
+    width: 450px;
+  }
+
   @media (max-width: 768px) {
     height: 400px;
     width: 300px;
@@ -59,6 +64,11 @@ const TextContainer = styled.div`
     text-align: end;
     align-self: flex-start;
 
+    @media (min-width: 768px) and (max-width: 1440px) {
+      font-size: 3rem;
+      transform: translateX(-150px);
+    }
+
     @media (max-width: 768px) {
       font-size: 4rem;
       transform: translateX(0);
@@ -70,6 +80,10 @@ const TextContainer = styled.div`
   p {
     font-size: 1.5rem;
     opacity: 0.8;
+
+    @media (min-width: 768px) and (max-width: 1440px) {
+      font-size: 0.8rem;
+    }
 
     @media (max-width: 768px) {
       font-size: 1.2rem;
@@ -108,6 +122,10 @@ const BgImage = styled.img`
     to {
       transform: rotate(360deg);
     }
+  }
+
+  @media (min-width: 768px) and (max-width: 1440px) {
+    right: 100px;
   }
 
   @media (max-width: 768px) {
