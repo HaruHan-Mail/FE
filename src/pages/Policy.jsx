@@ -1,10 +1,10 @@
 import Layout from '@layout/Layout';
-import { PolicyPolicySection } from '@features/policy';
+import { PrivacyPolicySection } from '@features/policy';
 
 const Policy = () => {
   return (
     <Layout>
-      <PolicyPolicySection />
+      <PrivacyPolicySection />
     </Layout>
   );
 };

@@ -72,7 +72,7 @@ const Content = styled.div`
   }
 `;
 
-const PrivacyPolicy = () => {
+const PrivacyPolicySection = () => {
   const [openSections, setOpenSections] = useState({});
 
   const toggleSection = (index) => {
@@ -103,4 +103,4 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default PrivacyPolicySection;

@@ -1,1 +1,1 @@
-export { default as PolicyPolicySection } from './PolicyPolicySection';
+export { default as PrivacyPolicySection } from './PrivacyPolicySection';

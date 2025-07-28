@@ -9,7 +9,7 @@ const AdminRouteGuard = ({ children }) => {
   useEffect(() => {
     const checkCode = async () => {
       const result = await AdminVerification();
-      console.log(result)
+      console.log(result);
       if (result) {
         setIsAuthorized(true);
       } else {

@@ -21,19 +21,6 @@ export default defineConfig({
       },
     }),
     ViteImageOptimizer({
-      jpg: {
-        quality: 80,
-      },
-      jpeg: {
-        quality: 80,
-        progressive: true,
-        optimiseCoding: true,
-      },
-      png: {
-        quality: 80,
-        strip: true,
-        palette: true,
-      },
       webp: {
         lossless: false,
         quality: 75,
