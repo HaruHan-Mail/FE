@@ -1,10 +1,10 @@
 import Layout from '@layout/Layout';
-import { PolicyComponent } from '@features/policy';
+import { PolicyPolicySection } from '@features/policy';
 
 const Policy = () => {
   return (
     <Layout>
-      <PolicyComponent />
+      <PolicyPolicySection />
     </Layout>
   );
 };
