@@ -70,17 +70,15 @@ jobs:
             const total = process.env.total;
 
             const body = `
-### 🧪 Playwright Test Results
-- Total: ${total}
-- Passed: ${passed}
-- Failed: ${failed}
+            - Total: ${total}
+            - Passed: ${passed}
+            - Failed: ${failed}
 
-### 🌐 Lighthouse Results
-- Performance: ${lh.perf}
-- Accessibility: ${lh.access}
-- SEO: ${lh.seo}
-- LCP: ${lh.lcp}s
-`;
+            - Performance: ${lh.perf}
+            - Accessibility: ${lh.access}
+            - SEO: ${lh.seo}
+            - LCP: ${lh.lcp}s
+            `;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
