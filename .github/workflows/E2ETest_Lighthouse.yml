@@ -67,12 +67,17 @@ jobs:
       # 10. PR 코멘트 작성
       - name: Comment on PR
         uses: actions/github-script@v7
+        env:
+          RESULT: ${{ steps.lighthouse.outputs.result }}
+          PASSED: ${{ steps.playwright.outputs.passed }}
+          FAILED: ${{ steps.playwright.outputs.failed }}
+          TOTAL: ${{ steps.playwright.outputs.total }}
         with:
           script: |
-            const lh = JSON.parse(process.env.result);
-            const passed = Number(process.env.passed);
-            const failed = Number(process.env.failed);
-            const total = Number(process.env.total);
+            const lh = JSON.parse(process.env.RESULT);
+            const passed = Number(process.env.PASSED);
+            const failed = Number(process.env.FAILED);
+            const total = Number(process.env.TOTAL);
 
             const body = `
             ### E2E Test & Lighthouse Report
