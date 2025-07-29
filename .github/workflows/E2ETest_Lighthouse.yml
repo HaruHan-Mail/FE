@@ -8,6 +8,8 @@ jobs:
   e2e-and-lighthouse:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
 
     steps:
       # 1. 소스 체크아웃
