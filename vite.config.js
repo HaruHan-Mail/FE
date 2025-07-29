@@ -62,19 +62,19 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.js'],
     css: true,
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'three-main': ['three'],
-          'three-fiber': ['@react-three/fiber'],
-          'three-drei': ['@react-three/drei'],
-          'three-postprocessing': ['@react-three/postprocessing'],
-          'three-rapier': ['@react-three/rapier'],
-        },
-      },
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     output: {
+  //       manualChunks: {
+  //         'three-main': ['three'],
+  //         'three-fiber': ['@react-three/fiber'],
+  //         'three-drei': ['@react-three/drei'],
+  //         'three-postprocessing': ['@react-three/postprocessing'],
+  //         'three-rapier': ['@react-three/rapier'],
+  //       },
+  //     },
+  //   },
+  // },
   optimizeDeps: {
     include: [
       'three',
