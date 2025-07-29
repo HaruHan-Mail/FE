@@ -19,23 +19,22 @@ const ModalOverlay = styled.div`
   z-index: 1000;
   padding: 1rem;
   box-sizing: border-box;
-  
+
   /* 애니메이션 효과 */
   opacity: 0;
   animation: fadeIn 0.2s ease-out forwards;
-  
+
   @keyframes fadeIn {
     to {
       opacity: 1;
     }
   }
-  
+
   /* 모바일 최적화 */
   @media (max-width: 768px) {
     padding: 0.5rem;
     padding-top: 5vh;
   }
-  
 `;
 
 // 2025 트렌드: 더 세련된 모달 컨테이너
@@ -46,17 +45,17 @@ const ModalContainer = styled.div`
   background: transparent;
   border-radius: 1.25rem;
   overflow: hidden;
-  
+
   /* 애니메이션 효과 */
   transform: scale(0.95) translateY(20px);
   animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  
+
   @keyframes slideUp {
     to {
       transform: scale(1) translateY(0);
     }
   }
-  
+
   @media (max-width: 768px) {
     border-radius: 1rem;
     width: 100%;
@@ -82,7 +81,7 @@ const CloseButton = styled.button`
   font-size: 1.25rem;
   color: #666;
   font-weight: 300;
-  
+
   @media (max-width: 768px) {
     top: 0.75rem;
     right: 0.75rem;
@@ -90,18 +89,18 @@ const CloseButton = styled.button`
     height: 2.25rem;
     font-size: 1.125rem;
   }
-  
+
   &:hover {
     background: rgba(232, 105, 18, 0.1);
     border-color: rgba(232, 105, 18, 0.2);
     color: var(--primary);
     transform: scale(1.05);
   }
-  
+
   &:active {
     transform: scale(0.95);
   }
-  
+
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(232, 105, 18, 0.2);
@@ -116,13 +115,13 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (!isOpen) return;
-    
+
     const handleEscKey = (e) => {
       if (e.key === 'Escape') {
         onClose();
       }
     };
-    
+
     document.addEventListener('keydown', handleEscKey);
     return () => document.removeEventListener('keydown', handleEscKey);
   }, [isOpen, onClose]);
@@ -133,7 +132,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -165,12 +164,8 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
 
   return createPortal(
     <ModalOverlay onClick={handleOverlayClick}>
-      <ModalContainer>
-        <CloseButton 
-          onClick={onClose}
-          aria-label="모달 닫기"
-          type="button"
-        >
+      <ModalContainer role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+        <CloseButton onClick={onClose} aria-label="모달 닫기" type="button">
           ×
         </CloseButton>
         {step === 'subscription' && <Subscription onSuccess={handleSubscriptionSuccess} />}
