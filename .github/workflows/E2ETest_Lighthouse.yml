@@ -32,7 +32,7 @@ jobs:
 
       # 6. Playwright 테스트 실행 (JSON 리포트 저장)
       - name: Run Playwright tests
-        run: npx playwright test --reporter=json > playwright-result.json
+        run: PLAYWRIGHT_JSON_OUTPUT_NAME=playwright-result.json npx playwright test --reporter=json,html
 
       # 7. Lighthouse CI 실행 (JSON 리포트 저장)
       - name: Run Lighthouse CI
@@ -42,11 +42,16 @@ jobs:
       - name: Parse Lighthouse Scores
         id: lighthouse
         run: |
-          cat lhci-report/*report.json | jq '{perf: .categories.performance.score*100,
-                                              access: .categories.accessibility.score*100,
-                                              seo: .categories.seo.score*100,
-                                              lcp: .audits."largest-contentful-paint".numericValue/1000}' > result.json
-          echo "result=$(cat result.json)" >> $GITHUB_OUTPUT
+          report_path=$(jq -r '.[0].jsonPath' lhci-report/manifest.json)
+          result=$(cat $report_path | jq '{
+            perf: (.categories.performance.score * 100),
+            access: (.categories.accessibility.score * 100),
+            seo: (.categories.seo.score * 100),
+            lcp: (.audits["largest-contentful-paint"].numericValue / 1000)
+          }')
+          echo "result<<EOF" >> $GITHUB_OUTPUT
+          echo "$result" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       # 9. Playwright 결과 파싱
       - name: Parse Playwright Results
@@ -65,19 +70,24 @@ jobs:
         with:
           script: |
             const lh = JSON.parse(process.env.result);
-            const passed = process.env.passed;
-            const failed = process.env.failed;
-            const total = process.env.total;
+            const passed = Number(process.env.passed);
+            const failed = Number(process.env.failed);
+            const total = Number(process.env.total);
 
             const body = `
-            - Total: ${total}
-            - Passed: ${passed}
-            - Failed: ${failed}
+            ### E2E Test & Lighthouse Report
 
-            - Performance: ${lh.perf}
-            - Accessibility: ${lh.access}
-            - SEO: ${lh.seo}
-            - LCP: ${lh.lcp}s
+            | Category      | Result |
+            |---------------|--------|
+            | **Tests**     |        |
+            | Total         | \`${total}\` |
+            | ✅ Passed      | \`${passed}\` |
+            | ❌ Failed      | \`${failed}\` |
+            | **Lighthouse**|        |
+            | 🚀 Performance | \`${lh.perf}\` |
+            | ♿ Accessibility| \`${lh.access}\` |
+            | 🔎 SEO         | \`${lh.seo}\` |
+            | LCP | \`${lh.lcp.toFixed(2)}s\` |
             `;
 
             github.rest.issues.createComment({
