@@ -34,7 +34,7 @@ jobs:
 
       # 6. Playwright 테스트 실행 (JSON 리포트 저장)
       - name: Run Playwright tests
-        run: PLAYWRIGHT_JSON_OUTPUT_NAME=playwright-result.json npx playwright test --reporter=json,html
+        run: npx playwright test
 
       # 7. Lighthouse CI 실행 (JSON 리포트 저장)
       - name: Run Lighthouse CI
