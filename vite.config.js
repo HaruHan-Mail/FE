@@ -53,6 +53,7 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@common': path.resolve(__dirname, 'src/common'),
+      '@mocks': path.resolve(__dirname, 'src/mocks'),
     },
   },
   test: {
