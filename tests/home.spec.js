@@ -9,7 +9,7 @@ test.describe('사용자가 팀소개 섹션을 볼 때', () => {
   test('헤더가 보이고, 팀소개 섹션으로 이동할 수 있다', async ({ page }) => {
     await expect(page.getByText(/'One a Day' HARUHAN/i)).toBeVisible();
 
-    await page.mouse.wheel(0, 100);
+    await page.evaluate(() => window.scrollBy(0, 100));
 
     await page.getByText('팀 소개').click();
 
@@ -27,7 +27,7 @@ test.describe('사용자가 구독 버튼을 클릭할 때', () => {
   test('구독 모달이 나타나고, 양식을 채우고 제출할 수 있다', async ({ page }) => {
     await expect(page.getByText(/'One a Day' HARUHAN/i)).toBeVisible();
 
-    await page.mouse.wheel(0, 100);
+    await page.evaluate(() => window.scrollBy(0, 100));
 
     await page.getByRole('button', { name: '구독하기' }).first().click();
 
@@ -42,8 +42,6 @@ test.describe('사용자가 구독 버튼을 클릭할 때', () => {
     await expect(emailInput).toHaveValue('test@example.com');
 
     await page.getByText('개인정보취급방침에 동의합니다').click();
-
-    await page.mouse.wheel(0, 100);
 
     const modal = page.getByRole('dialog');
     await modal.getByRole('button', { name: '구독하기' }).click();
