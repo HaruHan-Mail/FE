@@ -55,7 +55,7 @@ const TextContainer = styled.div`
   justify-content: center;
   gap: 1.5rem;
 
-  h1 {
+  h2 {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 7rem;
     font-weight: bold;
@@ -146,10 +146,10 @@ const TeamAbout = () => {
         </ImageContainer>
         <TextContainer>
           <BgImage src={bgImg} alt="bg" />
-          <h1>
+          <h2>
             매일 아침 한 가지, <br />
             New Insight
-          </h1>
+          </h2>
           <p>Haruhan은 바쁜 일상 속에서도 매일 한 가지 새로운 지식을 쉽고 재미있게 전해드립니다</p>
           <p>짧지만 깊이 있는 인사이트로, 오늘 하루도 성장하는 경험을 해보세요</p>
         </TextContainer>
