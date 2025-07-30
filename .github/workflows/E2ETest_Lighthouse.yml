@@ -59,8 +59,8 @@ jobs:
       - name: Parse Playwright Results
         id: playwright
         run: |
-          passed=$(jq '[.suites[].specs[] | .tests[] | select(.ok == true)] | length' playwright-result.json)
-          failed=$(jq '[.suites[].specs[] | .tests[] | select(.ok == false)] | length' playwright-result.json)
+          passed=$(jq '.stats.expected' playwright-result.json)
+          failed=$(jq '.stats.unexpected' playwright-result.json)
           total=$((passed + failed))
           echo "passed=$passed" >> $GITHUB_OUTPUT
           echo "failed=$failed" >> $GITHUB_OUTPUT
