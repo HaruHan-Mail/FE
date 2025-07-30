@@ -1,5 +1,5 @@
 import { NotFoundSection } from '@features/error';
-import Layout from '@layout/Layout';
+import { Layout } from '@layout';
 
 const NotFound = () => {
   return (

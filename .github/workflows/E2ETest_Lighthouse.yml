@@ -1,0 +1,120 @@
+name: Playwright + Lighthouse
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  e2e-and-lighthouse:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      # 1. 소스 체크아웃
+      - uses: actions/checkout@v4
+
+      # 2. Node 설치
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      # 3. 의존성 설치
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Playwright 브라우저 설치
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 5. 프로젝트 빌드
+      - name: Build project
+        run: npm run build
+
+      # 6. Playwright 테스트 실행 (JSON 리포트 저장)
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      # 7. Lighthouse CI 실행 (JSON 리포트 저장)
+      - name: Run Lighthouse CI
+        run: npx lhci autorun --config=./lighthouserc.json --output=json
+
+      # 8. Lighthouse 결과 파싱
+      - name: Parse Lighthouse Scores
+        id: lighthouse
+        run: |
+          report_path=$(jq -r '.[0].jsonPath' lhci-report/manifest.json)
+          result=$(cat $report_path | jq '{
+            perf: (.categories.performance.score * 100),
+            access: (.categories.accessibility.score * 100),
+            seo: (.categories.seo.score * 100),
+            lcp: (.audits["largest-contentful-paint"].numericValue / 1000)
+          }')
+          echo "result<<EOF" >> $GITHUB_OUTPUT
+          echo "$result" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      # 9. Playwright 결과 파싱
+      - name: Parse Playwright Results
+        id: playwright
+        run: |
+          passed=$(jq '.stats.expected' playwright-result.json)
+          failed=$(jq '.stats.unexpected' playwright-result.json)
+          total=$((passed + failed))
+          echo "passed=$passed" >> $GITHUB_OUTPUT
+          echo "failed=$failed" >> $GITHUB_OUTPUT
+          echo "total=$total" >> $GITHUB_OUTPUT
+
+      # 10. PR 코멘트 작성
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        env:
+          RESULT: ${{ steps.lighthouse.outputs.result }}
+          PASSED: ${{ steps.playwright.outputs.passed }}
+          FAILED: ${{ steps.playwright.outputs.failed }}
+          TOTAL: ${{ steps.playwright.outputs.total }}
+        with:
+          script: |
+            const lh = JSON.parse(process.env.RESULT);
+            const passed = Number(process.env.PASSED);
+            const failed = Number(process.env.FAILED);
+            const total = Number(process.env.TOTAL);
+
+            const body = `
+            ### E2E Test & Lighthouse Report
+
+            | Category      | Result |
+            |---------------|--------|
+            | **Tests**     |        |
+            | Total         | \`${total}\` |
+            | ✅ Passed      | \`${passed}\` |
+            | ❌ Failed      | \`${failed}\` |
+            | **Lighthouse**|        |
+            | 🚀 Performance | \`${lh.perf}\` |
+            | ♿ Accessibility| \`${lh.access}\` |
+            | 🔎 SEO         | \`${lh.seo}\` |
+            | LCP | \`${lh.lcp.toFixed(2)}s\` |
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+      # 11. 리포트 아티팩트 업로드 (HTML 파일)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-report
+          path: lhci-report
+          retention-days: 30

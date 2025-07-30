@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/AddContentSection.css';
-import { contentRequest } from '../../mocks/addContentRequest.js';
+import { contentRequest } from './utils/contentRequest.js';
 import Swal from 'sweetalert2';
 import useContentForm from '../../hooks/useContentForm';
 import FormField from './common/FormField';
@@ -29,7 +29,6 @@ const AddContentSection = () => {
     resetForm,
   } = useContentForm(initialData);
 
-
   const handleCancel = () => {
     Swal.fire({
       title: '작성을 취소하시겠습니까?',
@@ -49,9 +48,9 @@ const AddContentSection = () => {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-      
+
     const result = await saveNewContent(formData);
-    
+
     if (result?.stateCode !== 201) {
       Swal.fire({
         icon: 'error',
@@ -59,7 +58,7 @@ const AddContentSection = () => {
         text: '다시 시도해주세요.',
       });
       return;
-    } 
+    }
 
     Swal.fire({
       icon: 'success',
@@ -69,7 +68,7 @@ const AddContentSection = () => {
     resetForm();
     setIsSubmitting(false);
   };
-  
+
   // 폼 필드 렌더링 함수
   const renderFormField = (item) => {
     if (isArrayField(item.title)) {
@@ -113,11 +112,10 @@ const AddContentSection = () => {
 
       {contentRequest.slice(0, 2).map(renderFormField)}
       {contentRequest.slice(2).map(renderFormField)}
-  
-      
+
       <div className="add-content-submit-wrapper">
-        <button 
-          className="add-content-cancel-button" 
+        <button
+          className="add-content-cancel-button"
           onClick={handleCancel}
           disabled={isSubmitting}
         >

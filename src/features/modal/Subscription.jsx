@@ -364,7 +364,7 @@ const Subscription = ({ onSuccess }) => {
 
   return (
     <Container>
-      <Title>
+      <Title id="dialog-title">
         <span>Haruhan</span> 지식 구독
       </Title>
       <Subtitle>매일 새로운 지식을 이메일로 받아보세요</Subtitle>
