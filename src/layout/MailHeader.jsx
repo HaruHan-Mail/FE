@@ -7,8 +7,8 @@ const MailHeaderContainer = styled.section`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  position: relative;
 
-  position: absolute;
   top: 0;
   left: 0;
   z-index: 1000;
