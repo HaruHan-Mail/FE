@@ -6,7 +6,7 @@ import SettingSectionForm from './SectionSectionForm';
 import SettingSectionInfo from './SettingSectionInfo';
 
 const Container = styled.div`
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const ContentWrapper = styled.div`
   max-width: 600px;
-  margin: 4rem auto;
+  margin: 1rem auto;
   padding: 2rem;
   background-color: var(--white);
   border-radius: 10px;

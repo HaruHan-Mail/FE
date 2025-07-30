@@ -11,8 +11,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  min-height: 100vh;
   box-sizing: border-box;
+  height: 90vh;
 `;
 
 const Card = styled.div`

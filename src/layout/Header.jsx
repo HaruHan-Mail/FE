@@ -26,7 +26,7 @@ const HeaderContainer = styled.header`
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-    padding: 15px 40px;
+    padding: 20px 40px;
   }
 `;
 
