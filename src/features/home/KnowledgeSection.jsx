@@ -9,7 +9,7 @@ const SectionContainer = styled.section`
   overflow: hidden;
 `;
 
-const SectionTitle = styled.h2`
+const SectionTitle = styled.h3`
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;

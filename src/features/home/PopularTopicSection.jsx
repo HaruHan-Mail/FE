@@ -10,7 +10,7 @@ const SectionContainer = styled.section`
   justify-content: center;
 `;
 
-const SectionTitle = styled.h2`
+const SectionTitle = styled.h3`
   font-size: 3rem;
   font-weight: 800;
   text-align: center;

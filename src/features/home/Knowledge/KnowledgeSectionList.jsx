@@ -1,8 +1,8 @@
 import React from 'react';
-import { knowledgeMockData } from '../../../mocks/knowledgeData';
+import { knowledgeMockData } from '@mocks/knowledgeData';
 import KnowledgeSectionItem from './KnowledgeSectionItem';
 import styled from '@emotion/styled';
-import useModal from '../../../hooks/useModal';
+import useModal from '@hooks/useModal';
 import SubscriptionModal from '../../modal/SubscriptionModal';
 
 const Container = styled.div`
@@ -25,7 +25,7 @@ const KnowledgeSectionList = () => {
           onClick={openModal}
         />
       ))}
-    {isModalOpen && <SubscriptionModal isOpen={isModalOpen} onClose={closeModal} />}
+      {isModalOpen && <SubscriptionModal isOpen={isModalOpen} onClose={closeModal} />}
     </Container>
   );
 };

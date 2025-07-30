@@ -14,7 +14,7 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.h3`
+const Title = styled.h4`
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
   font-weight: bold;
@@ -24,7 +24,7 @@ const Title = styled.h3`
   }
 `;
 
-const Summary = styled.h4`
+const Summary = styled.h5`
   font-size: 1.1rem;
   padding: 0 0 1.5rem 0;
   color: #333;

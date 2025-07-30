@@ -15,7 +15,7 @@ const TeamHeroContainer = styled.div`
 const TextContainer = styled.div`
   position: absolute;
   text-align: center;
-  p {
+  h1 {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 300;
     font-size: 9rem;
@@ -26,13 +26,13 @@ const TextContainer = styled.div`
   }
 
   @media (min-width: 768px) and (max-width: 1440px) {
-    p {
+    h1 {
       font-size: 4rem;
     }
   }
 
   @media (max-width: 767px) {
-    p {
+    h1 {
       font-size: 4rem;
     }
   }
@@ -119,9 +119,9 @@ export default function TeamHero() {
   return (
     <TeamHeroContainer ref={sectionRef}>
       <TextContainer>
-        <p ref={textRef}>
+        <h1 ref={textRef}>
           'One a Day' <span>HARUHAN</span>
-        </p>
+        </h1>
       </TextContainer>
       <ImageContainer>
         {TeamHeroImages.map((src, i) => (
