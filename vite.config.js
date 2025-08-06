@@ -33,14 +33,14 @@ export default defineConfig({
       targets: ['edge >= 87', 'chrome >= 90'],
       modernPolyfills: true,
     }),
-    viteCompression({
-      algorithm: 'gzip',
-      ext: '.gz',
-    }),
-    viteCompression({
-      algorithm: 'brotliCompress',
-      ext: '.br',
-    }),
+    // viteCompression({
+    //   algorithm: 'gzip',
+    //   ext: '.gz',
+    // }),
+    // viteCompression({
+    //   algorithm: 'brotliCompress',
+    //   ext: '.br',
+    // }),
   ],
   resolve: {
     alias: {
@@ -75,13 +75,4 @@ export default defineConfig({
   //     },
   //   },
   // },
-  optimizeDeps: {
-    include: [
-      'three',
-      '@react-three/fiber',
-      '@react-three/drei',
-      '@react-three/postprocessing',
-      '@react-three/rapier',
-    ],
-  },
 });
