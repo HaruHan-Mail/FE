@@ -74,6 +74,7 @@ const Content = styled.div`
 `;
 
 const PopularTopicItem = ({ title, image, index, className }) => {
+  console.log(image);
   return (
     <Container className={`${className} item-${index}`}>
       <Img src={image} alt={title} loading="lazy" />

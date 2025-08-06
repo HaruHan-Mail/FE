@@ -5,9 +5,9 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
 import legacy from '@vitejs/plugin-legacy';
-import viteCompression from 'vite-plugin-compression';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,20 +27,24 @@ export default defineConfig({
       },
       avif: false,
     }),
+    visualizer({
+      open: true,
+      filename: './dist/report.html',
+    }),
     viteTsconfigPaths(),
     svgrPlugin(),
     legacy({
       targets: ['edge >= 87', 'chrome >= 90'],
       modernPolyfills: true,
     }),
-    viteCompression({
-      algorithm: 'gzip',
-      ext: '.gz',
-    }),
-    viteCompression({
-      algorithm: 'brotliCompress',
-      ext: '.br',
-    }),
+    // viteCompression({
+    //   algorithm: 'gzip',
+    //   ext: '.gz',
+    // }),
+    // viteCompression({
+    //   algorithm: 'brotliCompress',
+    //   ext: '.br',
+    // }),
   ],
   resolve: {
     alias: {
@@ -62,26 +66,27 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.js'],
     css: true,
   },
-  // build: {
-  //   rollupOptions: {
-  //     output: {
-  //       manualChunks: {
-  //         'three-main': ['three'],
-  //         'three-fiber': ['@react-three/fiber'],
-  //         'three-drei': ['@react-three/drei'],
-  //         'three-postprocessing': ['@react-three/postprocessing'],
-  //         'three-rapier': ['@react-three/rapier'],
-  //       },
-  //     },
-  //   },
-  // },
-  optimizeDeps: {
-    include: [
-      'three',
-      '@react-three/fiber',
-      '@react-three/drei',
-      '@react-three/postprocessing',
-      '@react-three/rapier',
-    ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('gsap') || id.includes('framer-motion')) {
+            return 'animation';
+          }
+          if (id.includes('sweetalert2')) {
+            return 'sweetalert2';
+          }
+          if (id.includes('lottie-react')) {
+            return 'lottie-react';
+          }
+          if (id.includes('emotion')) {
+            return 'emotion';
+          }
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      },
+    },
   },
 });
