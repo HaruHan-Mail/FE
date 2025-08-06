@@ -8,6 +8,7 @@ import legacy from '@vitejs/plugin-legacy';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { visualizer } from 'rollup-plugin-visualizer';
+import viteCompression from 'vite-plugin-compression';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,14 +38,14 @@ export default defineConfig({
       targets: ['edge >= 87', 'chrome >= 90'],
       modernPolyfills: true,
     }),
-    // viteCompression({
-    //   algorithm: 'gzip',
-    //   ext: '.gz',
-    // }),
-    // viteCompression({
-    //   algorithm: 'brotliCompress',
-    //   ext: '.br',
-    // }),
+    viteCompression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+    }),
+    viteCompression({
+      algorithm: 'gzip',
+      ext: '.gz',
+    }),
   ],
   resolve: {
     alias: {
