@@ -10,6 +10,7 @@ import Home from '@pages/Home.jsx';
 
 const queryClient = new QueryClient();
 
+// const Home = lazy(() => import('@pages/Home.jsx'));
 const NotFound = lazy(() => import('@pages/NotFound.jsx'));
 const Policy = lazy(() => import('@pages/Policy.jsx'));
 const Unsubscribe = lazy(() => import('@pages/Unsubscribe.jsx'));
